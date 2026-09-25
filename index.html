@@ -107,11 +107,14 @@
         - data-video is the id out of a YouTube URL. In
           youtube.com/watch?v=WhWc3b3KhnY the id is WhWc3b3KhnY. Swap it for
           your own footage, then fix the credit in the footer.
+        - data-start and data-end are the clip, in seconds, and it loops.
+          338 to 410 is the sunlit last minute of the film, before its title.
+          Nobody needs the opening credits of anything behind a headline.
         - The scrim (.hero-scrim) is what keeps the headline readable over
           moving pictures. Text on video without one is a coin flip every frame.
     -->
     <header class="hero-stage min-h-[80vh] md:min-h-[90vh] grid">
-      <div class="hero-poster" data-video="WhWc3b3KhnY" data-hero-video></div>
+      <div class="hero-poster" data-video="WhWc3b3KhnY" data-start="338" data-end="410" data-hero-video></div>
       <div class="hero-scrim"></div>
 
       <div class="relative z-10 self-center px-6 py-24 md:py-32 w-full">
@@ -194,7 +197,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!--
             IMAGE ALT says what the image is FOR, not every pixel in it. Then
-            its photographer, source and licence go in the footer's credits.
+            its photographer, source and license go in the footer's credits.
           -->
           <article class="card bg-base-200 shadow-lg overflow-hidden group">
             <figure class="aspect-[4/3] overflow-hidden">
@@ -404,7 +407,7 @@
       </div>
 
       <!--
-        CREDITS. Every borrowed thing: creator, source, licence, and what you
+        CREDITS. Every borrowed thing: creator, source, license, and what you
         changed. One list for the whole site, so it is the same on every page.
         When you swap a picture, swap its line. If you cannot write the line,
         you are not allowed to use the picture.
@@ -415,7 +418,7 @@
           <details class="md:max-w-xl">
             <summary class="cursor-pointer link link-hover opacity-80">Photo and video credits</summary>
             <ul class="mt-3 space-y-1 opacity-80">
-              <li>Hero video: <a class="link" href="https://studio.blender.org/projects/spring/"><em>Spring</em></a> by Blender Studio, <a class="link" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</li>
+              <li>Hero video: <a class="link" href="https://studio.blender.org/projects/spring/"><em>Spring</em></a> by Blender Studio, <a class="link" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Clipped to 5:38–6:50.</li>
               <li>Dining room: <a class="link" href="https://commons.wikimedia.org/wiki/File:Restaurant_in_Place_D%27Youville,_Quebec_City.jpg">Wilfredor</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Cropped.</li>
               <li>Pasta: <a class="link" href="https://commons.wikimedia.org/wiki/File:Spaghetti_dish.jpg">jeuwre</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Cropped.</li>
               <li>Salmon: <a class="link" href="https://commons.wikimedia.org/wiki/File:DSCF0412_Seared_salmon_fillet_topped_with_saut%C3%A9ed_shrimp_served_with_creamed_spinach_and_a_side_salad.jpg">PattayaPatrol</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
