@@ -34,13 +34,22 @@
 /* ============================================================ TYPE
  *
  * Two faces at most: one for headings, chosen for tone; one for body, chosen
- * to be readable small. The Google Fonts <link> goes in each page's <head>,
- * ABOVE this file.
+ * to be readable small. This starter ships Fraunces (a warm serif with some
+ * swagger) over Inter (a plain, very legible sans). Both are free under the
+ * SIL Open Font License.
+ *
+ * To change them: pick two at fonts.google.com, replace the Google Fonts
+ * <link> in the <head> of EVERY page, then the two names below. Keep the
+ * fallbacks after the comma — they are what shows while the font downloads,
+ * or if it never does.
  */
-/*
-body { font-family: '______', system-ui, sans-serif; }
-h1, h2, .card-title { font-family: '______', Georgia, serif; }
-*/
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.font-display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-optical-sizing: auto;
+}
 
 /* ============================================================ HERO VIDEO
  *
@@ -54,17 +63,22 @@ h1, h2, .card-title { font-family: '______', Georgia, serif; }
   overflow: hidden;
 }
 
-/* THE POSTER IS ALWAYS PAINTED. This gradient is the hero when the video is
+/* THE POSTER IS ALWAYS PAINTED. This photograph is the hero when the video is
  * blocked, still loading, on a phone, or withheld for reduced motion — which
  * together is most of the time. Design it as if it were the only thing there.
- * The script adds the video's thumbnail on top of it as a background-image. */
+ * The gradient underneath is the fallback's fallback: it shows while the
+ * photograph downloads, or if you delete it.
+ *
+ * Swap the video? Swap this picture too, for a still from the same footage,
+ * so the fade from one to the other reads as one thing. */
 .hero-poster {
   position: absolute;
   inset: 0;
   z-index: 0;
   overflow: hidden;
   background-color: var(--color-base-300);
-  background-image: linear-gradient(140deg, var(--color-primary) 0%, var(--color-base-300) 55%, var(--color-neutral) 100%);
+  background-image: url('img/dining-room.jpg'),
+    linear-gradient(140deg, var(--color-primary) 0%, var(--color-base-300) 55%, var(--color-neutral) 100%);
   background-size: cover;
   background-position: center;
 }
@@ -101,6 +115,42 @@ h1, h2, .card-title { font-family: '______', Georgia, serif; }
   background: linear-gradient(to bottom, rgb(0 0 0 / 0.7), rgb(0 0 0 / 0.65) 45%, rgb(0 0 0 / 0.85));
 }
 
+/* ============================================================ THE MENU
+ *
+ * Name, a dotted leader, price — the way a printed menu has always done it —
+ * and the description on the line below. The leader is the dt's ::after,
+ * stretched to fill whatever space the name leaves. */
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 0.75rem;
+  align-items: baseline;
+  padding-block: 1.1rem;
+}
+.menu-item dt {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.menu-item dt::after {
+  content: '';
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 2px dotted color-mix(in oklch, var(--color-base-content) 35%, transparent);
+  transform: translateY(-0.3em);
+}
+.menu-item .price {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+.menu-item .desc {
+  grid-column: 1 / -1;
+  opacity: 0.8;
+  margin-top: 0.25rem;
+}
+
 /* ============================================================ EVERYTHING ELSE */
 
 /* FORM LABELS AT FULL STRENGTH. daisyUI paints `.label` at 60% of the
@@ -108,15 +158,48 @@ h1, h2, .card-title { font-family: '______', Georgia, serif; }
  * on the booking form — under the 4.5:1 floor, and on the one piece of text
  * that says what a field is for. Dimming a caption is a style choice; dimming
  * the only name a field has is not. Keep this rule. */
-.fieldset > .label {
+.fieldset .label {
   color: inherit;
   font-size: 0.875rem;
 }
 
-/* Anchors land below the sticky navbar instead of behind it. If you change the
- * navbar's height, change this number too. */
-:target {
+/* FOOTER HEADINGS AT FULL STRENGTH, for the same reason. daisyUI fades
+ * `.footer-title` to 60%, which measured 3.48:1 here. The capitals and the
+ * letter-spacing already say "this is a label"; the fading only costs
+ * legibility. */
+.footer-title {
+  opacity: 1;
+}
+
+/* The page you are on, marked in the nav by aria-current="page" — which is
+ * also what a screen reader announces. daisyUI already paints it as the
+ * active item, in the theme's own neutral pair; this only adds weight. Do not
+ * recolour the text without measuring it against that neutral: primary on it
+ * failed on `corporate`, whose neutral is black. */
+.menu a[aria-current='page'] {
+  font-weight: 700;
+}
+
+/* SKIP LINK. The first thing a keyboard user reaches, and invisible until
+ * they do. It jumps past the nav to <main id="main">. Keep it. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  z-index: 50;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Anchors land below the sticky navbar instead of behind it — and on the menu
+ * page, below the jump links too. If you change the navbar's height, change
+ * these numbers. */
+[id] {
   scroll-margin-top: 5rem;
+}
+body:has(.menu-jump) [id] {
+  scroll-margin-top: 8rem;
 }
 
 html {
@@ -124,13 +207,36 @@ html {
 }
 
 /* Some readers' systems ask for less movement — a vestibular condition, or
- * just a preference. Honour it: no smooth scroll, no fading video in. Keep
- * this block. */
+ * just a preference. Honour it: no smooth scroll, no fading video in, no
+ * zooming photographs. Keep this block. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .hero-poster iframe {
-    transition: none;
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+  .group:hover img {
+    transform: none;
+  }
+}
+
+/* PRINTING THE MENU. Paper does not need the navbar, the video or the
+ * booking button — only the food and the prices, in black on white. */
+@media print {
+  nav,
+  footer,
+  .skip-link,
+  section.bg-primary {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .menu-item .price {
+    color: #000;
   }
 }

@@ -7,24 +7,43 @@
     <meta name="description" content="One sentence about this restaurant. Search results show it; write it." />
 
     <!--
+      SHARING. These are what a link preview shows when somebody pastes your
+      address into a chat. og:image has to be a FULL https address, so it is
+      left out until you publish — then add
+        <meta property="og:image" content="https://you.github.io/your-repo/img/dining-room.jpg" />
+    -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bistro — change this to your restaurant" />
+    <meta property="og:description" content="One sentence about this restaurant. Search results show it; write it." />
+
+    <!--
       THE THREE TAGS. Tailwind and daisyUI, no build step, nothing installed.
       Open this file with Live Server and start working.
 
       Two honest notes:
-        1. The last tag is Tailwind's BROWSER build. Tailwind's own docs say it
-           is "designed for development purposes only, and is not intended for
-           production." That is fine while you are building. Unit 8 replaces it
-           with a real built stylesheet, because publishing to a public address
-           is where "development only" stops being acceptable.
-        2. These load from jsdelivr, which means jsdelivr sees a request from
-           every reader of your site. That is your call to make on your own
-           project. Read Unit 8's "what a page costs its reader" first.
+        1. The Tailwind tag is its BROWSER build. Tailwind's own docs say it is
+           "designed for development purposes only, and is not intended for
+           production." That is fine while you are building. Unit 8 replaces
+           it with a real built stylesheet, because publishing to a public
+           address is where "development only" stops being acceptable.
+        2. These load from jsdelivr, and the fonts from Google, which means
+           both see a request from every reader of your site. That is your
+           call to make on your own project. Read Unit 8's "what a page costs
+           its reader" first.
+
+      After them: two typefaces from Google Fonts (see TYPE in styles.css), the
+      icon in the browser tab, and your own stylesheet, last, so it wins.
     -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <!-- Your own rules go last, so they win. See styles.css. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..800&family=Inter:wght@400..700&display=swap" rel="stylesheet" />
+
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#231a22" />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -37,19 +56,38 @@
       This one ships as `coffee`. Try `sunset`, `night`, `autumn`, `luxury`,
       `dracula`, `caramellatte`, `retro`. Do it before you write a word: it is
       five seconds and it decides the mood everything else is judged against.
-    -->
 
-    <!-- ============================================================== NAV -->
-    <nav class="navbar bg-base-100/80 backdrop-blur sticky top-0 z-30 px-4 md:px-8">
+      THE NAV IS COPIED onto every page, and that is a real cost of plain
+      HTML: three pages, three copies, and they drift. Change one, change all
+      three. Unit 8's build step is the fix; until then, a habit is.
+
+      Two copies of the links live inside it: a row for wide screens and a
+      <details> dropdown for phones. <details> opens and closes with no
+      JavaScript at all; js/site.js only adds "close when I click away".
+    -->
+    <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
+
+    <nav class="navbar bg-base-100/85 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
       <div class="navbar-start">
-        <a class="text-xl font-black tracking-tight" href="index.html">
+        <a class="font-display text-2xl font-bold tracking-tight" href="index.html">
           Bistro<span class="text-primary">.</span>
         </a>
       </div>
-      <div class="navbar-end gap-1 md:gap-3">
-        <a class="link link-hover hidden sm:inline" href="menu.html">Menu</a>
-        <a class="link link-hover hidden sm:inline" href="visit.html">Visit</a>
+      <div class="navbar-end gap-2">
+        <ul class="menu menu-horizontal hidden md:flex gap-1 text-base">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="visit.html">Visit</a></li>
+        </ul>
         <a class="btn btn-primary btn-sm md:btn-md" href="visit.html#book">Book a table</a>
+        <details class="dropdown dropdown-end md:hidden">
+          <summary class="btn btn-ghost btn-square" aria-label="Site pages"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></summary>
+          <ul class="menu dropdown-content bg-base-200 rounded-box z-40 mt-3 w-56 p-2 shadow-xl text-base">
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="visit.html">Visit</a></li>
+          </ul>
+        </details>
       </div>
     </nav>
 
@@ -58,200 +96,341 @@
       A YOUTUBE BACKGROUND, and the parts are worth understanding before you
       change them:
 
-        - The gradient behind everything is in styles.css (.hero-poster). It is
-          always there. If YouTube is blocked on this network — plenty of
-          schools block it — the page still looks deliberate.
+        - The photograph behind everything is in styles.css (.hero-poster).
+          It is always there. If YouTube is blocked on this network — plenty
+          of schools block it — the page still looks finished, because it IS
+          finished: the video is a bonus on top.
         - js/hero-video.js checks whether YouTube is reachable BEFORE putting
-          an iframe on the page, drops in the video's own thumbnail as a poster,
-          then the video itself. It skips the video on phones and for readers
-          whose system asks for reduced motion.
+          an iframe on the page, then fades the video in over the photograph.
+          It skips the video on phones and for readers whose system asks for
+          reduced motion.
         - data-video is the id out of a YouTube URL. In
           youtube.com/watch?v=WhWc3b3KhnY the id is WhWc3b3KhnY. Swap it for
           your own footage, then fix the credit in the footer.
         - The scrim (.hero-scrim) is what keeps the headline readable over
           moving pictures. Text on video without one is a coin flip every frame.
     -->
-    <header class="hero-stage relative min-h-[70vh] md:min-h-[85vh] grid">
+    <header class="hero-stage min-h-[80vh] md:min-h-[90vh] grid">
       <div class="hero-poster" data-video="WhWc3b3KhnY" data-hero-video></div>
       <div class="hero-scrim"></div>
 
-      <div class="relative z-10 self-center px-6 py-20 md:py-28 w-full">
-        <div class="max-w-3xl mx-auto text-center">
-          <p class="badge badge-primary badge-lg mb-6">Open Wednesday to Sunday</p>
-          <h1 class="text-4xl md:text-7xl font-black leading-[1.05] mb-6 text-white drop-shadow">
+      <div class="relative z-10 self-center px-6 py-24 md:py-32 w-full">
+        <div class="max-w-3xl mx-auto text-center text-white">
+          <p class="inline-flex items-center gap-2 rounded-full bg-black/50 px-4 py-1.5 text-sm font-semibold tracking-wide mb-8">
+            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Open Wednesday to Sunday
+          </p>
+          <h1 class="font-display text-5xl md:text-7xl font-bold leading-[1.02] mb-6">
             A headline that tastes like the food
           </h1>
-          <p class="text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
+          <p class="text-lg md:text-xl mb-10 max-w-xl mx-auto">
             One sentence. What kind of cooking, and who it is for. Not "an
             unforgettable culinary journey" — say what is actually on the plate.
           </p>
-          <a class="btn btn-primary btn-lg" href="visit.html#book">Book a table</a>
-          <p class="mt-4">
-            <a class="link text-white/80" href="menu.html">or read the menu first</a>
-          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a class="btn btn-primary btn-lg" href="visit.html#book">Book a table</a>
+            <!--
+              ONE call to action. The menu is a second path, not a second ask,
+              so it is dressed quietly — an outline, not another filled button.
+            -->
+            <a class="btn btn-lg btn-outline text-white border-white/70 hover:bg-white hover:text-black" href="menu.html">Read the menu</a>
+          </div>
         </div>
       </div>
     </header>
 
-    <!--
-      ============================================================== FACTS
-      Three things a hungry person came here to find. Put them above
-      everything else you are proud of.
-    -->
-    <section class="bg-base-200 border-b border-base-300">
-      <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-base-300">
-        <div class="px-6 py-8 text-center">
-          <h2 class="font-bold uppercase tracking-widest text-xs opacity-60 mb-2">Hours</h2>
-          <p class="text-lg">Wed–Sun, 5–10pm</p>
+    <main id="main">
+      <!--
+        ============================================================ FACTS
+        Three things a hungry person came here to find. Put them above
+        everything else you are proud of.
+      -->
+      <section class="bg-base-200 border-b border-base-content/10" aria-label="Hours and location">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-base-content/10">
+          <div class="flex items-center gap-4 px-6 py-7">
+            <span class="grid place-items-center size-11 rounded-full bg-primary/15 text-primary shrink-0"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-widest opacity-80">Hours</h2>
+              <p class="text-lg">Wed–Sun, 5–10pm</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 px-6 py-7">
+            <span class="grid place-items-center size-11 rounded-full bg-primary/15 text-primary shrink-0"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-widest opacity-80">Find us</h2>
+              <p class="text-lg"><a class="link link-hover" href="visit.html#getting-here">123 Your Street, Your City</a></p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 px-6 py-7">
+            <span class="grid place-items-center size-11 rounded-full bg-primary/15 text-primary shrink-0"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg></span>
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-widest opacity-80">Call</h2>
+              <!-- tel: makes this tap-to-call on a phone. Use it. -->
+              <p class="text-lg"><a class="link link-hover" href="tel:+12165550100">(216) 555-0100</a></p>
+            </div>
+          </div>
         </div>
-        <div class="px-6 py-8 text-center">
-          <h2 class="font-bold uppercase tracking-widest text-xs opacity-60 mb-2">Find us</h2>
-          <p class="text-lg">123 Your Street, Your City</p>
-        </div>
-        <div class="px-6 py-8 text-center">
-          <h2 class="font-bold uppercase tracking-widest text-xs opacity-60 mb-2">Call</h2>
-          <!-- tel: makes this tap-to-call on a phone. Use it. -->
-          <p class="text-lg"><a class="link link-hover" href="tel:+12165550100">(216) 555-0100</a></p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!--
-      ============================================================== DISHES
-      Three, and keep them parallel: same shape, same length of description,
-      and if one has a photo they all do. A grid of unequal cards reads as
-      unfinished no matter how good the photography is.
-    -->
-    <section id="dishes" class="px-6 py-20 md:py-28 max-w-6xl mx-auto">
-      <div class="max-w-2xl mb-12">
-        <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">This week</p>
-        <h2 class="text-3xl md:text-5xl font-black mb-4">What we are cooking</h2>
-        <p class="text-lg opacity-70">
-          Two sentences of context. What changed on the menu, and why.
-        </p>
-      </div>
+      <!--
+        ============================================================ DISHES
+        Three, and keep them parallel: same shape, same length of description,
+        and if one has a photo they all do. A grid of unequal cards reads as
+        unfinished no matter how good the photography is.
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <article class="card bg-base-200 shadow-lg overflow-hidden">
+        EVERY <img> CARRIES width AND height. The browser reserves the space
+        before the picture arrives, so the page does not jump while it loads.
+        loading="lazy" means pictures below the fold wait until they are needed.
+      -->
+      <section id="dishes" class="px-6 py-20 md:py-28 max-w-6xl mx-auto">
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+          <div class="max-w-2xl">
+            <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">This week</p>
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">What we are cooking</h2>
+            <p class="text-lg opacity-80">Two sentences of context. What changed on the menu, and why.</p>
+          </div>
+          <a class="btn btn-outline" href="menu.html">The whole menu <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!--
-            IMAGE SLOT. Replace this coloured block with a real <img>. Its alt
-            says what the image is FOR, not what is in it. Then record the
-            photographer, the source and the licence in the footer — if you
-            cannot write that line, you are not allowed to use the picture.
+            IMAGE ALT says what the image is FOR, not every pixel in it. Then
+            its photographer, source and licence go in the footer's credits.
           -->
-          <div class="aspect-[4/3] bg-gradient-to-br from-primary/30 to-base-300"></div>
-          <div class="card-body">
-            <h3 class="card-title">First dish</h3>
-            <p class="opacity-70">Two lines. What it is, and the one thing in it worth naming.</p>
-            <p class="font-bold text-primary text-lg">$00</p>
-          </div>
-        </article>
+          <article class="card bg-base-200 shadow-lg overflow-hidden group">
+            <figure class="aspect-[4/3] overflow-hidden">
+              <img class="size-full object-cover transition duration-500 group-hover:scale-105" src="img/dish-pasta.jpg" width="900" height="675" loading="lazy" alt="Spaghetti in tomato sauce under rocket and shaved cheese" />
+            </figure>
+            <div class="card-body">
+              <div class="flex items-baseline justify-between gap-4">
+                <h3 class="card-title font-display text-2xl">First dish</h3>
+                <p class="grow-0 font-bold text-primary text-lg">$00</p>
+              </div>
+              <p class="opacity-80">Two lines. What it is, and the one thing in it worth naming.</p>
+              <div class="card-actions mt-2">
+                <span class="badge badge-outline gap-1"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span>
+              </div>
+            </div>
+          </article>
 
-        <article class="card bg-base-200 shadow-lg overflow-hidden">
-          <div class="aspect-[4/3] bg-gradient-to-br from-secondary/30 to-base-300"></div>
-          <div class="card-body">
-            <h3 class="card-title">Second dish</h3>
-            <p class="opacity-70">Two lines. What it is, and the one thing in it worth naming.</p>
-            <p class="font-bold text-primary text-lg">$00</p>
-          </div>
-        </article>
+          <article class="card bg-base-200 shadow-lg overflow-hidden group">
+            <figure class="aspect-[4/3] overflow-hidden">
+              <img class="size-full object-cover transition duration-500 group-hover:scale-105" src="img/dish-salmon.jpg" width="900" height="675" loading="lazy" alt="Seared salmon topped with shrimp, beside creamed spinach" />
+            </figure>
+            <div class="card-body">
+              <div class="flex items-baseline justify-between gap-4">
+                <h3 class="card-title font-display text-2xl">Second dish</h3>
+                <p class="grow-0 font-bold text-primary text-lg">$00</p>
+              </div>
+              <p class="opacity-80">Two lines. What it is, and the one thing in it worth naming.</p>
+              <div class="card-actions mt-2">
+                <span class="badge badge-outline gap-1"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/></svg> Gluten-free</span>
+              </div>
+            </div>
+          </article>
 
-        <article class="card bg-base-200 shadow-lg overflow-hidden">
-          <div class="aspect-[4/3] bg-gradient-to-br from-accent/30 to-base-300"></div>
-          <div class="card-body">
-            <h3 class="card-title">Third dish</h3>
-            <p class="opacity-70">Two lines. What it is, and the one thing in it worth naming.</p>
-            <p class="font-bold text-primary text-lg">$00</p>
-          </div>
-        </article>
-      </div>
-
-      <p class="mt-10">
-        <a class="btn btn-outline" href="menu.html">The whole menu</a>
-      </p>
-    </section>
-
-    <!--
-      ============================================================== STORY
-      Text one side, picture the other. On a phone it stacks with the text
-      first — a picture you have not been told the point of is just a picture.
-    -->
-    <section class="bg-base-200">
-      <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div>
-          <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Since 20XX</p>
-          <h2 class="text-3xl md:text-4xl font-black mb-6">The part only you can write</h2>
-          <p class="opacity-70 mb-4">
-            A paragraph about the people, not the ambience. Who cooks here, what
-            they cooked before, what they are stubborn about.
-          </p>
-          <p class="opacity-70">
-            A second paragraph, shorter. End on something specific: a supplier, a
-            grandmother, a piece of equipment nobody else has.
-          </p>
+          <article class="card bg-base-200 shadow-lg overflow-hidden group">
+            <figure class="aspect-[4/3] overflow-hidden">
+              <img class="size-full object-cover transition duration-500 group-hover:scale-105" src="img/dish-risotto.jpg" width="900" height="675" loading="lazy" alt="Saffron risotto with greens in a black cast-iron dish" />
+            </figure>
+            <div class="card-body">
+              <div class="flex items-baseline justify-between gap-4">
+                <h3 class="card-title font-display text-2xl">Third dish</h3>
+                <p class="grow-0 font-bold text-primary text-lg">$00</p>
+              </div>
+              <p class="opacity-80">Two lines. What it is, and the one thing in it worth naming.</p>
+              <div class="card-actions mt-2">
+                <span class="badge badge-outline gap-1"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg> Chef's pick</span>
+              </div>
+            </div>
+          </article>
         </div>
-        <div class="aspect-square rounded-2xl bg-gradient-to-tr from-base-300 to-primary/25 shadow-xl"></div>
-      </div>
-    </section>
+      </section>
 
-    <!--
-      ============================================================== QUOTE
-      One review, attributed. Three anonymous raves are worth less than one
-      sentence with a name on it.
-    -->
-    <section class="px-6 py-20 md:py-28">
-      <blockquote class="max-w-3xl mx-auto text-center">
-        <p class="text-2xl md:text-4xl font-serif italic leading-snug mb-6">
-          “One real sentence somebody actually said about this place.”
-        </p>
-        <footer class="opacity-60">— Their name, where it was published</footer>
-      </blockquote>
-    </section>
+      <!--
+        ============================================================ STORY
+        Text one side, picture the other. On a phone it stacks with the text
+        first — a picture you have not been told the point of is just a picture.
+      -->
+      <section class="bg-base-200">
+        <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div>
+            <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Since 20XX</p>
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">The part only you can write</h2>
+            <p class="opacity-80 mb-4 text-lg">
+              A paragraph about the people, not the ambience. Who cooks here, what
+              they cooked before, what they are stubborn about.
+            </p>
+            <p class="opacity-80 mb-8">
+              A second paragraph, shorter. End on something specific: a supplier, a
+              grandmother, a piece of equipment nobody else has.
+            </p>
+            <!--
+              THREE NUMBERS YOU CAN DEFEND. A made-up number on a real business
+              is a liability. If you do not have three true ones, delete this.
+            -->
+            <dl class="grid grid-cols-3 gap-4 border-t border-base-content/10 pt-6">
+              <div>
+                <dt class="text-sm opacity-80">Years open</dt>
+                <dd class="font-display text-3xl font-bold text-primary">00</dd>
+              </div>
+              <div>
+                <dt class="text-sm opacity-80">Local farms</dt>
+                <dd class="font-display text-3xl font-bold text-primary">00</dd>
+              </div>
+              <div>
+                <dt class="text-sm opacity-80">Seats</dt>
+                <dd class="font-display text-3xl font-bold text-primary">00</dd>
+              </div>
+            </dl>
+          </div>
+          <figure class="relative">
+            <img class="rounded-box shadow-2xl w-full aspect-[4/5] object-cover" src="img/kitchen.jpg" width="800" height="1000" loading="lazy" alt="A cook plating seafood on the pass in a small, busy kitchen" />
+            <!--
+              A caption that overlaps the picture's edge. Same idea as a
+              magazine: one element crossing a boundary makes a layout look
+              designed rather than stacked.
+            -->
+            <figcaption class="absolute -bottom-6 left-6 right-6 md:right-auto md:-left-8 card bg-base-100 shadow-xl p-5 max-w-xs">
+              <p class="font-display italic text-lg leading-snug">"A sentence the head chef would actually say."</p>
+              <p class="text-sm opacity-80 mt-2">— Their name, head chef</p>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
 
-    <!--
-      ============================================================== THE ASK
-      Same ask as the hero, not a new one. A page with two different requests
-      has not decided what it wants.
-    -->
+      <!--
+        ============================================================ PRIVATE
+        A second thing the restaurant sells. If yours does not host events,
+        make this whatever the second reason to visit is — or delete it.
+      -->
+      <section class="max-w-6xl mx-auto px-6 pt-28 pb-20 md:py-28 grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
+        <div class="md:col-span-3 grid grid-cols-2 gap-4">
+          <img class="rounded-box col-span-2 aspect-[16/9] w-full object-cover shadow-lg" src="img/bar.jpg" width="1200" height="900" loading="lazy" alt="The back room: one long table set for a group, lined with wine racks" />
+          <img class="rounded-box aspect-square w-full object-cover shadow-lg" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille with a scoop of ice cream" />
+          <div class="rounded-box aspect-square bg-primary text-primary-content p-6 flex flex-col justify-end">
+            <p class="font-display text-4xl font-bold">00</p>
+            <p>guests at one table</p>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Private dining</p>
+          <h2 class="font-display text-4xl font-bold mb-6">The back room</h2>
+          <p class="opacity-80 mb-6">Who it is for, how many it seats, and what you need to know to ask for it.</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex gap-3"><svg class="size-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> One thing that is included</li>
+            <li class="flex gap-3"><svg class="size-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> A second thing that is included</li>
+            <li class="flex gap-3"><svg class="size-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> How far ahead to book</li>
+          </ul>
+          <a class="link link-primary font-semibold inline-flex items-center gap-2" href="visit.html#book">Ask about the back room <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </section>
+
+      <!--
+        ============================================================ QUOTE
+        One review, attributed. Three anonymous raves are worth less than one
+        sentence with a name on it.
+      -->
+      <section class="bg-base-200 px-6 py-20 md:py-28">
+        <figure class="max-w-3xl mx-auto text-center">
+          <span class="inline-block text-primary mb-6"><svg class="size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span>
+          <blockquote>
+            <p class="font-display text-3xl md:text-4xl italic leading-snug mb-6">
+              One real sentence somebody actually said about this place.
+            </p>
+          </blockquote>
+          <figcaption class="opacity-80">— Their name, <cite>where it was published</cite></figcaption>
+        </figure>
+      </section>
+
+      <!--
+        ============================================================ THE ASK
+        Same ask as the hero, not a new one. A page with two different
+        requests has not decided what it wants.
+      -->
     <section class="bg-primary text-primary-content px-6 py-20 md:py-24">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl md:text-5xl font-black mb-6">Come and eat</h2>
-        <p class="opacity-90 mb-8 text-lg">
-          One sentence. Reservations, walk-ins, or both — say which.
-        </p>
-        <a class="btn btn-lg" href="visit.html#book">Book a table</a>
+        <h2 class="font-display text-3xl md:text-5xl font-bold mb-6">Come and eat</h2>
+        <p class="mb-8 text-lg">One sentence. Reservations, walk-ins, or both — say which.</p>
+        <a class="btn btn-lg btn-neutral" href="visit.html#book">Book a table</a>
       </div>
     </section>
+    </main>
 
-    <!-- ============================================================ FOOTER -->
-    <footer class="footer sm:footer-horizontal bg-base-300 text-base-content px-6 md:px-10 py-12">
-      <nav>
-        <h2 class="footer-title">Pages</h2>
-        <a class="link link-hover" href="index.html">Home</a>
-        <a class="link link-hover" href="menu.html">Menu</a>
-        <a class="link link-hover" href="visit.html">Visit</a>
-      </nav>
-      <nav>
-        <h2 class="footer-title">Find us</h2>
-        <a class="link link-hover" href="tel:+12165550100">(216) 555-0100</a>
-        <a class="link link-hover" href="mailto:hello@example.com">hello@example.com</a>
-        <span class="opacity-70">123 Your Street, Your City</span>
-      </nav>
-      <aside>
-        <h2 class="footer-title">Credits</h2>
+    <footer class="bg-base-300 text-base-content">
+      <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <a class="font-display text-2xl font-bold" href="index.html">Bistro<span class="text-primary">.</span></a>
+          <p class="mt-3 opacity-80 max-w-xs">One line that says what this place is. The same idea as the hero, in fewer words.</p>
+          <div class="flex gap-2 mt-5">
+            <!-- A social link needs a name a screen reader can say. The icon is not one. -->
+            <a class="btn btn-ghost btn-square btn-sm" href="https://www.instagram.com/" aria-label="Instagram"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+            <a class="btn btn-ghost btn-square btn-sm" href="https://www.facebook.com/" aria-label="Facebook"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          </div>
+        </div>
+        <nav aria-label="Footer">
+          <h2 class="footer-title">Pages</h2>
+          <ul class="space-y-2">
+            <li><a class="link link-hover" href="index.html">Home</a></li>
+            <li><a class="link link-hover" href="menu.html">Menu</a></li>
+            <li><a class="link link-hover" href="visit.html">Visit</a></li>
+            <li><a class="link link-hover" href="visit.html#book">Book a table</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="footer-title">Find us</h2>
+          <address class="not-italic space-y-2">
+            <p>123 Your Street, Your City</p>
+            <p><a class="link link-hover" href="tel:+12165550100">(216) 555-0100</a></p>
+            <p><a class="link link-hover" href="mailto:hello@example.com">hello@example.com</a></p>
+            <p class="opacity-80">Wed–Sun, 5–10pm</p>
+          </address>
+        </div>
         <!--
-          EVERY borrowed thing goes here: creator, source, licence. The hero
-          video shipped with this starter is credited below — when you swap the
-          id, swap this line for your own footage's credit.
+          THE NEWSLETTER. Same deal as the booking form: data-demo means
+          js/site.js catches it and says thank you instead of sending it
+          anywhere. Point `action` at a real service and remove data-demo, or
+          delete this block. A signup that goes nowhere is worse than none.
         -->
-        <p class="opacity-70 max-w-xs text-sm">
-          Hero video: <em>Spring</em> by Blender Studio, CC BY 4.0. Replace it
-          with your own and replace this line with its credit.
-        </p>
-        <p class="opacity-70 text-sm">© 20XX Your restaurant.</p>
-      </aside>
+        <form data-demo>
+          <h2 class="footer-title">The weekly menu, by email</h2>
+          <label class="sr-only" for="news-email">Email address</label>
+          <div class="join w-full">
+            <input class="input join-item w-full" type="email" id="news-email" name="email" required autocomplete="email" placeholder="you@example.com" />
+            <button class="btn btn-primary join-item" type="submit">Sign up</button>
+          </div>
+          <p class="text-sm opacity-80 mt-2">One email a week. Nothing else.</p>
+          <p data-sent hidden role="status" tabindex="-1" class="text-sm mt-2 font-semibold">Thanks — you are on the list.</p>
+        </form>
+      </div>
+
+      <!--
+        CREDITS. Every borrowed thing: creator, source, licence, and what you
+        changed. One list for the whole site, so it is the same on every page.
+        When you swap a picture, swap its line. If you cannot write the line,
+        you are not allowed to use the picture.
+      -->
+      <div class="border-t border-base-content/10">
+        <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row md:items-start md:justify-between gap-4 text-sm">
+          <p class="opacity-80">© <span data-year>20XX</span> Your restaurant. Built with daisyUI and Tailwind CSS; icons by Lucide.</p>
+          <details class="md:max-w-xl">
+            <summary class="cursor-pointer link link-hover opacity-80">Photo and video credits</summary>
+            <ul class="mt-3 space-y-1 opacity-80">
+              <li>Hero video: <a class="link" href="https://studio.blender.org/projects/spring/"><em>Spring</em></a> by Blender Studio, <a class="link" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</li>
+              <li>Dining room: <a class="link" href="https://commons.wikimedia.org/wiki/File:Restaurant_in_Place_D%27Youville,_Quebec_City.jpg">Wilfredor</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Cropped.</li>
+              <li>Pasta: <a class="link" href="https://commons.wikimedia.org/wiki/File:Spaghetti_dish.jpg">jeuwre</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Cropped.</li>
+              <li>Salmon: <a class="link" href="https://commons.wikimedia.org/wiki/File:DSCF0412_Seared_salmon_fillet_topped_with_saut%C3%A9ed_shrimp_served_with_creamed_spinach_and_a_side_salad.jpg">PattayaPatrol</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Risotto: <a class="link" href="https://commons.wikimedia.org/wiki/File:Saffron_risotto_at_Deliberi_Jumbo.jpg">JIP</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Kitchen: <a class="link" href="https://commons.wikimedia.org/wiki/File:Chef_plating.jpg">stu_spivack</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>. Cropped.</li>
+              <li>Back room: <a class="link" href="https://commons.wikimedia.org/wiki/File:Le_Brazier_Wine_Bar_-_salle.jpg">Benoît Prieur</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Cropped.</li>
+              <li>Dessert: <a class="link" href="https://commons.wikimedia.org/wiki/File:Restaurant_-_Dessert_(millefeuilles).jpg">Gzen92</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Map: © <a class="link" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</li>
+            </ul>
+          </details>
+        </div>
+      </div>
     </footer>
 
+    <script src="js/site.js"></script>
     <script src="js/hero-video.js"></script>
   </body>
 </html>

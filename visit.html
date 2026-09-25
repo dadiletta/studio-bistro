@@ -5,105 +5,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Visit — Bistro</title>
     <meta name="description" content="Hours, address and how to book. One sentence, written for a search result." />
-
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Visit — Bistro" />
+    <meta property="og:description" content="Hours, address and how to book. One sentence, written for a search result." />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..800&family=Inter:wght@400..700&display=swap" rel="stylesheet" />
+
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#231a22" />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <nav class="navbar bg-base-100/80 backdrop-blur sticky top-0 z-30 px-4 md:px-8">
+    <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
+
+    <nav class="navbar bg-base-100/85 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
       <div class="navbar-start">
-        <a class="text-xl font-black tracking-tight" href="index.html">
+        <a class="font-display text-2xl font-bold tracking-tight" href="index.html">
           Bistro<span class="text-primary">.</span>
         </a>
       </div>
-      <div class="navbar-end gap-1 md:gap-3">
-        <a class="link link-hover hidden sm:inline" href="menu.html">Menu</a>
-        <a class="link link-hover hidden sm:inline" href="visit.html" aria-current="page">Visit</a>
-        <a class="btn btn-primary btn-sm md:btn-md" href="#book">Book a table</a>
+      <div class="navbar-end gap-2">
+        <ul class="menu menu-horizontal hidden md:flex gap-1 text-base">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="visit.html" aria-current="page">Visit</a></li>
+        </ul>
+        <a class="btn btn-primary btn-sm md:btn-md" href="visit.html#book">Book a table</a>
+        <details class="dropdown dropdown-end md:hidden">
+          <summary class="btn btn-ghost btn-square" aria-label="Site pages"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></summary>
+          <ul class="menu dropdown-content bg-base-200 rounded-box z-40 mt-3 w-56 p-2 shadow-xl text-base">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="visit.html" aria-current="page">Visit</a></li>
+          </ul>
+        </details>
       </div>
     </nav>
 
-    <header class="bg-base-200 px-6 py-16 md:py-24 border-b border-base-300">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-6xl font-black mb-4">Visit</h1>
-        <p class="text-lg opacity-70 max-w-xl">
-          Where we are, when we are open, and how to get a table.
-        </p>
+    <header class="bg-base-200 py-16 md:py-24 border-b border-base-content/10">
+      <div class="max-w-6xl mx-auto px-6">
+        <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Hours · Directions · Booking</p>
+        <h1 class="font-display text-5xl md:text-7xl font-bold mb-4">Visit</h1>
+        <p class="text-lg opacity-80 max-w-xl">Where we are, when we are open, and how to get a table.</p>
       </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 py-16 md:py-24">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <section>
-          <h2 class="text-2xl font-black mb-6">Hours</h2>
-          <!-- A table, because this IS tabular data: two columns, related rows. -->
-          <table class="table">
-            <caption class="sr-only">Opening hours by day</caption>
-            <tbody>
-              <tr>
-                <th class="font-normal opacity-70">Monday &amp; Tuesday</th>
-                <td class="text-right">Closed</td>
-              </tr>
-              <tr>
-                <th class="font-normal opacity-70">Wednesday–Friday</th>
-                <td class="text-right">5–10pm</td>
-              </tr>
-              <tr>
-                <th class="font-normal opacity-70">Saturday</th>
-                <td class="text-right">4–11pm</td>
-              </tr>
-              <tr>
-                <th class="font-normal opacity-70">Sunday</th>
-                <td class="text-right">4–9pm</td>
-              </tr>
-            </tbody>
-          </table>
+    <main id="main" class="max-w-6xl mx-auto px-6 py-16 md:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+        <div class="lg:col-span-3 space-y-14">
+          <section>
+            <h2 class="font-display text-3xl font-bold mb-6">Hours</h2>
+            <!-- A table, because this IS tabular data: two columns, related rows. -->
+            <table class="table text-base">
+              <caption class="sr-only">Opening hours by day</caption>
+              <tbody>
+                <tr>
+                  <th scope="row" class="font-normal">Monday &amp; Tuesday</th>
+                  <td class="text-right">Closed</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="font-normal">Wednesday–Friday</th>
+                  <td class="text-right">5–10pm</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="font-normal">Saturday</th>
+                  <td class="text-right">4–11pm</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="font-normal">Sunday</th>
+                  <td class="text-right">4–9pm</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
 
-          <h2 class="text-2xl font-black mt-12 mb-4">Getting here</h2>
-          <address class="not-italic opacity-70 leading-relaxed">
-            123 Your Street<br />
-            Your City, ST 00000<br />
-            <a class="link" href="tel:+12165550100">(216) 555-0100</a>
-          </address>
-          <p class="opacity-70 mt-4">
-            One line about parking, or the bus, or the door being around the
-            side. The sentence that stops somebody circling the block.
-          </p>
-        </section>
+          <section id="getting-here">
+            <h2 class="font-display text-3xl font-bold mb-6">Getting here</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
+              <address class="not-italic leading-relaxed text-lg">
+                123 Your Street<br />
+                Your City, ST 00000<br />
+                <a class="link" href="tel:+12165550100">(216) 555-0100</a>
+              </address>
+              <p class="opacity-80">
+                One line about the door being around the side, or the sign being
+                small. The sentence that stops somebody circling the block.
+              </p>
+            </div>
+
+            <!--
+              THE MAP is an OpenStreetMap embed: free, no account, no key. To
+              move the pin, find your address at openstreetmap.org, press
+              Share, tick "Include marker", choose HTML and paste the src here.
+              title= is what a screen reader announces for an iframe. The link
+              under it is for anybody the embed does not work for.
+            -->
+            <div class="rounded-box overflow-hidden border border-base-content/10 aspect-[16/10] bg-base-200">
+              <iframe class="size-full" title="Map showing the restaurant's location" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-81.7005%2C41.4965%2C-81.6870%2C41.5025&amp;layer=mapnik&amp;marker=41.4995%2C-81.6937"></iframe>
+            </div>
+            <p class="mt-3 text-sm"><a class="link" href="https://www.openstreetmap.org/?mlat=41.4995&amp;mlon=-81.6937#map=17/41.4995/-81.6937">Open the map full size</a></p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+              <div class="rounded-box bg-base-200 p-5">
+                <span class="text-primary"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span>
+                <h3 class="font-bold mt-3 mb-1">Parking</h3>
+                <p class="text-sm opacity-80">Where, and what it costs.</p>
+              </div>
+              <div class="rounded-box bg-base-200 p-5">
+                <span class="text-primary"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/></svg></span>
+                <h3 class="font-bold mt-3 mb-1">Transit</h3>
+                <p class="text-sm opacity-80">The nearest stop, and which line.</p>
+              </div>
+              <div class="rounded-box bg-base-200 p-5">
+                <span class="text-primary"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-6 1"/><path d="m5 8 3-3 5.5 3-2.36 3.5"/><path d="M4.24 14.5a5 5 0 0 0 6.88 6"/><path d="M13.76 17.5a5 5 0 0 0-6.88-6"/></svg></span>
+                <h3 class="font-bold mt-3 mb-1">Access</h3>
+                <p class="text-sm opacity-80">Step-free entrance? Say so, or say what is not.</p>
+              </div>
+            </div>
+          </section>
+        </div>
 
         <!--
           ============================================================ THE FORM
           A form is where accessibility is won or lost, so this one is built
           properly and you should keep the shape:
-
             - every input has a <label for> pointing at its id. Placeholder
               text is not a label; it disappears exactly when it is needed.
-            - `required` and `type` let the browser check before the server does.
+            - `required`, `type` and `min` let the browser check before any
+              server does. daisyUI's `validator` class turns a field red only
+              AFTER somebody has touched it, and shows the hint under it.
             - the fieldset groups the fields that belong together.
 
-          IT DOES NOT SEND ANYWHERE YET, on purpose. `action` needs a service to
-          point at — Formspree, Netlify Forms, a Google Form — and choosing one
-          is a decision your team makes, not one a starter makes for you.
+          IT DOES NOT SEND ANYWHERE YET, on purpose. data-demo tells
+          js/site.js to show the thank-you instead. To make it real, give the
+          form an action — Formspree, Netlify Forms, a Google Form — remove
+          data-demo, and test it with your own email. Choosing that service is
+          a decision your team makes, not one a starter makes for you.
         -->
-        <section id="book" class="card bg-base-200 shadow-lg">
-          <form class="card-body gap-4" novalidate>
-            <h2 class="card-title text-2xl">Book a table</h2>
-            <p class="opacity-70 -mt-2">
-              Parties of seven or more, call us instead.
-            </p>
+        <section id="book" class="lg:col-span-2 card bg-base-200 shadow-xl lg:sticky lg:top-24">
+          <form class="card-body gap-4" data-demo>
+            <h2 class="card-title font-display text-3xl">Book a table</h2>
+            <p class="opacity-80 -mt-2">Parties of seven or more, call us instead.</p>
 
             <fieldset class="fieldset">
+              <legend class="sr-only">Your booking</legend>
+
               <label class="label" for="name">Your name</label>
-              <input class="input w-full" type="text" id="name" name="name" required autocomplete="name" />
+              <input class="input validator w-full" type="text" id="name" name="name" required autocomplete="name" />
+              <p class="validator-hint hidden">Tell us who the table is for.</p>
 
               <label class="label" for="email">Email</label>
-              <input class="input w-full" type="email" id="email" name="email" required autocomplete="email" />
+              <input class="input validator w-full" type="email" id="email" name="email" required autocomplete="email" />
+              <p class="validator-hint hidden">An email address, so we can confirm.</p>
 
-              <label class="label" for="when">When</label>
-              <input class="input w-full" type="datetime-local" id="when" name="when" required />
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="label mb-1" for="date">Date</label>
+                  <input class="input validator w-full" type="date" id="date" name="date" required />
+                </div>
+                <div>
+                  <label class="label mb-1" for="time">Time</label>
+                  <select class="select w-full" id="time" name="time">
+                    <option>5:00pm</option>
+                    <option>6:00pm</option>
+                    <option selected>7:00pm</option>
+                    <option>8:00pm</option>
+                    <option>9:00pm</option>
+                  </select>
+                </div>
+              </div>
 
               <label class="label" for="party">How many</label>
               <select class="select w-full" id="party" name="party">
@@ -119,35 +195,119 @@
               <textarea class="textarea w-full" id="notes" name="notes" rows="3" placeholder="Allergies, a birthday, a wheelchair"></textarea>
             </fieldset>
 
-            <button class="btn btn-primary btn-block" type="submit">Request a table</button>
-            <p class="text-sm opacity-60">
-              This form has nowhere to go yet — see the comment above it.
-            </p>
+            <button class="btn btn-primary btn-block btn-lg" type="submit">Request a table</button>
+            <div data-sent hidden role="status" tabindex="-1" class="alert alert-success">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m16 9-5.5 5.5L8 12"/></svg>
+              <span>Request received. (Demo only — this form is not connected yet.)</span>
+            </div>
+            <p class="text-sm opacity-80">We confirm by email within a day. This form has nowhere to go yet — see the comment above it.</p>
           </form>
         </section>
       </div>
+
+      <!--
+        ============================================================ FAQ
+        <details> opens and closes with no JavaScript, works with a keyboard,
+        and is announced properly by a screen reader. daisyUI's `collapse`
+        just dresses it. Answer the questions people actually phone to ask.
+      -->
+      <section class="max-w-3xl mt-24">
+        <h2 class="font-display text-3xl font-bold mb-8">Before you come</h2>
+        <div class="space-y-3">
+          <details class="collapse collapse-arrow bg-base-200" name="faq" open>
+            <summary class="collapse-title font-semibold">Do you take walk-ins?</summary>
+            <div class="collapse-content opacity-80">Answer it honestly, including on a Saturday.</div>
+          </details>
+          <details class="collapse collapse-arrow bg-base-200" name="faq">
+            <summary class="collapse-title font-semibold">Can you handle allergies?</summary>
+            <div class="collapse-content opacity-80">Say what the kitchen can and cannot promise.</div>
+          </details>
+          <details class="collapse collapse-arrow bg-base-200" name="faq">
+            <summary class="collapse-title font-semibold">Is there a dress code?</summary>
+            <div class="collapse-content opacity-80">One line. If there is not, saying so settles somebody's nerves.</div>
+          </details>
+          <details class="collapse collapse-arrow bg-base-200" name="faq">
+            <summary class="collapse-title font-semibold">Do you do gift cards?</summary>
+            <div class="collapse-content opacity-80">Where to get them, or delete this question.</div>
+          </details>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer sm:footer-horizontal bg-base-300 text-base-content px-6 md:px-10 py-12">
-      <nav>
-        <h2 class="footer-title">Pages</h2>
-        <a class="link link-hover" href="index.html">Home</a>
-        <a class="link link-hover" href="menu.html">Menu</a>
-        <a class="link link-hover" href="visit.html">Visit</a>
-      </nav>
-      <nav>
-        <h2 class="footer-title">Find us</h2>
-        <a class="link link-hover" href="tel:+12165550100">(216) 555-0100</a>
-        <a class="link link-hover" href="mailto:hello@example.com">hello@example.com</a>
-        <span class="opacity-70">123 Your Street, Your City</span>
-      </nav>
-      <aside>
-        <h2 class="footer-title">Credits</h2>
-        <p class="opacity-70 max-w-xs text-sm">
-          Every image, its creator, source and licence. This page has none yet.
-        </p>
-        <p class="opacity-70 text-sm">© 20XX Your restaurant.</p>
-      </aside>
+    <footer class="bg-base-300 text-base-content">
+      <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <a class="font-display text-2xl font-bold" href="index.html">Bistro<span class="text-primary">.</span></a>
+          <p class="mt-3 opacity-80 max-w-xs">One line that says what this place is. The same idea as the hero, in fewer words.</p>
+          <div class="flex gap-2 mt-5">
+            <!-- A social link needs a name a screen reader can say. The icon is not one. -->
+            <a class="btn btn-ghost btn-square btn-sm" href="https://www.instagram.com/" aria-label="Instagram"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+            <a class="btn btn-ghost btn-square btn-sm" href="https://www.facebook.com/" aria-label="Facebook"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          </div>
+        </div>
+        <nav aria-label="Footer">
+          <h2 class="footer-title">Pages</h2>
+          <ul class="space-y-2">
+            <li><a class="link link-hover" href="index.html">Home</a></li>
+            <li><a class="link link-hover" href="menu.html">Menu</a></li>
+            <li><a class="link link-hover" href="visit.html">Visit</a></li>
+            <li><a class="link link-hover" href="visit.html#book">Book a table</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="footer-title">Find us</h2>
+          <address class="not-italic space-y-2">
+            <p>123 Your Street, Your City</p>
+            <p><a class="link link-hover" href="tel:+12165550100">(216) 555-0100</a></p>
+            <p><a class="link link-hover" href="mailto:hello@example.com">hello@example.com</a></p>
+            <p class="opacity-80">Wed–Sun, 5–10pm</p>
+          </address>
+        </div>
+        <!--
+          THE NEWSLETTER. Same deal as the booking form: data-demo means
+          js/site.js catches it and says thank you instead of sending it
+          anywhere. Point `action` at a real service and remove data-demo, or
+          delete this block. A signup that goes nowhere is worse than none.
+        -->
+        <form data-demo>
+          <h2 class="footer-title">The weekly menu, by email</h2>
+          <label class="sr-only" for="news-email">Email address</label>
+          <div class="join w-full">
+            <input class="input join-item w-full" type="email" id="news-email" name="email" required autocomplete="email" placeholder="you@example.com" />
+            <button class="btn btn-primary join-item" type="submit">Sign up</button>
+          </div>
+          <p class="text-sm opacity-80 mt-2">One email a week. Nothing else.</p>
+          <p data-sent hidden role="status" tabindex="-1" class="text-sm mt-2 font-semibold">Thanks — you are on the list.</p>
+        </form>
+      </div>
+
+      <!--
+        CREDITS. Every borrowed thing: creator, source, licence, and what you
+        changed. One list for the whole site, so it is the same on every page.
+        When you swap a picture, swap its line. If you cannot write the line,
+        you are not allowed to use the picture.
+      -->
+      <div class="border-t border-base-content/10">
+        <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row md:items-start md:justify-between gap-4 text-sm">
+          <p class="opacity-80">© <span data-year>20XX</span> Your restaurant. Built with daisyUI and Tailwind CSS; icons by Lucide.</p>
+          <details class="md:max-w-xl">
+            <summary class="cursor-pointer link link-hover opacity-80">Photo and video credits</summary>
+            <ul class="mt-3 space-y-1 opacity-80">
+              <li>Hero video: <a class="link" href="https://studio.blender.org/projects/spring/"><em>Spring</em></a> by Blender Studio, <a class="link" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</li>
+              <li>Dining room: <a class="link" href="https://commons.wikimedia.org/wiki/File:Restaurant_in_Place_D%27Youville,_Quebec_City.jpg">Wilfredor</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Cropped.</li>
+              <li>Pasta: <a class="link" href="https://commons.wikimedia.org/wiki/File:Spaghetti_dish.jpg">jeuwre</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Cropped.</li>
+              <li>Salmon: <a class="link" href="https://commons.wikimedia.org/wiki/File:DSCF0412_Seared_salmon_fillet_topped_with_saut%C3%A9ed_shrimp_served_with_creamed_spinach_and_a_side_salad.jpg">PattayaPatrol</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Risotto: <a class="link" href="https://commons.wikimedia.org/wiki/File:Saffron_risotto_at_Deliberi_Jumbo.jpg">JIP</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Kitchen: <a class="link" href="https://commons.wikimedia.org/wiki/File:Chef_plating.jpg">stu_spivack</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>. Cropped.</li>
+              <li>Back room: <a class="link" href="https://commons.wikimedia.org/wiki/File:Le_Brazier_Wine_Bar_-_salle.jpg">Benoît Prieur</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Cropped.</li>
+              <li>Dessert: <a class="link" href="https://commons.wikimedia.org/wiki/File:Restaurant_-_Dessert_(millefeuilles).jpg">Gzen92</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Map: © <a class="link" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</li>
+            </ul>
+          </details>
+        </div>
+      </div>
     </footer>
+
+    <script src="js/site.js"></script>
   </body>
 </html>

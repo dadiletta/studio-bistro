@@ -5,29 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Menu — Bistro</title>
     <meta name="description" content="What is on the menu. One sentence, written for a search result." />
-
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Menu — Bistro" />
+    <meta property="og:description" content="What is on the menu. One sentence, written for a search result." />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..800&family=Inter:wght@400..700&display=swap" rel="stylesheet" />
+
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#231a22" />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <!--
-      THE NAV IS COPIED, and that is a real cost of plain HTML: three pages,
-      three copies, and they drift. Change one, change all three. Unit 8's
-      build step is the fix; until then, a habit is.
-    -->
-    <nav class="navbar bg-base-100/80 backdrop-blur sticky top-0 z-30 px-4 md:px-8">
+    <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
+
+    <nav class="navbar bg-base-100/85 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
       <div class="navbar-start">
-        <a class="text-xl font-black tracking-tight" href="index.html">
+        <a class="font-display text-2xl font-bold tracking-tight" href="index.html">
           Bistro<span class="text-primary">.</span>
         </a>
       </div>
-      <div class="navbar-end gap-1 md:gap-3">
-        <a class="link link-hover hidden sm:inline" href="menu.html" aria-current="page">Menu</a>
-        <a class="link link-hover hidden sm:inline" href="visit.html">Visit</a>
+      <div class="navbar-end gap-2">
+        <ul class="menu menu-horizontal hidden md:flex gap-1 text-base">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html" aria-current="page">Menu</a></li>
+          <li><a href="visit.html">Visit</a></li>
+        </ul>
         <a class="btn btn-primary btn-sm md:btn-md" href="visit.html#book">Book a table</a>
+        <details class="dropdown dropdown-end md:hidden">
+          <summary class="btn btn-ghost btn-square" aria-label="Site pages"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></summary>
+          <ul class="menu dropdown-content bg-base-200 rounded-box z-40 mt-3 w-56 p-2 shadow-xl text-base">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" aria-current="page">Menu</a></li>
+            <li><a href="visit.html">Visit</a></li>
+          </ul>
+        </details>
       </div>
     </nav>
 
@@ -36,89 +53,150 @@
       rest get a clear title and get on with it. That contrast is what makes
       the home page feel like the front door.
     -->
-    <header class="bg-base-200 px-6 py-16 md:py-24 border-b border-base-300">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-6xl font-black mb-4">Menu</h1>
-        <p class="text-lg opacity-70 max-w-xl">
-          One sentence: how often it changes, and what decides it.
-        </p>
+    <header class="bg-base-200 py-16 md:py-24 border-b border-base-content/10">
+      <div class="max-w-4xl mx-auto px-6">
+        <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Changes weekly</p>
+        <h1 class="font-display text-5xl md:text-7xl font-bold mb-4">Menu</h1>
+        <p class="text-lg opacity-80 max-w-xl">One sentence: how often it changes, and what decides it.</p>
       </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-16 md:py-24">
+    <!--
+      JUMP LINKS. A long page with a table of contents at the top is a page a
+      reader can move around in. It sticks under the navbar; on a phone it
+      scrolls sideways rather than wrapping onto three lines.
+    -->
+    <nav class="menu-jump sticky top-16 z-20 bg-base-100/90 backdrop-blur border-b border-base-content/10" aria-label="Menu sections">
+      <ul class="max-w-4xl mx-auto px-6 flex gap-6 overflow-x-auto whitespace-nowrap py-3 text-sm font-semibold">
+        <li><a class="link link-hover" href="#starters">To start</a></li>
+        <li><a class="link link-hover" href="#mains">Mains</a></li>
+        <li><a class="link link-hover" href="#desserts">Desserts</a></li>
+        <li><a class="link link-hover" href="#drinks">Drinks</a></li>
+      </ul>
+    </nav>
+
+    <main id="main" class="max-w-4xl mx-auto px-6 py-16 md:py-20">
+      <!--
+        THE LEGEND. Badges are how you say "vegetarian" without a paragraph,
+        and a legend is how a reader learns them once. Each badge carries a
+        word AND an icon — never a colour alone.
+      -->
+      <div class="flex flex-wrap items-center gap-3 mb-14 text-sm">
+        <span class="opacity-80">Look for</span>
+        <span class="badge badge-outline gap-1"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span>
+        <span class="badge badge-outline gap-1"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/></svg> Gluten-free</span>
+        <span class="badge badge-outline gap-1"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg> Chef's pick</span>
+        <!-- window.print() uses the print rules at the bottom of styles.css. -->
+        <button class="btn btn-sm btn-ghost ml-auto print:hidden" type="button" onclick="window.print()">Print the menu</button>
+      </div>
+
       <!--
         A MENU IS A DESCRIPTION LIST, semantically — a term and what it costs.
         <dl>/<dt>/<dd> is the honest element here, and it costs nothing to use
         the right one. A wall of <div>s would look identical and mean nothing.
+
+        The dotted line between name and price is .menu-item in styles.css.
       -->
-      <section class="mb-16">
-        <h2 class="text-2xl md:text-3xl font-black mb-2">To start</h2>
-        <p class="opacity-60 mb-8">One line about this course, or delete this line.</p>
-
-        <dl class="divide-y divide-base-300">
-          <div class="py-5 flex gap-6 items-baseline">
-            <dt class="flex-1">
-              <span class="font-bold text-lg">First plate</span>
-              <span class="block opacity-70">
-                What is in it. Name the two ingredients that make it different.
-              </span>
-            </dt>
-            <dd class="font-bold text-primary text-lg whitespace-nowrap">$00</dd>
+      <section id="starters" class="mb-16">
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">To start</h2>
+        <p class="opacity-80 mb-6">One line about this course, or delete this line.</p>
+        <dl class="divide-y divide-base-content/10">
+          <div class="menu-item">
+            <dt><span class="font-bold text-lg">First plate</span></dt>
+            <dd class="price">$00</dd>
+            <dd class="desc">What is in it. Name the two ingredients that make it different.</dd>
           </div>
-
-          <div class="py-5 flex gap-6 items-baseline">
-            <dt class="flex-1">
-              <span class="font-bold text-lg">Second plate</span>
-              <span class="block opacity-70">
-                What is in it. Name the two ingredients that make it different.
-              </span>
-            </dt>
-            <dd class="font-bold text-primary text-lg whitespace-nowrap">$00</dd>
+          <div class="menu-item">
+            <dt><span class="font-bold text-lg">Second plate</span></dt>
+            <dd class="price">$00</dd>
+            <dd class="desc">What is in it. Name the two ingredients that make it different.</dd>
           </div>
-
-          <div class="py-5 flex gap-6 items-baseline">
-            <dt class="flex-1">
-              <span class="font-bold text-lg">Third plate</span>
-              <span class="block opacity-70">
-                What is in it. Name the two ingredients that make it different.
-              </span>
-              <!-- A badge is how you say "vegetarian" without a legend nobody reads. -->
-              <span class="badge badge-outline badge-sm mt-2">Vegetarian</span>
-            </dt>
-            <dd class="font-bold text-primary text-lg whitespace-nowrap">$00</dd>
+          <div class="menu-item">
+            <dt><span class="font-bold text-lg">Third plate</span> <span class="badge badge-outline badge-sm gap-1 ml-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></dt>
+            <dd class="price">$00</dd>
+            <dd class="desc">What is in it. Name the two ingredients that make it different.</dd>
           </div>
         </dl>
       </section>
 
-      <section class="mb-16">
-        <h2 class="text-2xl md:text-3xl font-black mb-2">Mains</h2>
-        <p class="opacity-60 mb-8">One line about this course, or delete this line.</p>
-
-        <dl class="divide-y divide-base-300">
-          <div class="py-5 flex gap-6 items-baseline">
-            <dt class="flex-1">
-              <span class="font-bold text-lg">First main</span>
-              <span class="block opacity-70">What is in it, and how it is cooked.</span>
-            </dt>
-            <dd class="font-bold text-primary text-lg whitespace-nowrap">$00</dd>
+      <section id="mains" class="mb-16">
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">Mains</h2>
+        <p class="opacity-80 mb-6">One line about this course, or delete this line.</p>
+        <dl class="divide-y divide-base-content/10">
+          <div class="menu-item">
+            <dt><span class="font-bold text-lg">First main</span> <span class="badge badge-outline badge-sm gap-1 ml-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg> Chef's pick</span></dt>
+            <dd class="price">$00</dd>
+            <dd class="desc">What is in it, and how it is cooked.</dd>
           </div>
-
-          <div class="py-5 flex gap-6 items-baseline">
-            <dt class="flex-1">
-              <span class="font-bold text-lg">Second main</span>
-              <span class="block opacity-70">What is in it, and how it is cooked.</span>
-            </dt>
-            <dd class="font-bold text-primary text-lg whitespace-nowrap">$00</dd>
+          <div class="menu-item">
+            <dt><span class="font-bold text-lg">Second main</span> <span class="badge badge-outline badge-sm gap-1 ml-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/></svg> Gluten-free</span></dt>
+            <dd class="price">$00</dd>
+            <dd class="desc">What is in it, and how it is cooked.</dd>
           </div>
-
-          <div class="py-5 flex gap-6 items-baseline">
-            <dt class="flex-1">
-              <span class="font-bold text-lg">Third main</span>
-              <span class="block opacity-70">What is in it, and how it is cooked.</span>
-            </dt>
-            <dd class="font-bold text-primary text-lg whitespace-nowrap">$00</dd>
+          <div class="menu-item">
+            <dt><span class="font-bold text-lg">Third main</span></dt>
+            <dd class="price">$00</dd>
+            <dd class="desc">What is in it, and how it is cooked.</dd>
+          </div>
+          <div class="menu-item">
+            <dt><span class="font-bold text-lg">Fourth main</span> <span class="badge badge-outline badge-sm gap-1 ml-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></dt>
+            <dd class="price">$00</dd>
+            <dd class="desc">What is in it, and how it is cooked.</dd>
           </div>
         </dl>
+      </section>
+
+      <!--
+        ONE FEATURED ITEM gets a photograph. Only one: a menu where every line
+        has a picture is a catalogue, and the pictures stop meaning anything.
+      -->
+      <section id="desserts" class="mb-16">
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Desserts</h2>
+        <article class="card md:card-side bg-base-200 overflow-hidden mb-6">
+          <figure class="md:w-2/5 shrink-0">
+            <img class="size-full object-cover aspect-[4/3]" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille with a scoop of ice cream" />
+          </figure>
+          <div class="card-body">
+            <p class="text-primary font-bold uppercase tracking-widest text-xs">Worth saving room for</p>
+            <h3 class="card-title font-display text-2xl">The dessert people come back for</h3>
+            <p class="opacity-80">Two sentences. What it is, and why it is the one.</p>
+            <p class="font-bold text-primary text-lg">$00</p>
+          </div>
+        </article>
+        <dl class="divide-y divide-base-content/10">
+          <div class="menu-item">
+            <dt><span class="font-bold text-lg">Second dessert</span></dt>
+            <dd class="price">$00</dd>
+            <dd class="desc">What is in it.</dd>
+          </div>
+          <div class="menu-item">
+            <dt><span class="font-bold text-lg">Third dessert</span> <span class="badge badge-outline badge-sm gap-1 ml-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/></svg> Gluten-free</span></dt>
+            <dd class="price">$00</dd>
+            <dd class="desc">What is in it.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="drinks" class="mb-16">
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Drinks</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12">
+          <div>
+            <h3 class="flex items-center gap-2 font-bold uppercase tracking-widest text-xs opacity-80 mb-2"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/></svg> By the glass</h3>
+            <dl class="divide-y divide-base-content/10">
+              <div class="menu-item"><dt>A red</dt><dd class="price">$00</dd></div>
+              <div class="menu-item"><dt>A white</dt><dd class="price">$00</dd></div>
+              <div class="menu-item"><dt>Something sparkling</dt><dd class="price">$00</dd></div>
+            </dl>
+          </div>
+          <div>
+            <h3 class="flex items-center gap-2 font-bold uppercase tracking-widest text-xs opacity-80 mb-2 mt-8 sm:mt-0"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg> Without alcohol</h3>
+            <dl class="divide-y divide-base-content/10">
+              <div class="menu-item"><dt>House lemonade</dt><dd class="price">$00</dd></div>
+              <div class="menu-item"><dt>Coffee</dt><dd class="price">$00</dd></div>
+              <div class="menu-item"><dt>Tea</dt><dd class="price">$00</dd></div>
+            </dl>
+          </div>
+        </div>
       </section>
 
       <!--
@@ -126,41 +204,94 @@
         say how to ask is a restaurant page that is wrong. Keep it, and make
         it true.
       -->
-      <div role="note" class="alert bg-base-200 border border-base-300">
-        <span>
-          Tell us about allergies when you book and we will tell you what we
-          can do. Replace this with what is actually true here.
-        </span>
+      <div role="note" class="alert bg-base-200 border border-base-content/10">
+        <svg class="size-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/></svg>
+        <span>Tell us about allergies when you book and we will tell you what we can do. Replace this with what is actually true here.</span>
       </div>
     </main>
 
-    <section class="bg-primary text-primary-content px-6 py-20">
+    <section class="bg-primary text-primary-content px-6 py-20 md:py-24">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-black mb-6">Hungry now?</h2>
-        <a class="btn btn-lg" href="visit.html#book">Book a table</a>
+        <h2 class="font-display text-3xl md:text-5xl font-bold mb-6">Hungry now?</h2>
+        <p class="mb-8 text-lg">One sentence. Reservations, walk-ins, or both — say which.</p>
+        <a class="btn btn-lg btn-neutral" href="visit.html#book">Book a table</a>
       </div>
     </section>
 
-    <footer class="footer sm:footer-horizontal bg-base-300 text-base-content px-6 md:px-10 py-12">
-      <nav>
-        <h2 class="footer-title">Pages</h2>
-        <a class="link link-hover" href="index.html">Home</a>
-        <a class="link link-hover" href="menu.html">Menu</a>
-        <a class="link link-hover" href="visit.html">Visit</a>
-      </nav>
-      <nav>
-        <h2 class="footer-title">Find us</h2>
-        <a class="link link-hover" href="tel:+12165550100">(216) 555-0100</a>
-        <a class="link link-hover" href="mailto:hello@example.com">hello@example.com</a>
-        <span class="opacity-70">123 Your Street, Your City</span>
-      </nav>
-      <aside>
-        <h2 class="footer-title">Credits</h2>
-        <p class="opacity-70 max-w-xs text-sm">
-          Every image, its creator, source and licence. This page has none yet.
-        </p>
-        <p class="opacity-70 text-sm">© 20XX Your restaurant.</p>
-      </aside>
+    <footer class="bg-base-300 text-base-content">
+      <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <a class="font-display text-2xl font-bold" href="index.html">Bistro<span class="text-primary">.</span></a>
+          <p class="mt-3 opacity-80 max-w-xs">One line that says what this place is. The same idea as the hero, in fewer words.</p>
+          <div class="flex gap-2 mt-5">
+            <!-- A social link needs a name a screen reader can say. The icon is not one. -->
+            <a class="btn btn-ghost btn-square btn-sm" href="https://www.instagram.com/" aria-label="Instagram"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+            <a class="btn btn-ghost btn-square btn-sm" href="https://www.facebook.com/" aria-label="Facebook"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          </div>
+        </div>
+        <nav aria-label="Footer">
+          <h2 class="footer-title">Pages</h2>
+          <ul class="space-y-2">
+            <li><a class="link link-hover" href="index.html">Home</a></li>
+            <li><a class="link link-hover" href="menu.html">Menu</a></li>
+            <li><a class="link link-hover" href="visit.html">Visit</a></li>
+            <li><a class="link link-hover" href="visit.html#book">Book a table</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="footer-title">Find us</h2>
+          <address class="not-italic space-y-2">
+            <p>123 Your Street, Your City</p>
+            <p><a class="link link-hover" href="tel:+12165550100">(216) 555-0100</a></p>
+            <p><a class="link link-hover" href="mailto:hello@example.com">hello@example.com</a></p>
+            <p class="opacity-80">Wed–Sun, 5–10pm</p>
+          </address>
+        </div>
+        <!--
+          THE NEWSLETTER. Same deal as the booking form: data-demo means
+          js/site.js catches it and says thank you instead of sending it
+          anywhere. Point `action` at a real service and remove data-demo, or
+          delete this block. A signup that goes nowhere is worse than none.
+        -->
+        <form data-demo>
+          <h2 class="footer-title">The weekly menu, by email</h2>
+          <label class="sr-only" for="news-email">Email address</label>
+          <div class="join w-full">
+            <input class="input join-item w-full" type="email" id="news-email" name="email" required autocomplete="email" placeholder="you@example.com" />
+            <button class="btn btn-primary join-item" type="submit">Sign up</button>
+          </div>
+          <p class="text-sm opacity-80 mt-2">One email a week. Nothing else.</p>
+          <p data-sent hidden role="status" tabindex="-1" class="text-sm mt-2 font-semibold">Thanks — you are on the list.</p>
+        </form>
+      </div>
+
+      <!--
+        CREDITS. Every borrowed thing: creator, source, licence, and what you
+        changed. One list for the whole site, so it is the same on every page.
+        When you swap a picture, swap its line. If you cannot write the line,
+        you are not allowed to use the picture.
+      -->
+      <div class="border-t border-base-content/10">
+        <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row md:items-start md:justify-between gap-4 text-sm">
+          <p class="opacity-80">© <span data-year>20XX</span> Your restaurant. Built with daisyUI and Tailwind CSS; icons by Lucide.</p>
+          <details class="md:max-w-xl">
+            <summary class="cursor-pointer link link-hover opacity-80">Photo and video credits</summary>
+            <ul class="mt-3 space-y-1 opacity-80">
+              <li>Hero video: <a class="link" href="https://studio.blender.org/projects/spring/"><em>Spring</em></a> by Blender Studio, <a class="link" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</li>
+              <li>Dining room: <a class="link" href="https://commons.wikimedia.org/wiki/File:Restaurant_in_Place_D%27Youville,_Quebec_City.jpg">Wilfredor</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Cropped.</li>
+              <li>Pasta: <a class="link" href="https://commons.wikimedia.org/wiki/File:Spaghetti_dish.jpg">jeuwre</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Cropped.</li>
+              <li>Salmon: <a class="link" href="https://commons.wikimedia.org/wiki/File:DSCF0412_Seared_salmon_fillet_topped_with_saut%C3%A9ed_shrimp_served_with_creamed_spinach_and_a_side_salad.jpg">PattayaPatrol</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Risotto: <a class="link" href="https://commons.wikimedia.org/wiki/File:Saffron_risotto_at_Deliberi_Jumbo.jpg">JIP</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Kitchen: <a class="link" href="https://commons.wikimedia.org/wiki/File:Chef_plating.jpg">stu_spivack</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>. Cropped.</li>
+              <li>Back room: <a class="link" href="https://commons.wikimedia.org/wiki/File:Le_Brazier_Wine_Bar_-_salle.jpg">Benoît Prieur</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Cropped.</li>
+              <li>Dessert: <a class="link" href="https://commons.wikimedia.org/wiki/File:Restaurant_-_Dessert_(millefeuilles).jpg">Gzen92</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Map: © <a class="link" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</li>
+            </ul>
+          </details>
+        </div>
+      </div>
     </footer>
+
+    <script src="js/site.js"></script>
   </body>
 </html>
