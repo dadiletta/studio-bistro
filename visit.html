@@ -99,13 +99,9 @@
               </p>
             </div>
 
-            <!--
-              THE MAP is an OpenStreetMap embed: free, no account, no key. To
-              move the pin, find your address at openstreetmap.org, press
-              Share, tick "Include marker", choose HTML and paste the src here.
-              title= is what a screen reader announces for an iframe. The link
-              under it is for anybody the embed does not work for.
-            -->
+            <!-- THE MAP: move the pin at openstreetmap.org (Share, "Include
+                 marker", HTML, paste the src here). Keep the title, and the plain
+                 link under it. -->
             <div class="rounded-box overflow-hidden border border-base-content/10 aspect-[16/10] bg-base-200">
               <iframe class="size-full" title="Map showing the restaurant's location" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-81.7005%2C41.4965%2C-81.6870%2C41.5025&amp;layer=mapnik&amp;marker=41.4995%2C-81.6937"></iframe>
             </div>
@@ -131,23 +127,9 @@
           </section>
         </div>
 
-        <!--
-          ============================================================ THE FORM
-          A form is where accessibility is won or lost, so this one is built
-          properly and you should keep the shape:
-            - every input has a <label for> pointing at its id. Placeholder
-              text is not a label; it disappears exactly when it is needed.
-            - `required`, `type` and `min` let the browser check before any
-              server does. daisyUI's `validator` class turns a field red only
-              AFTER somebody has touched it, and shows the hint under it.
-            - the fieldset groups the fields that belong together.
-
-          IT DOES NOT SEND ANYWHERE YET, on purpose. data-demo tells
-          js/site.js to show the thank-you instead. To make it real, give the
-          form an action — Formspree, Netlify Forms, a Google Form — remove
-          data-demo, and test it with your own email. Choosing that service is
-          a decision your team makes, not one a starter makes for you.
-        -->
+        <!-- ============================================================ THE FORM
+             Keep its shape: a <label for> on every input. Not sending yet
+             (data-demo): add an action, delete data-demo, test it with your email. -->
         <section id="book" class="lg:col-span-2 card bg-base-200 shadow-xl lg:sticky lg:top-24">
           <form class="card-body gap-4" data-demo>
             <h2 class="card-title font-display text-3xl">Book a table</h2>
@@ -205,12 +187,8 @@
         </section>
       </div>
 
-      <!--
-        ============================================================ FAQ
-        <details> opens and closes with no JavaScript, works with a keyboard,
-        and is announced properly by a screen reader. daisyUI's `collapse`
-        just dresses it. Answer the questions people actually phone to ask.
-      -->
+      <!-- ============================================================ FAQ
+           The questions people actually phone to ask. -->
       <section class="max-w-3xl mt-24">
         <h2 class="font-display text-3xl font-bold mb-8">Before you come</h2>
         <div class="space-y-3">
@@ -240,7 +218,8 @@
           <a class="font-display text-2xl font-bold" href="index.html">Bistro<span class="text-primary">.</span></a>
           <p class="mt-3 opacity-80 max-w-xs">One line that says what this place is. The same idea as the hero, in fewer words.</p>
           <div class="flex gap-2 mt-5">
-            <!-- A social link needs a name a screen reader can say. The icon is not one. -->
+            <!-- A social link needs a name a screen reader can say. The icon is not
+                 one. -->
             <a class="btn btn-ghost btn-square btn-sm" href="https://www.instagram.com/" aria-label="Instagram"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
             <a class="btn btn-ghost btn-square btn-sm" href="https://www.facebook.com/" aria-label="Facebook"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
           </div>
@@ -263,12 +242,8 @@
             <p class="opacity-80">Wed–Sun, 5–10pm</p>
           </address>
         </div>
-        <!--
-          THE NEWSLETTER. Same deal as the booking form: data-demo means
-          js/site.js catches it and says thank you instead of sending it
-          anywhere. Point `action` at a real service and remove data-demo, or
-          delete this block. A signup that goes nowhere is worse than none.
-        -->
+        <!-- THE NEWSLETTER says thank you without sending (data-demo). Point action
+             at a real service and delete data-demo, or delete this block. -->
         <form data-demo>
           <h2 class="footer-title">The weekly menu, by email</h2>
           <label class="sr-only" for="news-email">Email address</label>
@@ -281,12 +256,8 @@
         </form>
       </div>
 
-      <!--
-        CREDITS. Every borrowed thing: creator, source, license, and what you
-        changed. One list for the whole site, so it is the same on every page.
-        When you swap a picture, swap its line. If you cannot write the line,
-        you are not allowed to use the picture.
-      -->
+      <!-- CREDITS: creator, source, license and changes for every borrowed thing.
+           Swap a picture, swap its line. Can't write the line? Don't use it. -->
       <div class="border-t border-base-content/10">
         <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row md:items-start md:justify-between gap-4 text-sm">
           <p class="opacity-80">© <span data-year>20XX</span> Your restaurant. Built with daisyUI and Tailwind CSS; icons by Lucide.</p>

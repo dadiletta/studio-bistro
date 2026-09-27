@@ -6,34 +6,15 @@
     <title>Bistro — change this to your restaurant</title>
     <meta name="description" content="One sentence about this restaurant. Search results show it; write it." />
 
-    <!--
-      SHARING. These are what a link preview shows when somebody pastes your
-      address into a chat. og:image has to be a FULL https address, so it is
-      left out until you publish — then add
-        <meta property="og:image" content="https://you.github.io/your-repo/img/dining-room.jpg" />
-    -->
+    <!-- What a link preview shows in a chat. Once you publish, add
+         <meta property="og:image" content="https://you.github.io/your-repo/img/dining-room.jpg" /> -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Bistro — change this to your restaurant" />
     <meta property="og:description" content="One sentence about this restaurant. Search results show it; write it." />
 
-    <!--
-      THE THREE TAGS. Tailwind and daisyUI, no build step, nothing installed.
-      Open this file with Live Server and start working.
-
-      Two honest notes:
-        1. The Tailwind tag is its BROWSER build. Tailwind's own docs say it is
-           "designed for development purposes only, and is not intended for
-           production." That is fine while you are building. Unit 8 replaces
-           it with a real built stylesheet, because publishing to a public
-           address is where "development only" stops being acceptable.
-        2. These load from jsdelivr, and the fonts from Google, which means
-           both see a request from every reader of your site. That is your
-           call to make on your own project. Read Unit 8's "what a page costs
-           its reader" first.
-
-      After them: two typefaces from Google Fonts (see TYPE in styles.css), the
-      icon in the browser tab, and your own stylesheet, last, so it wins.
-    -->
+    <!-- Tailwind and daisyUI, no build step. Open this file with Live Server.
+         Tailwind's browser build is for development only; Unit 8 replaces it.
+         Then the font, the tab icon, and your own styles.css last, so it wins. -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -48,23 +29,8 @@
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <!--
-      THEME. data-theme is on <html>, at the top of this file — and on every
-      other page in this folder. Change it in ALL of them or the site restyles
-      itself between clicks, which reads as broken.
-
-      This one ships as `coffee`. Try `sunset`, `night`, `autumn`, `luxury`,
-      `dracula`, `caramellatte`, `retro`. Do it before you write a word: it is
-      five seconds and it decides the mood everything else is judged against.
-
-      THE NAV IS COPIED onto every page, and that is a real cost of plain
-      HTML: three pages, three copies, and they drift. Change one, change all
-      three. Unit 8's build step is the fix; until then, a habit is.
-
-      Two copies of the links live inside it: a row for wide screens and a
-      <details> dropdown for phones. <details> opens and closes with no
-      JavaScript at all; js/site.js only adds "close when I click away".
-    -->
+    <!-- THEME: data-theme on <html>, in all three pages. Try sunset, night, autumn.
+         THE NAV is on each page twice, wide and phone: change one, change all. -->
     <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
 
     <nav class="navbar bg-base-100/85 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
@@ -91,28 +57,10 @@
       </div>
     </nav>
 
-    <!--
-      ============================================================== HERO
-      A YOUTUBE BACKGROUND, and the parts are worth understanding before you
-      change them:
-
-        - The photograph behind everything is in styles.css (.hero-poster).
-          It is always there. If YouTube is blocked on this network — plenty
-          of schools block it — the page still looks finished, because it IS
-          finished: the video is a bonus on top.
-        - js/hero-video.js checks whether YouTube is reachable BEFORE putting
-          an iframe on the page, then fades the video in over the photograph.
-          It skips the video on phones and for readers whose system asks for
-          reduced motion.
-        - data-video is the id out of a YouTube URL. In
-          youtube.com/watch?v=WhWc3b3KhnY the id is WhWc3b3KhnY. Swap it for
-          your own footage, then fix the credit in the footer.
-        - data-start and data-end are the clip, in seconds, and it loops.
-          338 to 410 is the sunlit last minute of the film, before its title.
-          Nobody needs the opening credits of anything behind a headline.
-        - The scrim (.hero-scrim) is what keeps the headline readable over
-          moving pictures. Text on video without one is a coin flip every frame.
-    -->
+    <!-- ============================================================ HERO
+         YouTube over the photo in styles.css (.hero-poster). data-video is the id
+         from a YouTube URL: swap it, then fix the footer credit. data-start and
+         data-end pick the looped clip, in seconds; 338 to 410 is sunlit. -->
     <header class="hero-stage min-h-[80vh] md:min-h-[90vh] grid">
       <div class="hero-poster" data-video="WhWc3b3KhnY" data-start="338" data-end="410" data-hero-video></div>
       <div class="hero-scrim"></div>
@@ -131,10 +79,8 @@
           </p>
           <div class="flex flex-col sm:flex-row gap-3 justify-center">
             <a class="btn btn-primary btn-lg" href="visit.html#book">Book a table</a>
-            <!--
-              ONE call to action. The menu is a second path, not a second ask,
-              so it is dressed quietly — an outline, not another filled button.
-            -->
+            <!-- One call to action. The menu is a second path, so it gets an
+                 outline, not a fill. -->
             <a class="btn btn-lg btn-outline text-white border-white/70 hover:bg-white hover:text-black" href="menu.html">Read the menu</a>
           </div>
         </div>
@@ -142,11 +88,9 @@
     </header>
 
     <main id="main">
-      <!--
-        ============================================================ FACTS
-        Three things a hungry person came here to find. Put them above
-        everything else you are proud of.
-      -->
+      <!-- ============================================================ FACTS
+           The three things a hungry person came to find. Keep them above everything
+           else. -->
       <section class="bg-base-200 border-b border-base-content/10" aria-label="Hours and location">
         <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-base-content/10">
           <div class="flex items-center gap-4 px-6 py-7">
@@ -174,16 +118,9 @@
         </div>
       </section>
 
-      <!--
-        ============================================================ DISHES
-        Three, and keep them parallel: same shape, same length of description,
-        and if one has a photo they all do. A grid of unequal cards reads as
-        unfinished no matter how good the photography is.
-
-        EVERY <img> CARRIES width AND height. The browser reserves the space
-        before the picture arrives, so the page does not jump while it loads.
-        loading="lazy" means pictures below the fold wait until they are needed.
-      -->
+      <!-- ============================================================ DISHES
+           Three, and parallel: if one has a photo, they all do. Every <img> keeps
+           its width and height, so the page doesn't jump while pictures load. -->
       <section id="dishes" class="px-6 py-20 md:py-28 max-w-6xl mx-auto">
         <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
           <div class="max-w-2xl">
@@ -195,10 +132,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!--
-            IMAGE ALT says what the image is FOR, not every pixel in it. Then
-            its photographer, source and license go in the footer's credits.
-          -->
+          <!-- alt says what the image is FOR. Then credit it in the footer. -->
           <article class="card bg-base-200 shadow-lg overflow-hidden group">
             <figure class="aspect-[4/3] overflow-hidden">
               <img class="size-full object-cover transition duration-500 group-hover:scale-105" src="img/dish-pasta.jpg" width="900" height="675" loading="lazy" alt="Spaghetti in tomato sauce under rocket and shaved cheese" />
@@ -249,11 +183,8 @@
         </div>
       </section>
 
-      <!--
-        ============================================================ STORY
-        Text one side, picture the other. On a phone it stacks with the text
-        first — a picture you have not been told the point of is just a picture.
-      -->
+      <!-- ============================================================ STORY
+           Text one side, picture the other. On a phone the text comes first. -->
       <section class="bg-base-200">
         <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div>
@@ -267,10 +198,7 @@
               A second paragraph, shorter. End on something specific: a supplier, a
               grandmother, a piece of equipment nobody else has.
             </p>
-            <!--
-              THREE NUMBERS YOU CAN DEFEND. A made-up number on a real business
-              is a liability. If you do not have three true ones, delete this.
-            -->
+            <!-- Three numbers you can defend, or delete this. -->
             <dl class="grid grid-cols-3 gap-4 border-t border-base-content/10 pt-6">
               <div>
                 <dt class="text-sm opacity-80">Years open</dt>
@@ -288,11 +216,8 @@
           </div>
           <figure class="relative">
             <img class="rounded-box shadow-2xl w-full aspect-[4/5] object-cover" src="img/kitchen.jpg" width="800" height="1000" loading="lazy" alt="A cook plating seafood on the pass in a small, busy kitchen" />
-            <!--
-              A caption that overlaps the picture's edge. Same idea as a
-              magazine: one element crossing a boundary makes a layout look
-              designed rather than stacked.
-            -->
+            <!-- The caption crosses the picture's edge on purpose. Keep the
+                 overlap. -->
             <figcaption class="absolute -bottom-6 left-6 right-6 md:right-auto md:-left-8 card bg-base-100 shadow-xl p-5 max-w-xs">
               <p class="font-display italic text-lg leading-snug">"A sentence the head chef would actually say."</p>
               <p class="text-sm opacity-80 mt-2">— Their name, head chef</p>
@@ -301,11 +226,8 @@
         </div>
       </section>
 
-      <!--
-        ============================================================ PRIVATE
-        A second thing the restaurant sells. If yours does not host events,
-        make this whatever the second reason to visit is — or delete it.
-      -->
+      <!-- ============================================================ PRIVATE
+           The second reason to visit. No events? Make it yours, or delete it. -->
       <section class="max-w-6xl mx-auto px-6 pt-28 pb-20 md:py-28 grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
         <div class="md:col-span-3 grid grid-cols-2 gap-4">
           <img class="rounded-box col-span-2 aspect-[16/9] w-full object-cover shadow-lg" src="img/bar.jpg" width="1200" height="900" loading="lazy" alt="The back room: one long table set for a group, lined with wine racks" />
@@ -328,11 +250,8 @@
         </div>
       </section>
 
-      <!--
-        ============================================================ QUOTE
-        One review, attributed. Three anonymous raves are worth less than one
-        sentence with a name on it.
-      -->
+      <!-- ============================================================ QUOTE
+           One real review with a name on it. -->
       <section class="bg-base-200 px-6 py-20 md:py-28">
         <figure class="max-w-3xl mx-auto text-center">
           <span class="inline-block text-primary mb-6"><svg class="size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span>
@@ -345,11 +264,8 @@
         </figure>
       </section>
 
-      <!--
-        ============================================================ THE ASK
-        Same ask as the hero, not a new one. A page with two different
-        requests has not decided what it wants.
-      -->
+      <!-- ============================================================ THE ASK
+           The same ask as the hero, not a new one. -->
     <section class="bg-primary text-primary-content px-6 py-20 md:py-24">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="font-display text-3xl md:text-5xl font-bold mb-6">Come and eat</h2>
@@ -365,7 +281,8 @@
           <a class="font-display text-2xl font-bold" href="index.html">Bistro<span class="text-primary">.</span></a>
           <p class="mt-3 opacity-80 max-w-xs">One line that says what this place is. The same idea as the hero, in fewer words.</p>
           <div class="flex gap-2 mt-5">
-            <!-- A social link needs a name a screen reader can say. The icon is not one. -->
+            <!-- A social link needs a name a screen reader can say. The icon is not
+                 one. -->
             <a class="btn btn-ghost btn-square btn-sm" href="https://www.instagram.com/" aria-label="Instagram"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
             <a class="btn btn-ghost btn-square btn-sm" href="https://www.facebook.com/" aria-label="Facebook"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
           </div>
@@ -388,12 +305,8 @@
             <p class="opacity-80">Wed–Sun, 5–10pm</p>
           </address>
         </div>
-        <!--
-          THE NEWSLETTER. Same deal as the booking form: data-demo means
-          js/site.js catches it and says thank you instead of sending it
-          anywhere. Point `action` at a real service and remove data-demo, or
-          delete this block. A signup that goes nowhere is worse than none.
-        -->
+        <!-- THE NEWSLETTER says thank you without sending (data-demo). Point action
+             at a real service and delete data-demo, or delete this block. -->
         <form data-demo>
           <h2 class="footer-title">The weekly menu, by email</h2>
           <label class="sr-only" for="news-email">Email address</label>
@@ -406,12 +319,8 @@
         </form>
       </div>
 
-      <!--
-        CREDITS. Every borrowed thing: creator, source, license, and what you
-        changed. One list for the whole site, so it is the same on every page.
-        When you swap a picture, swap its line. If you cannot write the line,
-        you are not allowed to use the picture.
-      -->
+      <!-- CREDITS: creator, source, license and changes for every borrowed thing.
+           Swap a picture, swap its line. Can't write the line? Don't use it. -->
       <div class="border-t border-base-content/10">
         <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row md:items-start md:justify-between gap-4 text-sm">
           <p class="opacity-80">© <span data-year>20XX</span> Your restaurant. Built with daisyUI and Tailwind CSS; icons by Lucide.</p>
