@@ -31,9 +31,13 @@
   <body class="bg-base-100 text-base-content">
     <!-- THEME: data-theme on <html>, in all three pages. Try sunset, night, autumn.
          THE NAV is on each page twice, wide and phone: change one, change all. -->
+    <!-- ANOTHER HOME PAGE: the same site, with the nav over a photo slider.
+         Keep this one or index.html, not both, and name the keeper index.html. -->
     <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
 
-    <nav class="navbar bg-base-100/85 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
+    <!-- THE NAV sits over the slider, then turns solid as the page scrolls
+         (.nav-over in styles.css, step 5 of js/site.js). -->
+    <nav class="navbar nav-over px-4 md:px-8" data-nav-over aria-label="Main">
       <div class="navbar-start">
         <a class="font-display text-2xl font-bold tracking-tight" href="index.html">
           Bistro<span class="text-primary">.</span>
@@ -57,31 +61,63 @@
       </div>
     </nav>
 
-    <!-- ============================================================ HERO
-         YouTube over the photo in styles.css (.hero-poster). data-video is the id
-         from a YouTube URL: swap it, then fix the footer credit. data-start and
-         data-end pick the looped clip, in seconds; 338 to 410 is sunlit. -->
-    <header class="hero-stage min-h-[80vh] md:min-h-[90vh] grid">
-      <div class="hero-poster" data-video="WhWc3b3KhnY" data-start="338" data-end="410" data-hero-video></div>
-      <div class="hero-scrim"></div>
-
-      <div class="relative z-10 self-center px-6 py-24 md:py-32 w-full">
-        <div class="max-w-5xl mx-auto text-center text-white">
-          <p class="inline-flex items-center gap-2 rounded-full bg-black/50 px-4 py-1.5 text-sm font-semibold tracking-wide mb-8">
-            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Open Wednesday to Sunday
-          </p>
-          <h1 class="font-display text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.95] tracking-tight mb-8">
-            A headline that tastes like the food
-          </h1>
-          <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">
-            One sentence. What kind of cooking, and who it is for. Not "an
-            unforgettable culinary journey" — say what is actually on the plate.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <a class="btn btn-primary btn-lg" href="visit.html#book">Book a table</a>
-            <!-- One call to action. The menu is a second path, so it gets an
-                 outline, not a fill. -->
-            <a class="btn btn-lg btn-outline text-white border-white/70 hover:bg-white hover:text-black" href="menu.html">Read the menu</a>
+    <!-- ============================================================ HERO SLIDER
+         Three slides that turn every 7 seconds and stop for a hover, a focus or
+         the pause button. Each is a photo, a scrim and its words: swap all three,
+         and credit the photos. Only the first slide's heading is the page's h1. -->
+    <header class="relative bg-neutral text-white" data-nav-under data-carousel data-autoplay="7000">
+      <div class="carousel w-full h-[100svh] min-h-[38rem] max-h-[62rem]" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Highlights">
+        <div class="carousel-item relative w-full items-center" role="group" aria-roledescription="slide" aria-label="1 of 3">
+          <img class="absolute inset-0 size-full object-cover" src="img/dining-room.jpg" width="1920" height="1080" fetchpriority="high" alt="The dining room, set for dinner under paper lanterns" />
+          <div class="slide-scrim"></div>
+          <div class="relative w-full max-w-6xl mx-auto px-6 pt-24 pb-28">
+            <div class="text-center mx-auto max-w-5xl">
+              <p class="inline-flex items-center gap-2 rounded-full bg-black/50 px-4 py-1.5 text-sm font-semibold tracking-wide mb-8">Open Wednesday to Sunday</p>
+              <h1 class="font-display text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.95] tracking-tight mb-8">A headline that tastes like the food</h1>
+              <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">One sentence. What kind of cooking, and who it is for.</p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a class="btn btn-lg btn-primary" href="visit.html#book">Book a table</a>
+                <a class="btn btn-lg btn-outline text-white border-white/70 hover:bg-white hover:text-black" href="menu.html">Read the menu</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item relative w-full items-center" role="group" aria-roledescription="slide" aria-label="2 of 3">
+          <img class="absolute inset-0 size-full object-cover" src="img/bar-wide.jpg" width="1920" height="1080" loading="lazy" alt="The back room: one long table lined with wine racks" />
+          <div class="slide-scrim"></div>
+          <div class="relative w-full max-w-6xl mx-auto px-6 pt-24 pb-28">
+            <div class="text-center mx-auto max-w-5xl">
+              <p class="inline-flex items-center gap-2 rounded-full bg-black/50 px-4 py-1.5 text-sm font-semibold tracking-wide mb-8">Private dining</p>
+              <h2 class="font-display text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.95] tracking-tight mb-8">The back room, for twelve</h2>
+              <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">Who it is for, and how far ahead to ask.</p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a class="btn btn-lg btn-primary" href="visit.html#book">Ask about the back room</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item relative w-full items-center" role="group" aria-roledescription="slide" aria-label="3 of 3">
+          <img class="absolute inset-0 size-full object-cover" src="img/kitchen-wide.jpg" width="1920" height="1080" loading="lazy" alt="A cook at work on the pass" />
+          <div class="slide-scrim"></div>
+          <div class="relative w-full max-w-6xl mx-auto px-6 pt-24 pb-28">
+            <div class="text-center mx-auto max-w-5xl">
+              <p class="inline-flex items-center gap-2 rounded-full bg-black/50 px-4 py-1.5 text-sm font-semibold tracking-wide mb-8">The kitchen</p>
+              <h2 class="font-display text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.95] tracking-tight mb-8">Cooked by people you can name</h2>
+              <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">One sentence about who cooks here, and what they are stubborn about.</p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a class="btn btn-lg btn-primary" href="#dishes">What we are cooking</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-x-0 bottom-0 pb-8">
+        <div class="max-w-6xl mx-auto px-6 flex items-center justify-between gap-4" data-carousel-controls hidden>
+          <div class="flex items-center gap-2" data-dots></div>
+          <div class="flex items-center gap-2">
+            <button class="btn btn-circle btn-sm btn-ghost border border-white/60 text-white" type="button" data-pause aria-pressed="false" aria-label="Pause the slides"><svg class="size-4 i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><svg class="size-4 i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg></button>
+            <button class="btn btn-circle btn-ghost border border-white/60 text-white" type="button" data-prev aria-label="Previous slide"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button class="btn btn-circle btn-ghost border border-white/60 text-white" type="button" data-next aria-label="Next slide"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
           </div>
         </div>
       </div>
@@ -389,6 +425,5 @@
     </footer>
 
     <script src="js/site.js"></script>
-    <script src="js/hero-video.js"></script>
-  </body>
+      </body>
 </html>

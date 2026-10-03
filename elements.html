@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en" data-theme="coffee">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elements — Bistro</title>
+    <meta name="description" content="One sentence about this restaurant. Search results show it; write it." />
+
+    <!-- What a link preview shows in a chat. Once you publish, add
+         <meta property="og:image" content="https://you.github.io/your-repo/img/dining-room.jpg" /> -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bistro — change this to your restaurant" />
+    <meta property="og:description" content="One sentence about this restaurant. Search results show it; write it." />
+
+    <!-- Tailwind and daisyUI, no build step. Open this file with Live Server.
+         Tailwind's browser build is for development only; Unit 8 replaces it.
+         Then the font, the tab icon, and your own styles.css last, so it wins. -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..800&family=Inter:wght@400..700&display=swap" rel="stylesheet" />
+
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#231a22" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="bg-base-100 text-base-content">
+    <!-- A PARTS PAGE, like the "elements" page every professional template ships.
+         Nothing links here: browse it, copy the parts you want into your pages
+         (each sits between COPY FROM HERE and TO HERE), then delete this page. -->
+    <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
+
+    <!-- THE NAV, centered: the name in the middle, the links split either side.
+         To use it, put it in place of the nav at the top of every page. -->
+    <nav class="navbar bg-base-100/85 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
+      <div class="navbar-start">
+        <ul class="menu menu-horizontal hidden md:flex gap-1 text-base">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+        </ul>
+        <details class="dropdown md:hidden">
+          <summary class="btn btn-ghost btn-square" aria-label="Site pages"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></summary>
+          <ul class="menu dropdown-content bg-base-200 rounded-box z-40 mt-3 w-56 p-2 shadow-xl text-base">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="visit.html">Visit</a></li>
+          </ul>
+        </details>
+      </div>
+      <div class="navbar-center">
+        <a class="font-display text-2xl font-bold tracking-tight" href="index.html">
+          Bistro<span class="text-primary">.</span>
+        </a>
+      </div>
+      <div class="navbar-end gap-2">
+        <ul class="menu menu-horizontal hidden lg:flex gap-1 text-base">
+          <li><a href="visit.html">Visit</a></li>
+        </ul>
+        <a class="btn btn-primary btn-sm md:btn-md" href="visit.html#book">Book a table</a>
+      </div>
+    </nav>
+
+    <main id="main">
+      <header class="bg-base-200 border-b border-base-content/10">
+        <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+          <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Template parts</p>
+          <h1 class="font-display text-5xl md:text-7xl font-bold mb-4">Elements</h1>
+          <p class="text-lg opacity-80 max-w-2xl mb-8">Every part on this page works in this theme and in any other. The nav above is one of them: the centered one. The nav that sits over a photo is on <a class="link link-primary" href="index-2.html">the other home page</a>.</p>
+          <ul class="flex flex-wrap gap-2" aria-label="Parts on this page">
+          <li><a class="btn btn-sm btn-soft" href="#slider">Image slider</a></li>
+          <li><a class="btn btn-sm btn-soft" href="#quotes">Quote carousel</a></li>
+          <li><a class="btn btn-sm btn-soft" href="#tabs">Tabs</a></li>
+          <li><a class="btn btn-sm btn-soft" href="#tiers">Pricing</a></li>
+          <li><a class="btn btn-sm btn-soft" href="#team">Team</a></li>
+          <li><a class="btn btn-sm btn-soft" href="#timeline">Timeline</a></li>
+          <li><a class="btn btn-sm btn-soft" href="#steps">Steps</a></li>
+          <li><a class="btn btn-sm btn-soft" href="#gallery">Photo wall</a></li>
+          <li><a class="btn btn-sm btn-soft" href="#cta">Call to action on a photo</a></li>
+          <li><a class="btn btn-sm btn-soft" href="#faq">Questions</a></li>
+          </ul>
+        </div>
+      </header>
+      <div id="slider" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">01 · Image slider</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">A framed photo slider: arrows on the photo, dots under it. Every slide is one figure.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: IMAGE SLIDER -->
+      <section class="max-w-6xl mx-auto px-6 py-12" aria-label="The restaurant in photographs">
+        <div class="relative" data-carousel>
+          <div class="carousel w-full rounded-box shadow-2xl" tabindex="0" role="group" aria-roledescription="carousel" aria-label="The restaurant in photographs">
+            <figure class="carousel-item relative w-full" role="group" aria-roledescription="slide" aria-label="1 of 3">
+              <img class="w-full aspect-[16/9] object-cover" src="img/dining-room.jpg" width="1920" height="1080" loading="lazy" alt="The dining room, set for dinner" />
+              <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent text-white px-6 pt-16 pb-6 text-lg">The dining room on a Friday. Say what the photo shows.</figcaption>
+            </figure>
+            <figure class="carousel-item relative w-full" role="group" aria-roledescription="slide" aria-label="2 of 3">
+              <img class="w-full aspect-[16/9] object-cover" src="img/bar-wide.jpg" width="1920" height="1080" loading="lazy" alt="The back room, one long table under wine racks" />
+              <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent text-white px-6 pt-16 pb-6 text-lg">The back room seats twelve.</figcaption>
+            </figure>
+            <figure class="carousel-item relative w-full" role="group" aria-roledescription="slide" aria-label="3 of 3">
+              <img class="w-full aspect-[16/9] object-cover" src="img/kitchen-wide.jpg" width="1920" height="1080" loading="lazy" alt="A cook at work on the pass" />
+              <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent text-white px-6 pt-16 pb-6 text-lg">The kitchen, an hour before service.</figcaption>
+            </figure>
+          </div>
+          <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none" data-carousel-controls hidden>
+            <button class="btn btn-circle pointer-events-auto" type="button" data-prev aria-label="Previous photo"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button class="btn btn-circle pointer-events-auto" type="button" data-next aria-label="Next photo"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+          <div class="flex justify-center gap-2 mt-6" data-dots></div>
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: IMAGE SLIDER -->
+      <div id="quotes" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">02 · Quote carousel</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">One quote at a time, turning every 8 seconds, with a pause button.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: QUOTE CAROUSEL -->
+      <section class="bg-base-200 px-6 py-20 md:py-28" aria-labelledby="quotes-title">
+        <div class="max-w-4xl mx-auto" data-carousel data-autoplay="8000">
+          <div class="flex flex-col items-center text-center mb-10">
+            <span class="text-primary mb-4"><svg class="size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span>
+            <h2 id="quotes-title" class="font-display text-3xl md:text-4xl font-bold">What people say</h2>
+          </div>
+          <div class="carousel w-full" tabindex="0" role="group" aria-roledescription="carousel" aria-label="What people say">
+            <figure class="carousel-item box-border w-full flex-col items-center text-center px-2 md:px-16" role="group" aria-roledescription="slide" aria-label="1 of 3">
+              <blockquote class="font-display text-2xl md:text-4xl leading-snug mb-8">One real sentence somebody actually said about this place.</blockquote>
+              <figcaption class="flex items-center gap-3">
+                <span class="grid place-items-center size-12 rounded-full bg-primary text-primary-content font-bold" aria-hidden="true">AB</span>
+                <span class="text-left"><strong class="block">Their name</strong><span class="text-sm opacity-80">Where it was published</span></span>
+              </figcaption>
+            </figure>
+            <figure class="carousel-item box-border w-full flex-col items-center text-center px-2 md:px-16" role="group" aria-roledescription="slide" aria-label="2 of 3">
+              <blockquote class="font-display text-2xl md:text-4xl leading-snug mb-8">A second one, from a different kind of guest.</blockquote>
+              <figcaption class="flex items-center gap-3">
+                <span class="grid place-items-center size-12 rounded-full bg-primary text-primary-content font-bold" aria-hidden="true">CD</span>
+                <span class="text-left"><strong class="block">Their name</strong><span class="text-sm opacity-80">A regular since 20XX</span></span>
+              </figcaption>
+            </figure>
+            <figure class="carousel-item box-border w-full flex-col items-center text-center px-2 md:px-16" role="group" aria-roledescription="slide" aria-label="3 of 3">
+              <blockquote class="font-display text-2xl md:text-4xl leading-snug mb-8">A third. If you only have one real quote, use one.</blockquote>
+              <figcaption class="flex items-center gap-3">
+                <span class="grid place-items-center size-12 rounded-full bg-primary text-primary-content font-bold" aria-hidden="true">EF</span>
+                <span class="text-left"><strong class="block">Their name</strong><span class="text-sm opacity-80">Their city</span></span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="flex items-center justify-center gap-4 mt-10" data-carousel-controls hidden>
+            <button class="btn btn-circle btn-ghost btn-sm" type="button" data-prev aria-label="Previous quote"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+            <div class="flex items-center gap-2" data-dots></div>
+            <button class="btn btn-circle btn-ghost btn-sm" type="button" data-next aria-label="Next quote"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+            <button class="btn btn-circle btn-ghost btn-sm" type="button" data-pause aria-pressed="false" aria-label="Pause the slides"><svg class="size-4 i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><svg class="size-4 i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg></button>
+          </div>
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: QUOTE CAROUSEL -->
+      <div id="tabs" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">03 · Tabs</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">Three panels in the space of one, and no script.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: TABS -->
+      <section class="max-w-4xl mx-auto px-6 py-12" aria-labelledby="tabs-title">
+        <h2 id="tabs-title" class="font-display text-3xl md:text-4xl font-bold mb-8">When we are open</h2>
+        <!-- Tabs with no script: each is a radio button, and the checked one shows
+             the panel after it. Same name="" on every tab in one set. -->
+        <div class="tabs tabs-lift">
+          <input type="radio" name="parts-tabs" class="tab text-base" aria-label="Lunch" checked />
+          <div class="tab-content bg-base-100 border-base-content/10 p-6 md:p-8">
+            <ul>
+              <li class="flex items-baseline justify-between gap-6 py-3 border-b border-base-content/10"><span>Thursday and Friday</span><span class="font-semibold">12–2:30pm</span></li>
+              <li class="flex items-baseline justify-between gap-6 py-3 border-b border-base-content/10"><span>Set lunch, two courses</span><span class="font-semibold">$00</span></li>
+              <li class="flex items-baseline justify-between gap-6 py-3 border-b border-base-content/10"><span>Walk-ins</span><span class="font-semibold">Always</span></li>
+            </ul>
+          </div>
+          <input type="radio" name="parts-tabs" class="tab text-base" aria-label="Dinner" />
+          <div class="tab-content bg-base-100 border-base-content/10 p-6 md:p-8">
+            <ul>
+              <li class="flex items-baseline justify-between gap-6 py-3 border-b border-base-content/10"><span>Wednesday to Sunday</span><span class="font-semibold">5–10pm</span></li>
+              <li class="flex items-baseline justify-between gap-6 py-3 border-b border-base-content/10"><span>Last table seated</span><span class="font-semibold">9:15pm</span></li>
+              <li class="flex items-baseline justify-between gap-6 py-3 border-b border-base-content/10"><span>Booking</span><span class="font-semibold">Recommended</span></li>
+            </ul>
+          </div>
+          <input type="radio" name="parts-tabs" class="tab text-base" aria-label="Drinks" />
+          <div class="tab-content bg-base-100 border-base-content/10 p-6 md:p-8">
+            <ul>
+              <li class="flex items-baseline justify-between gap-6 py-3 border-b border-base-content/10"><span>The bar opens</span><span class="font-semibold">4pm</span></li>
+              <li class="flex items-baseline justify-between gap-6 py-3 border-b border-base-content/10"><span>Happy hour</span><span class="font-semibold">4–6pm</span></li>
+              <li class="flex items-baseline justify-between gap-6 py-3 border-b border-base-content/10"><span>Wine by the glass</span><span class="font-semibold">Ask what is open</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: TABS -->
+      <div id="tiers" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">04 · Pricing</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">Three choices side by side, the middle one lifted.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: PRICING -->
+      <section class="max-w-6xl mx-auto px-6 py-12" aria-labelledby="tiers-title">
+        <div class="max-w-2xl mb-14">
+          <h2 id="tiers-title" class="font-display text-3xl md:text-5xl font-bold mb-4">Set menus</h2>
+          <p class="text-lg opacity-80">For a group, a celebration, or a night you do not want to choose. Say what each includes, and the price per person.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          <article class="card bg-base-100 border border-base-content/10 relative">
+            
+            <div class="card-body gap-4">
+              <h3 class="card-title font-display text-2xl">Two courses</h3>
+              <p><span class="font-display text-5xl font-bold">$00</span> <span class="opacity-80">a person</span></p>
+              <p class="opacity-90">A main and either a starter or a dessert.</p>
+              <ul class="space-y-2 my-2">
+              <li class="flex gap-3"><svg class="size-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Any main from the menu</li>
+              <li class="flex gap-3"><svg class="size-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> A glass of house wine</li>
+              <li class="flex gap-3"><svg class="size-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Weekdays only</li>
+              </ul>
+              <a class="btn btn-primary btn-outline mt-auto" href="visit.html#book">Book it</a>
+            </div>
+          </article>
+          <article class="card bg-primary text-primary-content shadow-2xl md:-translate-y-4 relative">
+            <span class="badge badge-neutral absolute -top-3 left-6">Most popular</span>
+            <div class="card-body gap-4">
+              <h3 class="card-title font-display text-2xl">Tasting menu</h3>
+              <p><span class="font-display text-5xl font-bold">$00</span> <span class="opacity-80">a person</span></p>
+              <p class="opacity-90">Six small courses, chosen by the kitchen that day.</p>
+              <ul class="space-y-2 my-2">
+              <li class="flex gap-3"><svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Six courses</li>
+              <li class="flex gap-3"><svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Wine pairing, $00 more</li>
+              <li class="flex gap-3"><svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Tell us what you can't eat</li>
+              </ul>
+              <a class="btn btn-neutral mt-auto" href="visit.html#book">Book the tasting menu</a>
+            </div>
+          </article>
+          <article class="card bg-base-100 border border-base-content/10 relative">
+            
+            <div class="card-body gap-4">
+              <h3 class="card-title font-display text-2xl">The back room</h3>
+              <p><span class="font-display text-5xl font-bold">$00</span> <span class="opacity-80">a person</span></p>
+              <p class="opacity-90">The long table, for eight to twelve.</p>
+              <ul class="space-y-2 my-2">
+              <li class="flex gap-3"><svg class="size-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> A menu planned with you</li>
+              <li class="flex gap-3"><svg class="size-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Your own server</li>
+              <li class="flex gap-3"><svg class="size-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Book two weeks ahead</li>
+              </ul>
+              <a class="btn btn-primary btn-outline mt-auto" href="visit.html#book">Ask about it</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: PRICING -->
+      <div id="team" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">05 · Team</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">People, four across, two on a phone.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: TEAM -->
+      <section class="max-w-6xl mx-auto px-6 py-12" aria-labelledby="team-title">
+        <h2 id="team-title" class="font-display text-3xl md:text-5xl font-bold mb-12 text-center">The people who cook</h2>
+        <!-- Initials until you have photos you may use. Then an <img> with the
+             person's name as its alt replaces the inner div. -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <article class="text-center">
+            <div class="avatar avatar-placeholder mb-4">
+              <div class="bg-primary text-primary-content w-28 rounded-full">
+                <span class="text-3xl font-bold" aria-hidden="true">HC</span>
+              </div>
+            </div>
+            <h3 class="font-display text-xl font-bold">Their name</h3>
+            <p class="text-primary font-semibold text-sm mb-2">Head chef</p>
+            <p class="opacity-80 text-sm">One line: where they cooked before.</p>
+          </article>
+          <article class="text-center">
+            <div class="avatar avatar-placeholder mb-4">
+              <div class="bg-secondary text-secondary-content w-28 rounded-full">
+                <span class="text-3xl font-bold" aria-hidden="true">SC</span>
+              </div>
+            </div>
+            <h3 class="font-display text-xl font-bold">Their name</h3>
+            <p class="text-primary font-semibold text-sm mb-2">Sous chef</p>
+            <p class="opacity-80 text-sm">One line: the dish they are proudest of.</p>
+          </article>
+          <article class="text-center">
+            <div class="avatar avatar-placeholder mb-4">
+              <div class="bg-accent text-accent-content w-28 rounded-full">
+                <span class="text-3xl font-bold" aria-hidden="true">PA</span>
+              </div>
+            </div>
+            <h3 class="font-display text-xl font-bold">Their name</h3>
+            <p class="text-primary font-semibold text-sm mb-2">Pastry</p>
+            <p class="opacity-80 text-sm">One line: what they bake every morning.</p>
+          </article>
+          <article class="text-center">
+            <div class="avatar avatar-placeholder mb-4">
+              <div class="bg-neutral text-neutral-content w-28 rounded-full">
+                <span class="text-3xl font-bold" aria-hidden="true">FH</span>
+              </div>
+            </div>
+            <h3 class="font-display text-xl font-bold">Their name</h3>
+            <p class="text-primary font-semibold text-sm mb-2">Front of house</p>
+            <p class="opacity-80 text-sm">One line: what they want you to feel.</p>
+          </article>
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: TEAM -->
+      <div id="timeline" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">06 · Timeline</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">Dates down the middle, alternating sides; on a phone, one side.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: TIMELINE -->
+      <section class="max-w-4xl mx-auto px-6 py-12" aria-labelledby="timeline-title">
+        <h2 id="timeline-title" class="font-display text-3xl md:text-5xl font-bold mb-12 text-center">How we got here</h2>
+        <ul class="timeline timeline-snap-icon timeline-vertical">
+          <li>
+            
+            <div class="timeline-middle">
+              <span class="block size-4 rounded-full bg-primary" aria-hidden="true"></span>
+            </div>
+            <div class="timeline-start text-end mb-10">
+              <time class="font-mono text-sm opacity-80">20XX</time>
+              <p class="font-display text-xl font-bold">We opened</p>
+              <p class="opacity-80">Where, and with how many tables.</p>
+            </div>
+            <hr />
+          </li>
+          <li>
+            <hr />
+            <div class="timeline-middle">
+              <span class="block size-4 rounded-full bg-primary" aria-hidden="true"></span>
+            </div>
+            <div class="timeline-end mb-10">
+              <time class="font-mono text-sm opacity-80">20XX</time>
+              <p class="font-display text-xl font-bold">The first review</p>
+              <p class="opacity-80">Who wrote it, and the line you framed.</p>
+            </div>
+            <hr />
+          </li>
+          <li>
+            <hr />
+            <div class="timeline-middle">
+              <span class="block size-4 rounded-full bg-primary" aria-hidden="true"></span>
+            </div>
+            <div class="timeline-start text-end mb-10">
+              <time class="font-mono text-sm opacity-80">20XX</time>
+              <p class="font-display text-xl font-bold">The back room</p>
+              <p class="opacity-80">Why you built it.</p>
+            </div>
+            <hr />
+          </li>
+          <li>
+            <hr />
+            <div class="timeline-middle">
+              <span class="block size-4 rounded-full bg-primary" aria-hidden="true"></span>
+            </div>
+            <div class="timeline-end mb-10">
+              <time class="font-mono text-sm opacity-80">Now</time>
+              <p class="font-display text-xl font-bold">What is next</p>
+              <p class="opacity-80">One sentence, honest.</p>
+            </div>
+            
+          </li>
+        </ul>
+      </section>
+      <!-- ==================================================== TO HERE: TIMELINE -->
+      <div id="steps" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">07 · Steps</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">A process in order: across on a wide screen, down on a phone.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: STEPS -->
+      <section class="max-w-6xl mx-auto px-6 py-12" aria-labelledby="steps-title">
+        <h2 id="steps-title" class="font-display text-3xl md:text-5xl font-bold mb-12 text-center">Booking the back room</h2>
+        <ol class="steps steps-vertical md:steps-horizontal w-full">
+          <li class="step step-primary">
+            <span class="block mt-2 font-semibold">Ask</span>
+            <span class="block text-sm opacity-80 max-w-[12rem] mx-auto">A date and how many.</span>
+          </li>
+          <li class="step step-primary">
+            <span class="block mt-2 font-semibold">Plan</span>
+            <span class="block text-sm opacity-80 max-w-[12rem] mx-auto">A menu, by phone or in person.</span>
+          </li>
+          <li class="step step-primary">
+            <span class="block mt-2 font-semibold">Confirm</span>
+            <span class="block text-sm opacity-80 max-w-[12rem] mx-auto">A deposit holds the room.</span>
+          </li>
+          <li class="step step-primary">
+            <span class="block mt-2 font-semibold">Eat</span>
+            <span class="block text-sm opacity-80 max-w-[12rem] mx-auto">Arrive; the table is ready.</span>
+          </li>
+        </ol>
+      </section>
+      <!-- ==================================================== TO HERE: STEPS -->
+      <div id="gallery" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">08 · Photo wall</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">Photos in columns, each keeping its own shape.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: PHOTO WALL -->
+      <section class="max-w-6xl mx-auto px-6 py-12" aria-labelledby="gallery-title">
+        <h2 id="gallery-title" class="font-display text-3xl md:text-5xl font-bold mb-10">From the kitchen</h2>
+        <!-- Columns, not a grid: each photo keeps its own shape, like a pinboard. -->
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
+          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/dish-pasta.jpg" width="900" height="675" loading="lazy" alt="Spaghetti in tomato sauce" />
+          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/kitchen.jpg" width="800" height="1000" loading="lazy" alt="A cook plating seafood" />
+          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille" />
+          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/dish-salmon.jpg" width="900" height="675" loading="lazy" alt="Seared salmon with shrimp" />
+          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/bar.jpg" width="1200" height="900" loading="lazy" alt="The back room set for a group" />
+          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/dish-risotto.jpg" width="900" height="675" loading="lazy" alt="Saffron risotto" />
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: PHOTO WALL -->
+      <div id="cta" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">09 · Call to action on a photo</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">The closing ask, over a picture.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: CALL TO ACTION ON A PHOTO -->
+      <section class="relative overflow-hidden my-12" aria-labelledby="cta-title">
+        <img class="absolute inset-0 size-full object-cover" src="img/dining-room.jpg" width="1920" height="1080" loading="lazy" alt="" />
+        <div class="slide-scrim"></div>
+        <div class="relative max-w-3xl mx-auto px-6 py-24 md:py-32 text-center text-white">
+          <h2 id="cta-title" class="font-display text-4xl md:text-6xl font-bold mb-6">Come and eat</h2>
+          <p class="text-xl mb-10">One sentence. Reservations, walk-ins, or both — say which.</p>
+          <a class="btn btn-primary btn-lg" href="visit.html#book">Book a table</a>
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: CALL TO ACTION ON A PHOTO -->
+      <div id="faq" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">10 · Questions</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">Open one and the others close.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: QUESTIONS -->
+      <section class="max-w-3xl mx-auto px-6 py-12" aria-labelledby="faq-title">
+        <h2 id="faq-title" class="font-display text-3xl md:text-4xl font-bold mb-10">Questions</h2>
+        <div class="space-y-3">
+          <details class="collapse collapse-arrow border border-base-content/10 bg-base-100" name="parts-faq" open>
+            <summary class="collapse-title font-semibold text-lg">Do you take walk-ins?</summary>
+            <div class="collapse-content opacity-80"><p>Say yes, no, or when. Be specific about busy nights.</p></div>
+          </details>
+          <details class="collapse collapse-arrow border border-base-content/10 bg-base-100" name="parts-faq">
+            <summary class="collapse-title font-semibold text-lg">Can you cook for allergies?</summary>
+            <div class="collapse-content opacity-80"><p>Say what you can promise and what you cannot.</p></div>
+          </details>
+          <details class="collapse collapse-arrow border border-base-content/10 bg-base-100" name="parts-faq">
+            <summary class="collapse-title font-semibold text-lg">Is there parking?</summary>
+            <div class="collapse-content opacity-80"><p>Where, how much, and how far to walk.</p></div>
+          </details>
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: QUESTIONS -->
+
+    </main>
+
+    <footer class="bg-base-300 text-base-content">
+      <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <a class="font-display text-2xl font-bold" href="index.html">Bistro<span class="text-primary">.</span></a>
+          <p class="mt-3 opacity-80 max-w-xs">One line that says what this place is. The same idea as the hero, in fewer words.</p>
+          <div class="flex gap-2 mt-5">
+            <!-- A social link needs a name a screen reader can say. The icon is not
+                 one. -->
+            <a class="btn btn-ghost btn-square btn-sm" href="https://www.instagram.com/" aria-label="Instagram"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+            <a class="btn btn-ghost btn-square btn-sm" href="https://www.facebook.com/" aria-label="Facebook"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          </div>
+        </div>
+        <nav aria-label="Footer">
+          <h2 class="footer-title">Pages</h2>
+          <ul class="space-y-2">
+            <li><a class="link link-hover" href="index.html">Home</a></li>
+            <li><a class="link link-hover" href="menu.html">Menu</a></li>
+            <li><a class="link link-hover" href="visit.html">Visit</a></li>
+            <li><a class="link link-hover" href="visit.html#book">Book a table</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="footer-title">Find us</h2>
+          <address class="not-italic space-y-2">
+            <p>123 Your Street, Your City</p>
+            <p><a class="link link-hover" href="tel:+12165550100">(216) 555-0100</a></p>
+            <p><a class="link link-hover" href="mailto:hello@example.com">hello@example.com</a></p>
+            <p class="opacity-80">Wed–Sun, 5–10pm</p>
+          </address>
+        </div>
+        <!-- THE NEWSLETTER says thank you without sending (data-demo). Point action
+             at a real service and delete data-demo, or delete this block. -->
+        <form data-demo>
+          <h2 class="footer-title">The weekly menu, by email</h2>
+          <label class="sr-only" for="news-email">Email address</label>
+          <div class="join w-full">
+            <input class="input join-item w-full" type="email" id="news-email" name="email" required autocomplete="email" placeholder="you@example.com" />
+            <button class="btn btn-primary join-item" type="submit">Sign up</button>
+          </div>
+          <p class="text-sm opacity-80 mt-2">One email a week. Nothing else.</p>
+          <p data-sent hidden role="status" tabindex="-1" class="text-sm mt-2 font-semibold">Thanks — you are on the list.</p>
+        </form>
+      </div>
+
+      <!-- CREDITS: creator, source, license and changes for every borrowed thing.
+           Swap a picture, swap its line. Can't write the line? Don't use it. -->
+      <div class="border-t border-base-content/10">
+        <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row md:items-start md:justify-between gap-4 text-sm">
+          <p class="opacity-80">© <span data-year>20XX</span> Your restaurant. Built with daisyUI and Tailwind CSS; icons by Lucide.</p>
+          <details class="md:max-w-xl">
+            <summary class="cursor-pointer link link-hover opacity-80">Photo and video credits</summary>
+            <ul class="mt-3 space-y-1 opacity-80">
+              <li>Hero video: <a class="link" href="https://studio.blender.org/projects/spring/"><em>Spring</em></a> by Blender Studio, <a class="link" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Clipped to 5:38–6:50.</li>
+              <li>Dining room: <a class="link" href="https://commons.wikimedia.org/wiki/File:Restaurant_in_Place_D%27Youville,_Quebec_City.jpg">Wilfredor</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Cropped.</li>
+              <li>Pasta: <a class="link" href="https://commons.wikimedia.org/wiki/File:Spaghetti_dish.jpg">jeuwre</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Cropped.</li>
+              <li>Salmon: <a class="link" href="https://commons.wikimedia.org/wiki/File:DSCF0412_Seared_salmon_fillet_topped_with_saut%C3%A9ed_shrimp_served_with_creamed_spinach_and_a_side_salad.jpg">PattayaPatrol</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Risotto: <a class="link" href="https://commons.wikimedia.org/wiki/File:Saffron_risotto_at_Deliberi_Jumbo.jpg">JIP</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Kitchen: <a class="link" href="https://commons.wikimedia.org/wiki/File:Chef_plating.jpg">stu_spivack</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>. Cropped.</li>
+              <li>Back room: <a class="link" href="https://commons.wikimedia.org/wiki/File:Le_Brazier_Wine_Bar_-_salle.jpg">Benoît Prieur</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Cropped.</li>
+              <li>Dessert: <a class="link" href="https://commons.wikimedia.org/wiki/File:Restaurant_-_Dessert_(millefeuilles).jpg">Gzen92</a>, Wikimedia Commons, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Cropped.</li>
+              <li>Map: © <a class="link" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/site.js"></script>
+  </body>
+</html>
