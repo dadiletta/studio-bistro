@@ -24,7 +24,7 @@
   <body class="bg-base-100 text-base-content">
     <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
 
-    <nav class="navbar bg-base-100/85 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
+    <nav data-sticky-nav class="navbar bg-base-100/90 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
       <div class="navbar-start">
         <a class="font-display text-2xl font-bold tracking-tight" href="index.html">
           Bistro<span class="text-primary">.</span>
@@ -48,18 +48,27 @@
       </div>
     </nav>
 
-    <header class="bg-base-200 py-16 md:py-24 border-b border-base-content/10">
-      <div class="max-w-6xl mx-auto px-6">
-        <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Hours · Directions · Booking</p>
+    <!-- A page header on a photo, like the menu's. alt="" and white words. -->
+    <header class="page-hero relative overflow-hidden bg-neutral text-white">
+      <img class="absolute inset-0 size-full object-cover" src="img/dining-room.jpg" width="1920" height="1080" fetchpriority="high" alt="" />
+      <div class="slide-scrim"></div>
+      <div class="hero-rise relative max-w-6xl mx-auto px-6 py-20 md:py-28">
+        <nav class="breadcrumbs text-sm mb-4" aria-label="Breadcrumb">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><span aria-current="page">Visit</span></li>
+          </ul>
+        </nav>
+        <p class="eyebrow font-bold uppercase tracking-widest text-xs mb-3">Hours · Directions · Booking</p>
         <h1 class="font-display text-5xl md:text-7xl font-bold mb-4">Visit</h1>
-        <p class="text-lg opacity-80 max-w-xl">Where we are, when we are open, and how to get a table.</p>
+        <p class="text-lg max-w-xl">Where we are, when we are open, and how to get a table.</p>
       </div>
     </header>
 
     <main id="main" class="max-w-6xl mx-auto px-6 py-16 md:py-24">
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
         <div class="lg:col-span-3 space-y-14">
-          <section>
+          <section data-reveal>
             <h2 class="font-display text-3xl font-bold mb-6">Hours</h2>
             <!-- A table, because this IS tabular data: two columns, related rows. -->
             <table class="table text-base">
@@ -85,7 +94,7 @@
             </table>
           </section>
 
-          <section id="getting-here">
+          <section id="getting-here" data-reveal>
             <h2 class="font-display text-3xl font-bold mb-6">Getting here</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
               <address class="not-italic leading-relaxed text-lg">
@@ -130,7 +139,7 @@
         <!-- ============================================================ THE FORM
              Keep its shape: a <label for> on every input. Not sending yet
              (data-demo): add an action, delete data-demo, test it with your email. -->
-        <section id="book" class="lg:col-span-2 card bg-base-200 shadow-xl lg:sticky lg:top-24">
+        <section id="book" class="lg:col-span-2 card bg-base-200 shadow-xl lg:sticky lg:top-24" data-reveal="right">
           <form class="card-body gap-4" data-demo>
             <h2 class="card-title font-display text-3xl">Book a table</h2>
             <p class="opacity-80 -mt-2">Parties of seven or more, call us instead.</p>
@@ -189,7 +198,7 @@
 
       <!-- ============================================================ FAQ
            The questions people actually phone to ask. -->
-      <section class="max-w-3xl mt-24">
+      <section class="max-w-3xl mt-24" data-reveal>
         <h2 class="font-display text-3xl font-bold mb-8">Before you come</h2>
         <div class="space-y-3">
           <details class="collapse collapse-arrow bg-base-200" name="faq" open>
@@ -278,6 +287,9 @@
         </div>
       </div>
     </footer>
+
+    <!-- BACK TO TOP: hidden until js/site.js shows it, once you have scrolled. -->
+    <a class="to-top" href="#top" data-to-top hidden aria-label="Back to top"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></a>
 
     <script src="js/site.js"></script>
   </body>

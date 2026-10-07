@@ -29,11 +29,11 @@
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <!-- THEME: data-theme on <html>, in all three pages. Try sunset, night, autumn.
+    <!-- THEME: data-theme on <html>, in every page. Try sunset, night, autumn.
          THE NAV is on each page twice, wide and phone: change one, change all. -->
     <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
 
-    <nav class="navbar bg-base-100/85 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
+    <nav data-sticky-nav class="navbar bg-base-100/90 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
       <div class="navbar-start">
         <a class="font-display text-2xl font-bold tracking-tight" href="index.html">
           Bistro<span class="text-primary">.</span>
@@ -66,7 +66,9 @@
       <div class="hero-scrim"></div>
 
       <div class="relative z-10 self-center px-6 py-24 md:py-32 w-full">
-        <div class="max-w-5xl mx-auto text-center text-white">
+        <!-- .hero-rise: the words below rise in, one after another, as the page
+             opens. -->
+        <div class="hero-rise max-w-5xl mx-auto text-center text-white">
           <p class="inline-flex items-center gap-2 rounded-full bg-black/50 px-4 py-1.5 text-sm font-semibold tracking-wide mb-8">
             <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Open Wednesday to Sunday
           </p>
@@ -85,6 +87,9 @@
           </div>
         </div>
       </div>
+
+      <!-- The scroll cue: a nudge toward the rest of the page, on wide screens. -->
+      <a class="hero-cue hidden md:grid place-items-center size-11 rounded-full border border-white/60 hover:bg-white/10" href="#main" aria-label="Scroll down"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
     </header>
 
     <main id="main">
@@ -92,23 +97,23 @@
            The three things a hungry person came to find. Keep them above everything
            else. -->
       <section class="bg-base-200 border-b border-base-content/10" aria-label="Hours and location">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-base-content/10">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-current/10">
           <div class="flex items-center gap-4 px-6 py-7">
-            <span class="grid place-items-center size-11 rounded-full bg-primary/15 text-primary shrink-0"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <span class="grid place-items-center size-11 rounded-full bg-primary/10 text-primary shrink-0"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
             <div>
               <h2 class="text-xs font-bold uppercase tracking-widest opacity-80">Hours</h2>
               <p class="text-lg">Wed–Sun, 5–10pm</p>
             </div>
           </div>
           <div class="flex items-center gap-4 px-6 py-7">
-            <span class="grid place-items-center size-11 rounded-full bg-primary/15 text-primary shrink-0"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="grid place-items-center size-11 rounded-full bg-primary/10 text-primary shrink-0"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
             <div>
               <h2 class="text-xs font-bold uppercase tracking-widest opacity-80">Find us</h2>
               <p class="text-lg"><a class="link link-hover" href="visit.html#getting-here">123 Your Street, Your City</a></p>
             </div>
           </div>
           <div class="flex items-center gap-4 px-6 py-7">
-            <span class="grid place-items-center size-11 rounded-full bg-primary/15 text-primary shrink-0"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg></span>
+            <span class="grid place-items-center size-11 rounded-full bg-primary/10 text-primary shrink-0"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg></span>
             <div>
               <h2 class="text-xs font-bold uppercase tracking-widest opacity-80">Call</h2>
               <!-- tel: makes this tap-to-call on a phone. Use it. -->
@@ -122,9 +127,9 @@
            Three, and parallel: if one has a photo, they all do. Every <img> keeps
            its width and height, so the page doesn't jump while pictures load. -->
       <section id="dishes" class="px-6 py-20 md:py-28 max-w-6xl mx-auto">
-        <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-12" data-reveal>
           <div class="max-w-2xl">
-            <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">This week</p>
+            <p class="eyebrow text-primary font-bold uppercase tracking-widest text-xs mb-3">This week</p>
             <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">What we are cooking</h2>
             <p class="text-lg opacity-80">Two sentences of context. What changed on the menu, and why.</p>
           </div>
@@ -132,8 +137,9 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- alt says what the image is FOR. Then credit it in the footer. -->
-          <article class="card bg-base-200 shadow-lg overflow-hidden group">
+          <!-- alt says what the image is FOR. Then credit it in the footer.
+               data-reveal fades each card up as it scrolls into view. -->
+          <article class="card bg-base-200 shadow-lg overflow-hidden group transition duration-300 hover:-translate-y-1 hover:shadow-2xl" data-reveal>
             <figure class="aspect-[4/3] overflow-hidden">
               <img class="size-full object-cover transition duration-500 group-hover:scale-105" src="img/dish-pasta.jpg" width="900" height="675" loading="lazy" alt="Spaghetti in tomato sauce under rocket and shaved cheese" />
             </figure>
@@ -149,7 +155,7 @@
             </div>
           </article>
 
-          <article class="card bg-base-200 shadow-lg overflow-hidden group">
+          <article class="card bg-base-200 shadow-lg overflow-hidden group transition duration-300 hover:-translate-y-1 hover:shadow-2xl" data-reveal>
             <figure class="aspect-[4/3] overflow-hidden">
               <img class="size-full object-cover transition duration-500 group-hover:scale-105" src="img/dish-salmon.jpg" width="900" height="675" loading="lazy" alt="Seared salmon topped with shrimp, beside creamed spinach" />
             </figure>
@@ -165,7 +171,7 @@
             </div>
           </article>
 
-          <article class="card bg-base-200 shadow-lg overflow-hidden group">
+          <article class="card bg-base-200 shadow-lg overflow-hidden group transition duration-300 hover:-translate-y-1 hover:shadow-2xl" data-reveal>
             <figure class="aspect-[4/3] overflow-hidden">
               <img class="size-full object-cover transition duration-500 group-hover:scale-105" src="img/dish-risotto.jpg" width="900" height="675" loading="lazy" alt="Saffron risotto with greens in a black cast-iron dish" />
             </figure>
@@ -187,8 +193,8 @@
            Text one side, picture the other. On a phone the text comes first. -->
       <section class="bg-base-200">
         <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <div>
-            <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Since 20XX</p>
+          <div data-reveal="left">
+            <p class="eyebrow text-primary font-bold uppercase tracking-widest text-xs mb-3">Since 20XX</p>
             <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">The part only you can write</h2>
             <p class="opacity-80 mb-4 text-lg">
               A paragraph about the people, not the ambience. Who cooks here, what
@@ -198,23 +204,24 @@
               A second paragraph, shorter. End on something specific: a supplier, a
               grandmother, a piece of equipment nobody else has.
             </p>
-            <!-- Three numbers you can defend, or delete this. -->
+            <!-- Three numbers you can defend, or delete this. data-count makes
+                 each one count up to itself the first time it is seen. -->
             <dl class="grid grid-cols-3 gap-4 border-t border-base-content/10 pt-6">
               <div>
                 <dt class="text-sm opacity-80">Years open</dt>
-                <dd class="font-display text-3xl font-bold text-primary">00</dd>
+                <dd class="font-display text-3xl font-bold text-primary" data-count>00</dd>
               </div>
               <div>
                 <dt class="text-sm opacity-80">Local farms</dt>
-                <dd class="font-display text-3xl font-bold text-primary">00</dd>
+                <dd class="font-display text-3xl font-bold text-primary" data-count>00</dd>
               </div>
               <div>
                 <dt class="text-sm opacity-80">Seats</dt>
-                <dd class="font-display text-3xl font-bold text-primary">00</dd>
+                <dd class="font-display text-3xl font-bold text-primary" data-count>00</dd>
               </div>
             </dl>
           </div>
-          <figure class="relative">
+          <figure class="relative" data-reveal="right">
             <img class="rounded-box shadow-2xl w-full aspect-[4/5] object-cover" src="img/kitchen.jpg" width="800" height="1000" loading="lazy" alt="A cook plating seafood on the pass in a small, busy kitchen" />
             <!-- The caption crosses the picture's edge on purpose. Keep the
                  overlap. -->
@@ -231,9 +238,9 @@
            remove or reorder them. js/site.js adds the arrows and the dots. -->
       <section class="py-20 md:py-28" aria-labelledby="room-title">
         <div class="max-w-6xl mx-auto px-6" data-carousel>
-          <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
+          <div class="flex flex-wrap items-end justify-between gap-6 mb-10" data-reveal>
             <div class="max-w-2xl">
-              <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Inside</p>
+              <p class="eyebrow text-primary font-bold uppercase tracking-widest text-xs mb-3">Inside</p>
               <h2 id="room-title" class="font-display text-4xl md:text-5xl font-bold mb-4">A look around the room</h2>
               <p class="text-lg opacity-80">Two sentences. What it feels like to sit here, and what you would notice first.</p>
             </div>
@@ -275,16 +282,16 @@
       <!-- ============================================================ PRIVATE
            The second reason to visit. No events? Make it yours, or delete it. -->
       <section class="max-w-6xl mx-auto px-6 pt-28 pb-20 md:py-28 grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
-        <div class="md:col-span-3 grid grid-cols-2 gap-4">
+        <div class="md:col-span-3 grid grid-cols-2 gap-4" data-reveal="left">
           <img class="rounded-box col-span-2 aspect-[16/9] w-full object-cover shadow-lg" src="img/bar.jpg" width="1200" height="900" loading="lazy" alt="The back room: one long table set for a group, lined with wine racks" />
           <img class="rounded-box aspect-square w-full object-cover shadow-lg" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille with a scoop of ice cream" />
           <div class="rounded-box aspect-square bg-primary text-primary-content p-6 flex flex-col justify-end">
-            <p class="font-display text-4xl font-bold">00</p>
+            <p class="font-display text-4xl font-bold" data-count>00</p>
             <p>guests at one table</p>
           </div>
         </div>
-        <div class="md:col-span-2">
-          <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Private dining</p>
+        <div class="md:col-span-2" data-reveal="right">
+          <p class="eyebrow text-primary font-bold uppercase tracking-widest text-xs mb-3">Private dining</p>
           <h2 class="font-display text-4xl font-bold mb-6">The back room</h2>
           <p class="opacity-80 mb-6">Who it is for, how many it seats, and what you need to know to ask for it.</p>
           <ul class="space-y-3 mb-8">
@@ -299,7 +306,7 @@
       <!-- ============================================================ QUOTE
            One real review with a name on it. -->
       <section class="bg-base-200 px-6 py-20 md:py-28">
-        <figure class="max-w-3xl mx-auto text-center">
+        <figure class="max-w-3xl mx-auto text-center" data-reveal="zoom">
           <span class="inline-block text-primary mb-6"><svg class="size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span>
           <blockquote>
             <p class="font-display text-3xl md:text-4xl italic leading-snug mb-6">
@@ -313,7 +320,7 @@
       <!-- ============================================================ THE ASK
            The same ask as the hero, not a new one. -->
     <section class="bg-primary text-primary-content px-6 py-20 md:py-24">
-      <div class="max-w-3xl mx-auto text-center">
+      <div class="max-w-3xl mx-auto text-center" data-reveal>
         <h2 class="font-display text-3xl md:text-5xl font-bold mb-6">Come and eat</h2>
         <p class="mb-8 text-lg">One sentence. Reservations, walk-ins, or both — say which.</p>
         <a class="btn btn-lg btn-neutral" href="visit.html#book">Book a table</a>
@@ -387,6 +394,9 @@
         </div>
       </div>
     </footer>
+
+    <!-- BACK TO TOP: hidden until js/site.js shows it, once you have scrolled. -->
+    <a class="to-top" href="#top" data-to-top hidden aria-label="Back to top"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></a>
 
     <script src="js/site.js"></script>
     <script src="js/hero-video.js"></script>

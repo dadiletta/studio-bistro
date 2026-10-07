@@ -24,7 +24,7 @@
   <body class="bg-base-100 text-base-content">
     <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
 
-    <nav class="navbar bg-base-100/85 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
+    <nav data-sticky-nav class="navbar bg-base-100/90 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
       <div class="navbar-start">
         <a class="font-display text-2xl font-bold tracking-tight" href="index.html">
           Bistro<span class="text-primary">.</span>
@@ -48,18 +48,28 @@
       </div>
     </nav>
 
-    <!-- A page header, not a second hero: only the home page gets the big
-         treatment. -->
-    <header class="bg-base-200 py-16 md:py-24 border-b border-base-content/10">
-      <div class="max-w-4xl mx-auto px-6">
-        <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Changes weekly</p>
+    <!-- A page header on a photo, shorter than the home page's hero: only the
+         home page gets the big treatment. The photo is decoration, so alt="";
+         the words stay white on the scrim. Swap the photo, keep the scrim. -->
+    <header class="page-hero relative overflow-hidden bg-neutral text-white">
+      <img class="absolute inset-0 size-full object-cover" src="img/kitchen-wide.jpg" width="1920" height="1080" fetchpriority="high" alt="" />
+      <div class="slide-scrim"></div>
+      <div class="hero-rise relative max-w-4xl mx-auto px-6 py-20 md:py-28">
+        <nav class="breadcrumbs text-sm mb-4" aria-label="Breadcrumb">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><span aria-current="page">Menu</span></li>
+          </ul>
+        </nav>
+        <p class="eyebrow font-bold uppercase tracking-widest text-xs mb-3">Changes weekly</p>
         <h1 class="font-display text-5xl md:text-7xl font-bold mb-4">Menu</h1>
-        <p class="text-lg opacity-80 max-w-xl">One sentence: how often it changes, and what decides it.</p>
+        <p class="text-lg max-w-xl">One sentence: how often it changes, and what decides it.</p>
       </div>
     </header>
 
-    <!-- Jump links: they stick under the navbar, and scroll sideways on a phone. -->
-    <nav class="menu-jump sticky top-16 z-20 bg-base-100/90 backdrop-blur border-b border-base-content/10" aria-label="Menu sections">
+    <!-- Jump links: they stick under the navbar, scroll sideways on a phone, and
+         underline the course on screen (data-spy). -->
+    <nav data-spy class="menu-jump sticky top-16 z-20 bg-base-100/90 backdrop-blur border-b border-base-content/10" aria-label="Menu sections">
       <ul class="max-w-4xl mx-auto px-6 flex gap-6 overflow-x-auto whitespace-nowrap py-3 text-sm font-semibold">
         <li><a class="link link-hover" href="#starters">To start</a></li>
         <li><a class="link link-hover" href="#mains">Mains</a></li>
@@ -81,10 +91,10 @@
 
       <!-- A menu is a description list: <dt> the dish, then a <dd> for its
            price and one for its description. The dotted leader is in styles.css. -->
-      <section id="starters" class="mb-16">
+      <section id="starters" class="mb-16" data-reveal>
         <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">To start</h2>
         <p class="opacity-80 mb-6">One line about this course, or delete this line.</p>
-        <dl class="divide-y divide-base-content/10">
+        <dl class="divide-y divide-current/10">
           <div class="menu-item">
             <dt><span class="font-bold text-lg">First plate</span></dt>
             <dd class="price">$00</dd>
@@ -103,10 +113,10 @@
         </dl>
       </section>
 
-      <section id="mains" class="mb-16">
+      <section id="mains" class="mb-16" data-reveal>
         <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">Mains</h2>
         <p class="opacity-80 mb-6">One line about this course, or delete this line.</p>
-        <dl class="divide-y divide-base-content/10">
+        <dl class="divide-y divide-current/10">
           <div class="menu-item">
             <dt><span class="font-bold text-lg">First main</span> <span class="badge badge-outline badge-sm gap-1 ml-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg> Chef's pick</span></dt>
             <dd class="price">$00</dd>
@@ -131,20 +141,20 @@
       </section>
 
       <!-- One featured item gets a photograph. Only one. -->
-      <section id="desserts" class="mb-16">
+      <section id="desserts" class="mb-16" data-reveal>
         <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Desserts</h2>
         <article class="card md:card-side bg-base-200 overflow-hidden mb-6">
           <figure class="md:w-2/5 shrink-0">
             <img class="size-full object-cover aspect-[4/3]" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille with a scoop of ice cream" />
           </figure>
           <div class="card-body">
-            <p class="text-primary font-bold uppercase tracking-widest text-xs">Worth saving room for</p>
+            <p class="eyebrow text-primary font-bold uppercase tracking-widest text-xs">Worth saving room for</p>
             <h3 class="card-title font-display text-2xl">The dessert people come back for</h3>
             <p class="opacity-80">Two sentences. What it is, and why it is the one.</p>
             <p class="font-bold text-primary text-lg">$00</p>
           </div>
         </article>
-        <dl class="divide-y divide-base-content/10">
+        <dl class="divide-y divide-current/10">
           <div class="menu-item">
             <dt><span class="font-bold text-lg">Second dessert</span></dt>
             <dd class="price">$00</dd>
@@ -158,12 +168,12 @@
         </dl>
       </section>
 
-      <section id="drinks" class="mb-16">
+      <section id="drinks" class="mb-16" data-reveal>
         <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Drinks</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12">
           <div>
             <h3 class="flex items-center gap-2 font-bold uppercase tracking-widest text-xs opacity-80 mb-2"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/></svg> By the glass</h3>
-            <dl class="divide-y divide-base-content/10">
+            <dl class="divide-y divide-current/10">
               <div class="menu-item"><dt>A red</dt><dd class="price">$00</dd></div>
               <div class="menu-item"><dt>A white</dt><dd class="price">$00</dd></div>
               <div class="menu-item"><dt>Something sparkling</dt><dd class="price">$00</dd></div>
@@ -171,7 +181,7 @@
           </div>
           <div>
             <h3 class="flex items-center gap-2 font-bold uppercase tracking-widest text-xs opacity-80 mb-2 mt-8 sm:mt-0"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg> Without alcohol</h3>
-            <dl class="divide-y divide-base-content/10">
+            <dl class="divide-y divide-current/10">
               <div class="menu-item"><dt>House lemonade</dt><dd class="price">$00</dd></div>
               <div class="menu-item"><dt>Coffee</dt><dd class="price">$00</dd></div>
               <div class="menu-item"><dt>Tea</dt><dd class="price">$00</dd></div>
@@ -181,7 +191,7 @@
       </section>
 
       <!-- The allergen line stays. Make it true for your restaurant. -->
-      <div role="note" class="alert bg-base-200 border border-base-content/10">
+      <div role="note" class="alert bg-base-200 border border-base-content/10" data-reveal>
         <svg class="size-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/></svg>
         <span>Tell us about allergies when you book and we will tell you what we can do. Replace this with what is actually true here.</span>
       </div>
@@ -189,7 +199,7 @@
 
     <section class="bg-primary text-primary-content px-6 py-20 md:py-24">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="font-display text-3xl md:text-5xl font-bold mb-6">Hungry now?</h2>
+        <h2 class="font-display text-3xl md:text-5xl font-bold mb-6" data-reveal>Hungry now?</h2>
         <p class="mb-8 text-lg">One sentence. Reservations, walk-ins, or both — say which.</p>
         <a class="btn btn-lg btn-neutral" href="visit.html#book">Book a table</a>
       </div>
@@ -261,6 +271,9 @@
         </div>
       </div>
     </footer>
+
+    <!-- BACK TO TOP: hidden until js/site.js shows it, once you have scrolled. -->
+    <a class="to-top" href="#top" data-to-top hidden aria-label="Back to top"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></a>
 
     <script src="js/site.js"></script>
   </body>

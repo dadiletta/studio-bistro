@@ -1,9 +1,11 @@
 # Bistro — a Studio starter
 
 A three-page restaurant site with a **YouTube background hero**, real
-photography, a menu marked up as one, and a booking form built properly. Not a
-finished template you recolor — a professional structure you make yours, and
-can defend every choice in.
+photography, a menu marked up as one, and a booking form built properly — with
+the finish of a template you would pay for: photos that open large, sections
+that rise into view, numbers that count, a back-to-top button that fills as you
+read. Not a finished template you recolor — a professional structure you make
+yours, and can defend every choice in.
 
 **See it running: <https://dadiletta.github.io/studio-bistro/>** — that page is
 built from this branch, so it is exactly what you get when you copy it.
@@ -14,12 +16,13 @@ team handed a real structure builds one.
 ```
 index.html         hero (video) · hours · dishes · story · photo carousel · private dining · quote · call to action
 index-2.html       another home: the nav over a photo slider. Keep one home
-elements.html      the parts page: copy what you want, then delete it
-menu.html          jump links · dietary badges · a real menu with dotted leaders · print button
-visit.html         hours · map · getting here · a booking form built properly · FAQ
-styles.css         your palette, your type, the hero video, the menu's leaders, print rules, the carousels, the nav over the hero
+elements.html      the parts page, seventeen parts: copy what you want, then delete it
+menu.html          a photo header · jump links that follow you · dietary badges · a real menu with dotted leaders · print button
+visit.html         a photo header · hours · map · getting here · a booking form built properly · FAQ
+404.html           the page GitHub Pages shows for an address that does not exist
+styles.css         your palette, your type, the hero video, the menu's leaders, the carousels, the nav over the hero, the motion, the lightbox, print rules
 js/hero-video.js   the video, and what happens when YouTube is blocked
-js/site.js         the phone menu, the footer year, the demo forms, the carousels, the nav over the hero
+js/site.js         the phone menu, the footer year, the demo forms, the carousels, the nav over the hero, and the effects
 img/               the photographs, and favicon.svg (the icon in the browser tab)
 AGENTS.md          what AI help may and may not do on this project
 ```
@@ -33,7 +36,7 @@ AGENTS.md          what AI help may and may not do on this project
    and go back to work.
 2. Open `index.html` with **Live Server** — the **Go Live** button in the status
    bar. Not by double-clicking: see Unit 4 for why `file://` is not a website.
-3. Change `data-theme="coffee"` on the `<html>` tag — **in all three pages**. Do
+3. Change `data-theme="coffee"` on the `<html>` tag — **in every page**. Do
    this first. It takes five seconds and it is the fastest way to find the mood
    you want. Try `sunset`, `night`, `autumn`, `luxury`, `dracula`,
    `caramellatte`, `retro`. All 35 are at
@@ -65,6 +68,14 @@ AGENTS.md          what AI help may and may not do on this project
   `styles.css` that drop the navbar and the colors.
 - **A skip link**, the first thing a keyboard user reaches. Press Tab on any
   page to see it.
+- **Photo headers with breadcrumbs** on the menu and visit pages: shorter than
+  the home page's hero, on the same measured scrim.
+- **The finish.** Sections fade up as they scroll into view, numbers count up,
+  photos open large in a lightbox, the menu's jump links follow you down the
+  page, and a back-to-top button fills its ring as you read. See
+  [The effects](#the-effects) for how each one works and how to turn it off.
+- **A 404 page.** GitHub Pages shows `404.html` for any address on your site
+  that does not exist. Make its words yours, like every other page's.
 
 ## Two home pages and a box of parts
 
@@ -77,8 +88,11 @@ This one does too.
   <https://dadiletta.github.io/studio-bistro/index-2.html>. **Keep one home, not both**: delete the other and name
   the keeper `index.html`.
 - **`elements.html`** is the parts page: a photo slider, a quote carousel,
-  tabs, pricing, a team, a timeline, steps, a photo wall, a call to action on a
-  photo, and questions. Its nav is a part too, the centered one. See it at
+  tabs, pricing, a team, a timeline, steps, a photo wall that opens in a
+  lightbox, a call to action on a photo, questions, numbers that count, events,
+  a menu with photos, a press strip, a video that plays in a lightbox, an
+  Instagram grid, and a top bar for above the nav. Its nav is a part too, the
+  centered one. See it at
   <https://dadiletta.github.io/studio-bistro/elements.html>. Each part sits between a `COPY FROM HERE` and a
   `TO HERE` comment: copy what you want into your pages, then **delete
   `elements.html`** before you hand in. Nothing links to it.
@@ -97,6 +111,30 @@ A slider that turns by itself has to stop for people: it holds while the
 pointer or the keyboard is on it, it has a pause button, and for anyone whose
 computer asks for less motion it never turns at all. Keep all three. Add or
 remove slides freely; every slide is one element inside the `carousel`.
+
+## The effects
+
+Every effect is switched on by an attribute or a class in the HTML, and every
+one of them is extra: delete the attribute and the element simply sits there,
+finished. `js/site.js` runs them, one numbered job each, and nothing on the
+page waits for it — with the script blocked, nothing is hidden, and a photo
+link just opens the photo. For anyone whose computer asks for less motion,
+nothing moves at all. Keep that true for anything you add.
+
+| Put this on an element | And it |
+| --- | --- |
+| `data-reveal` | fades up as it scrolls into view, once. `data-reveal="left"`, `"right"` or `"zoom"` change how it arrives. Several arriving together come in one after another. |
+| `data-count` | counts up to the number in its own text: `12`, `1,200` and `40+` all work. `00` stays `00`. |
+| `data-lightbox` | on a block of photo links, opens each photo large over the page, with arrows, the arrow keys and Escape. Each link's `href` is the big photo. |
+| `data-video-popup` | on a link to a YouTube video, plays it over the page. `&t=90` in the link starts it 90 seconds in. Credit the video like a photo. |
+| `class="hero-rise"` | on the block that holds the hero's words, raises each child in, one after another, as the page opens. |
+| `class="eyebrow"` | on the small label over a heading, adds the short rule before it (and after it, in a centered block). |
+| `data-spy` | on the menu's jump links, underlines the course on screen. |
+| `data-sticky-nav` | on the sticky nav, adds a shadow once the page scrolls under it. |
+| `data-to-top` | is the back-to-top button at the bottom of every page. |
+
+Use them where they help somebody read, not everywhere. A page where every
+paragraph slides in is a page that makes people wait.
 
 ## How the video hero works
 
@@ -133,11 +171,12 @@ an `action`, delete `data-demo`, and test it with your own email.
 
 ## Things that will bite you
 
-- **The three pages must match.** Theme, nav, footer, fonts, credits. A site
-  that restyles itself between clicks reads as broken. This is the real cost of
-  plain HTML, and Unit 8's build step is the fix.
+- **The pages must match.** Theme, nav, footer, fonts, credits, on every page,
+  `404.html` included. A site that restyles itself between clicks reads as
+  broken. This is the real cost of plain HTML, and Unit 8's build step is the
+  fix.
 - **The nav is in there twice** on every page — a row of links for wide screens
-  and the phone dropdown. Add a page, add it to both, on all three pages.
+  and the phone dropdown. Add a page, add it to both, on every page.
 - **Deleting structure to "simplify".** `card-body` inside `card`,
   `collapse-title` inside `collapse` — these look like extra wrappers and are
   not. Remove one and the component stops laying out.
@@ -149,6 +188,11 @@ an `action`, delete `data-demo`, and test it with your own email.
   — 4.5:1, or 3:1 for large headings.
   Muted text (`opacity-80`) is the first thing to fail on a new theme. Measure
   again after you switch.
+- **daisyUI's colors come in steps of ten.** `bg-primary/10`, `/20` … `/90`
+  work; `bg-primary/15` or `bg-base-100/85` silently does nothing, and the
+  element shows through or picks up a color you did not choose. Lines between
+  list items (`divide-y`) have no daisyUI color at all: use `divide-current/10`,
+  which is the text color at 10%.
 - **The sticky navbar covering your anchors.** Handled by `scroll-margin-top` in
   `styles.css`. Change the navbar's height, change that number.
 - **Big photographs.** A photo straight off a phone is 4 MB. The ones here are
@@ -161,7 +205,7 @@ Tick this yourself first — auditing a page against a written spec is a graded
 skill in its own right (`WD3.B`), and it is much better to find these than to
 have them found.
 
-- [ ] Every placeholder is gone. Search all three files for `Your`, `00`, `20XX`,
+- [ ] Every placeholder is gone. Search every HTML file for `Your`, `00`, `20XX`,
       `Their name` and `______`.
 - [ ] Every section is the element it should be — `nav`, `header`, `main`,
       `footer`, `article` — not a `div` wearing a class.

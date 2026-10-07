@@ -37,6 +37,46 @@ body {
   font-optical-sizing: auto;
 }
 
+/* Headings break into lines of even length instead of leaving one word on its
+ * own; paragraphs avoid a lonely last word. Older browsers just ignore these. */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+p,
+li,
+dd,
+figcaption,
+blockquote {
+  text-wrap: pretty;
+}
+
+/* Selected text, in your colors. */
+::selection {
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+}
+
+/* The small label over a heading ("This week", "Inside"): a short rule leads it
+ * in, and inside a centered block a second rule closes it. */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow::before,
+.text-center .eyebrow::after {
+  content: '';
+  flex: none;
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+}
+.text-center .eyebrow {
+  justify-content: center;
+}
+
 /* ============================================================ HERO VIDEO
  *
  * Load-bearing. js/hero-video.js decides when the video shows; these rules place it. */
@@ -95,6 +135,45 @@ body {
   background: linear-gradient(to bottom, rgb(0 0 0 / 0.7), rgb(0 0 0 / 0.65) 45%, rgb(0 0 0 / 0.85));
 }
 
+/* The hero's words rise in once, one after another, as the page opens. Put
+ * .hero-rise on the block that holds them; each child is one step. */
+.hero-rise > * {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero-rise > :nth-child(2) {
+  animation-delay: 0.12s;
+}
+.hero-rise > :nth-child(3) {
+  animation-delay: 0.24s;
+}
+.hero-rise > :nth-child(4) {
+  animation-delay: 0.36s;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+}
+
+/* The scroll cue at the foot of the hero: a nudge, not a second button. */
+.hero-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 1.75rem;
+  z-index: 10;
+  translate: -50% 0;
+  color: #fff;
+}
+.hero-cue svg {
+  animation: nudge 2.4s ease-in-out infinite;
+}
+@keyframes nudge {
+  50% {
+    transform: translateY(0.45rem);
+  }
+}
+
 /* ============================================================ THE MENU
  *
  * Name, dotted leader, price, like a printed menu. The leader is the dt's ::after. */
@@ -127,6 +206,14 @@ body {
   grid-column: 1 / -1;
   opacity: 0.8;
   margin-top: 0.25rem;
+}
+
+/* The jump link for the course on screen (aria-current, set by js/site.js). */
+.menu-jump a[aria-current] {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.45rem;
 }
 
 /* ============================================================ CAROUSELS
@@ -195,6 +282,192 @@ body {
   color: var(--color-base-content);
 }
 
+/* ============================================================ PAGE HEADERS
+ *
+ * The menu and visit pages open on a photo too, shorter than the home page's
+ * hero. Its words sit on the same scrim as the slides (.slide-scrim), so keep
+ * them white. The photo is decoration: alt="". */
+.page-hero .breadcrumbs a {
+  text-decoration: underline;
+  text-decoration-color: rgb(255 255 255 / 0.5);
+  text-underline-offset: 0.2em;
+}
+
+/* ============================================================ MOTION
+ *
+ * Anything marked data-reveal fades up as it scrolls into view; "left",
+ * "right" or "zoom" change how it arrives. js/site.js puts .reveal-on on <html>
+ * first, so with no script, or for a reader who asks for less motion, nothing
+ * is ever hidden. Several arriving together come in one after another. */
+.reveal-on [data-reveal] {
+  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal-on [data-reveal]:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+.reveal-on [data-reveal='left']:not(.is-revealed) {
+  transform: translateX(-2.5rem);
+}
+.reveal-on [data-reveal='right']:not(.is-revealed) {
+  transform: translateX(2.5rem);
+}
+.reveal-on [data-reveal='zoom']:not(.is-revealed) {
+  transform: scale(0.94);
+}
+
+/* Numbers that count up (data-count) keep every digit the same width, so the
+ * line does not wobble while they climb. */
+[data-count] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* The sticky nav lifts off the page once it scrolls (.is-scrolled). */
+[data-sticky-nav] {
+  transition: box-shadow 0.3s ease;
+}
+[data-sticky-nav].is-scrolled {
+  box-shadow: 0 12px 30px -14px rgb(0 0 0 / 0.55);
+}
+
+/* ============================================================ BACK TO TOP
+ *
+ * The round button in the corner. Its ring fills as you read down the page
+ * (--progress, 0 to 1, from js/site.js). Hidden until you have scrolled. */
+.to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  color: var(--color-primary);
+  background: radial-gradient(closest-side, var(--color-base-200) calc(100% - 3px), transparent calc(100% - 2px)),
+    conic-gradient(var(--color-primary) calc(var(--progress, 0) * 1turn), color-mix(in oklch, var(--color-base-content) 20%, transparent) 0);
+  box-shadow: 0 10px 25px -10px rgb(0 0 0 / 0.6);
+  transition: opacity 0.3s ease, translate 0.3s ease, visibility 0.3s;
+}
+.to-top[hidden] {
+  display: none;
+}
+.to-top:not(.is-shown) {
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 1rem;
+}
+@media (min-width: 768px) {
+  .to-top {
+    right: 1.5rem;
+    bottom: 1.5rem;
+  }
+}
+
+/* ============================================================ LIGHTBOX
+ *
+ * Photos inside data-lightbox open large on the page instead of on their own.
+ * Each is a link to the full image, so with no script the link still works.
+ * js/site.js builds the viewer, a <dialog>, the first time it is needed. */
+[data-lightbox] a {
+  cursor: zoom-in;
+}
+.lightbox {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+}
+.lightbox::backdrop {
+  background: rgb(0 0 0 / 0.9);
+  backdrop-filter: blur(6px);
+}
+.lightbox-stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 4.5rem 1rem 3.5rem;
+}
+.lightbox figure {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  max-width: min(100%, 72rem);
+}
+.lightbox img {
+  max-width: 100%;
+  max-height: calc(100svh - 11rem);
+  object-fit: contain;
+  border-radius: var(--radius-box);
+  animation: lightbox-in 0.35s ease both;
+}
+.lightbox .lightbox-video {
+  width: min(100vw - 2rem, 64rem);
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--radius-box);
+  background: #000;
+}
+.lightbox figcaption {
+  text-align: center;
+  max-width: 40rem;
+}
+.lightbox-bar {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+}
+.lightbox-arrow[data-lb-prev] {
+  left: 1rem;
+}
+.lightbox-arrow[data-lb-next] {
+  right: 1rem;
+}
+/* The play button on a video link breathes out, to say it can be pressed. */
+.play-pulse {
+  isolation: isolate;
+}
+.play-pulse::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: inherit;
+  animation: pulse 2.2s ease-out infinite;
+}
+@keyframes pulse {
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+html:has(.lightbox[open]) {
+  overflow: hidden;
+}
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
 /* ============================================================ EVERYTHING ELSE */
 
 /* Labels at full strength. daisyUI's dimmed 12px labels measured 3.40:1 on the
@@ -226,6 +499,14 @@ body {
   top: 1rem;
 }
 
+/* A visible ring on whatever the keyboard is on. Keep it. */
+a:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
 /* Anchors land below the sticky navbar, and on the menu page below the jump
  * links too. Change the navbar's height, change these numbers. */
 [id] {
@@ -240,7 +521,8 @@ html {
 }
 
 /* Less movement for readers whose system asks for it: no smooth scroll, no video
- * fade, no zoom. Keep this block. */
+ * fade, no zoom, no rising words. (js/site.js skips the reveals and the
+ * counting for them too.) Keep this block. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -253,6 +535,12 @@ html {
   .group:hover img {
     transform: none;
   }
+  .hero-rise > *,
+  .hero-cue svg,
+  .lightbox img,
+  .play-pulse::before {
+    animation: none;
+  }
 }
 
 /* Printing the menu: only the food and the prices, black on white. */
@@ -260,8 +548,19 @@ html {
   nav,
   footer,
   .skip-link,
+  .to-top,
+  .hero-cue,
+  .page-hero img,
+  .page-hero .slide-scrim,
   section.bg-primary {
     display: none !important;
+  }
+  .page-hero {
+    color: #000 !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
   }
   body {
     background: #fff !important;

@@ -36,7 +36,7 @@
 
     <!-- THE NAV, centered: the name in the middle, the links split either side.
          To use it, put it in place of the nav at the top of every page. -->
-    <nav class="navbar bg-base-100/85 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
+    <nav data-sticky-nav class="navbar bg-base-100/90 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
       <div class="navbar-start">
         <ul class="menu menu-horizontal hidden md:flex gap-1 text-base">
           <li><a href="index.html">Home</a></li>
@@ -67,21 +67,30 @@
     <main id="main">
       <header class="bg-base-200 border-b border-base-content/10">
         <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
-          <p class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Template parts</p>
+          <p class="eyebrow text-primary font-bold uppercase tracking-widest text-xs mb-3">Template parts</p>
           <h1 class="font-display text-5xl md:text-7xl font-bold mb-4">Elements</h1>
           <p class="text-lg opacity-80 max-w-2xl mb-8">Every part on this page works in this theme and in any other. The nav above is one of them: the centered one. The nav that sits over a photo is on <a class="link link-primary" href="index-2.html">the other home page</a>.</p>
-          <ul class="flex flex-wrap gap-2" aria-label="Parts on this page">
-          <li><a class="btn btn-sm btn-soft" href="#slider">Image slider</a></li>
-          <li><a class="btn btn-sm btn-soft" href="#quotes">Quote carousel</a></li>
-          <li><a class="btn btn-sm btn-soft" href="#tabs">Tabs</a></li>
-          <li><a class="btn btn-sm btn-soft" href="#tiers">Pricing</a></li>
-          <li><a class="btn btn-sm btn-soft" href="#team">Team</a></li>
-          <li><a class="btn btn-sm btn-soft" href="#timeline">Timeline</a></li>
-          <li><a class="btn btn-sm btn-soft" href="#steps">Steps</a></li>
-          <li><a class="btn btn-sm btn-soft" href="#gallery">Photo wall</a></li>
-          <li><a class="btn btn-sm btn-soft" href="#cta">Call to action on a photo</a></li>
-          <li><a class="btn btn-sm btn-soft" href="#faq">Questions</a></li>
-          </ul>
+          <nav aria-label="Parts on this page">
+            <ul class="flex flex-wrap gap-2">
+              <li><a class="btn btn-sm btn-soft" href="#slider">Image slider</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#quotes">Quote carousel</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#tabs">Tabs</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#tiers">Pricing</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#team">Team</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#timeline">Timeline</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#steps">Steps</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#gallery">Photo wall</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#cta">Call to action on a photo</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#faq">Questions</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#numbers">Numbers that count</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#events">Events</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#menu-photos">Menu with photos</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#press">Press</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#video">Video in a lightbox</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#social">Instagram grid</a></li>
+              <li><a class="btn btn-sm btn-soft" href="#top-bar">Top bar</a></li>
+            </ul>
+          </nav>
         </div>
       </header>
       <div id="slider" class="parts-label max-w-6xl mx-auto px-6 pt-20">
@@ -397,20 +406,22 @@
       <!-- ==================================================== TO HERE: STEPS -->
       <div id="gallery" class="parts-label max-w-6xl mx-auto px-6 pt-20">
         <p class="font-mono text-xs uppercase tracking-widest opacity-80">08 · Photo wall</p>
-        <p class="text-sm opacity-80 max-w-2xl mt-1">Photos in columns, each keeping its own shape.</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">Photos in columns, each keeping its own shape. Click one to see it large.</p>
       </div>
 
       <!-- ==================================================== COPY FROM HERE: PHOTO WALL -->
       <section class="max-w-6xl mx-auto px-6 py-12" aria-labelledby="gallery-title">
         <h2 id="gallery-title" class="font-display text-3xl md:text-5xl font-bold mb-10">From the kitchen</h2>
-        <!-- Columns, not a grid: each photo keeps its own shape, like a pinboard. -->
-        <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
-          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/dish-pasta.jpg" width="900" height="675" loading="lazy" alt="Spaghetti in tomato sauce" />
-          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/kitchen.jpg" width="800" height="1000" loading="lazy" alt="A cook plating seafood" />
-          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille" />
-          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/dish-salmon.jpg" width="900" height="675" loading="lazy" alt="Seared salmon with shrimp" />
-          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/bar.jpg" width="1200" height="900" loading="lazy" alt="The back room set for a group" />
-          <img class="w-full rounded-box mb-4 break-inside-avoid" src="img/dish-risotto.jpg" width="900" height="675" loading="lazy" alt="Saffron risotto" />
+        <!-- Columns, not a grid: each photo keeps its own shape, like a pinboard.
+             data-lightbox: each photo is a link to itself, and js/site.js opens
+             it large over the page, with arrows to the rest. -->
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-4" data-lightbox>
+          <a class="group block overflow-hidden rounded-box mb-4 break-inside-avoid" href="img/dish-pasta.jpg"><img class="w-full transition duration-500 group-hover:scale-105" src="img/dish-pasta.jpg" width="900" height="675" loading="lazy" alt="Spaghetti in tomato sauce" /></a>
+          <a class="group block overflow-hidden rounded-box mb-4 break-inside-avoid" href="img/kitchen.jpg"><img class="w-full transition duration-500 group-hover:scale-105" src="img/kitchen.jpg" width="800" height="1000" loading="lazy" alt="A cook plating seafood" /></a>
+          <a class="group block overflow-hidden rounded-box mb-4 break-inside-avoid" href="img/dessert.jpg"><img class="w-full transition duration-500 group-hover:scale-105" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille" /></a>
+          <a class="group block overflow-hidden rounded-box mb-4 break-inside-avoid" href="img/dish-salmon.jpg"><img class="w-full transition duration-500 group-hover:scale-105" src="img/dish-salmon.jpg" width="900" height="675" loading="lazy" alt="Seared salmon with shrimp" /></a>
+          <a class="group block overflow-hidden rounded-box mb-4 break-inside-avoid" href="img/bar.jpg"><img class="w-full transition duration-500 group-hover:scale-105" src="img/bar.jpg" width="1200" height="900" loading="lazy" alt="The back room set for a group" /></a>
+          <a class="group block overflow-hidden rounded-box mb-4 break-inside-avoid" href="img/dish-risotto.jpg"><img class="w-full transition duration-500 group-hover:scale-105" src="img/dish-risotto.jpg" width="900" height="675" loading="lazy" alt="Saffron risotto" /></a>
         </div>
       </section>
       <!-- ==================================================== TO HERE: PHOTO WALL -->
@@ -454,6 +465,266 @@
         </div>
       </section>
       <!-- ==================================================== TO HERE: QUESTIONS -->
+      <div id="numbers" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">11 · Numbers that count</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">Four numbers on a photo. Each counts up from zero the first time it is seen.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: NUMBERS THAT COUNT -->
+      <!-- data-count: the number counts up to whatever its text says. These
+           sample numbers have 00 in them on purpose, so the checklist's search
+           for 00 finds them. Replace every one with a number you can defend. -->
+      <section class="relative overflow-hidden my-12 text-white" aria-labelledby="numbers-title">
+        <img class="absolute inset-0 size-full object-cover" src="img/bar-wide.jpg" width="1920" height="1080" loading="lazy" alt="" />
+        <div class="slide-scrim"></div>
+        <div class="relative max-w-6xl mx-auto px-6 py-20 md:py-24">
+          <h2 id="numbers-title" class="sr-only">By the numbers</h2>
+          <dl class="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6 text-center">
+            <div class="flex flex-col-reverse" data-reveal>
+              <dt class="mt-2 text-sm font-semibold uppercase tracking-widest">Plates a week</dt>
+              <dd class="font-display text-5xl md:text-6xl font-bold" data-count>1,200</dd>
+            </div>
+            <div class="flex flex-col-reverse" data-reveal>
+              <dt class="mt-2 text-sm font-semibold uppercase tracking-widest">Bottles on the list</dt>
+              <dd class="font-display text-5xl md:text-6xl font-bold" data-count>300</dd>
+            </div>
+            <div class="flex flex-col-reverse" data-reveal>
+              <dt class="mt-2 text-sm font-semibold uppercase tracking-widest">Made in our kitchen</dt>
+              <dd class="font-display text-5xl md:text-6xl font-bold" data-count>100%</dd>
+            </div>
+            <div class="flex flex-col-reverse" data-reveal>
+              <dt class="mt-2 text-sm font-semibold uppercase tracking-widest">Guests a month</dt>
+              <dd class="font-display text-5xl md:text-6xl font-bold" data-count>2,000</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: NUMBERS THAT COUNT -->
+      <div id="events" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">12 · Events</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">Three dated cards, each with its date on the photo.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: EVENTS -->
+      <section class="max-w-6xl mx-auto px-6 py-12" aria-labelledby="events-title">
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-12" data-reveal>
+          <div class="max-w-2xl">
+            <p class="eyebrow text-primary font-bold uppercase tracking-widest text-xs mb-3">Coming up</p>
+            <h2 id="events-title" class="font-display text-3xl md:text-5xl font-bold mb-4">Nights worth planning for</h2>
+            <p class="text-lg opacity-80">One sentence: how often you hold them, and how to hear about the next one.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <article class="card bg-base-200 overflow-hidden group transition duration-300 hover:-translate-y-1 hover:shadow-2xl" data-reveal>
+            <figure class="relative aspect-[4/3] overflow-hidden">
+              <img class="size-full object-cover transition duration-500 group-hover:scale-105" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille with a scoop of ice cream" />
+              <p class="absolute top-4 left-4 rounded-box bg-primary text-primary-content px-3 py-2 text-center leading-none shadow-lg"><span class="block font-display text-3xl font-bold">00</span><span class="block text-xs font-bold uppercase tracking-widest mt-1">Month</span></p>
+            </figure>
+            <div class="card-body">
+              <p class="flex items-center gap-2 text-sm opacity-80"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Day, 0:00pm</p>
+              <h3 class="card-title font-display text-2xl">An evening worth a date</h3>
+              <p class="opacity-80">What happens, who it is for, and what it costs.</p>
+              <div class="card-actions mt-2">
+                <a class="link link-primary font-semibold inline-flex items-center gap-2" href="visit.html#book">Book a seat <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+              </div>
+            </div>
+          </article>
+          <article class="card bg-base-200 overflow-hidden group transition duration-300 hover:-translate-y-1 hover:shadow-2xl" data-reveal>
+            <figure class="relative aspect-[4/3] overflow-hidden">
+              <img class="size-full object-cover transition duration-500 group-hover:scale-105" src="img/bar.jpg" width="1200" height="900" loading="lazy" alt="One long table lined with wine racks" />
+              <p class="absolute top-4 left-4 rounded-box bg-primary text-primary-content px-3 py-2 text-center leading-none shadow-lg"><span class="block font-display text-3xl font-bold">00</span><span class="block text-xs font-bold uppercase tracking-widest mt-1">Month</span></p>
+            </figure>
+            <div class="card-body">
+              <p class="flex items-center gap-2 text-sm opacity-80"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Day, 0:00pm</p>
+              <h3 class="card-title font-display text-2xl">A dinner at the long table</h3>
+              <p class="opacity-80">One table, one menu, the people who made it.</p>
+              <div class="card-actions mt-2">
+                <a class="link link-primary font-semibold inline-flex items-center gap-2" href="visit.html#book">Book a seat <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+              </div>
+            </div>
+          </article>
+          <article class="card bg-base-200 overflow-hidden group transition duration-300 hover:-translate-y-1 hover:shadow-2xl" data-reveal>
+            <figure class="relative aspect-[4/3] overflow-hidden">
+              <img class="size-full object-cover transition duration-500 group-hover:scale-105" src="img/dish-salmon.jpg" width="900" height="675" loading="lazy" alt="Seared salmon topped with shrimp" />
+              <p class="absolute top-4 left-4 rounded-box bg-primary text-primary-content px-3 py-2 text-center leading-none shadow-lg"><span class="block font-display text-3xl font-bold">00</span><span class="block text-xs font-bold uppercase tracking-widest mt-1">Month</span></p>
+            </figure>
+            <div class="card-body">
+              <p class="flex items-center gap-2 text-sm opacity-80"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Day, 0:00pm</p>
+              <h3 class="card-title font-display text-2xl">A night for one ingredient</h3>
+              <p class="opacity-80">What the kitchen will cook, and where it came from.</p>
+              <div class="card-actions mt-2">
+                <a class="link link-primary font-semibold inline-flex items-center gap-2" href="visit.html#book">Book a seat <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: EVENTS -->
+      <div id="menu-photos" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">13 · Menu with photos</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">The menu’s dotted leaders, with a round photo beside each dish. Two columns on a wide screen.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: MENU WITH PHOTOS -->
+      <!-- Each dish is the menu page's .menu-item, beside its photo. A photo
+           here is a promise: only show dishes you serve exactly like that. -->
+      <section class="max-w-6xl mx-auto px-6 py-12" aria-labelledby="menu-photos-title">
+        <div class="text-center max-w-2xl mx-auto mb-12" data-reveal>
+          <p class="eyebrow text-primary font-bold uppercase tracking-widest text-xs mb-3">From the menu</p>
+          <h2 id="menu-photos-title" class="font-display text-3xl md:text-5xl font-bold">The plates people ask for</h2>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4" data-reveal>
+          <li class="flex items-center gap-5">
+            <img class="size-20 md:size-24 rounded-full object-cover shrink-0 border-4 border-base-200 shadow-lg" src="img/dish-pasta.jpg" width="900" height="675" loading="lazy" alt="Spaghetti in tomato sauce under rocket" />
+            <dl class="grow">
+              <div class="menu-item">
+                <dt><span class="font-bold text-lg">First plate</span></dt>
+                <dd class="price">$00</dd>
+                <dd class="desc text-sm">What is in it. Name the two ingredients that make it different.</dd>
+              </div>
+            </dl>
+          </li>
+          <li class="flex items-center gap-5">
+            <img class="size-20 md:size-24 rounded-full object-cover shrink-0 border-4 border-base-200 shadow-lg" src="img/dish-salmon.jpg" width="900" height="675" loading="lazy" alt="Seared salmon topped with shrimp" />
+            <dl class="grow">
+              <div class="menu-item">
+                <dt><span class="font-bold text-lg">Second plate</span></dt>
+                <dd class="price">$00</dd>
+                <dd class="desc text-sm">What is in it. Name the two ingredients that make it different.</dd>
+              </div>
+            </dl>
+          </li>
+          <li class="flex items-center gap-5">
+            <img class="size-20 md:size-24 rounded-full object-cover shrink-0 border-4 border-base-200 shadow-lg" src="img/dish-risotto.jpg" width="900" height="675" loading="lazy" alt="Saffron risotto in a cast-iron dish" />
+            <dl class="grow">
+              <div class="menu-item">
+                <dt><span class="font-bold text-lg">Third plate</span></dt>
+                <dd class="price">$00</dd>
+                <dd class="desc text-sm">What is in it. Name the two ingredients that make it different.</dd>
+              </div>
+            </dl>
+          </li>
+          <li class="flex items-center gap-5">
+            <img class="size-20 md:size-24 rounded-full object-cover shrink-0 border-4 border-base-200 shadow-lg" src="img/dessert.jpg" width="900" height="675" loading="lazy" alt="A plated millefeuille" />
+            <dl class="grow">
+              <div class="menu-item">
+                <dt><span class="font-bold text-lg">A dessert</span></dt>
+                <dd class="price">$00</dd>
+                <dd class="desc text-sm">What is in it. Name the two ingredients that make it different.</dd>
+              </div>
+            </dl>
+          </li>
+        </ul>
+      </section>
+      <!-- ==================================================== TO HERE: MENU WITH PHOTOS -->
+      <div id="press" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">14 · Press</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">The names that have written about you, in a row. Only real ones, each linked to what they wrote.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: PRESS -->
+      <section class="border-y border-base-content/10 bg-base-200 my-12" aria-labelledby="press-title">
+        <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center gap-6 md:gap-12">
+          <h2 id="press-title" class="text-xs font-bold uppercase tracking-widest opacity-80 shrink-0">As written about in</h2>
+          <ul class="flex flex-wrap justify-center md:justify-between items-center gap-x-10 gap-y-4 grow font-display text-xl md:text-2xl italic opacity-80">
+            <li><a class="link link-hover" href="https://example.com/">The ______ Times</a></li>
+            <li><a class="link link-hover" href="https://example.com/">______ Magazine</a></li>
+            <li><a class="link link-hover" href="https://example.com/">Food &amp; ______</a></li>
+            <li><a class="link link-hover" href="https://example.com/">The ______ Review</a></li>
+          </ul>
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: PRESS -->
+      <div id="video" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">15 · Video in a lightbox</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">A photo with a play button. The video opens over the page and stops when it closes.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: VIDEO IN A LIGHTBOX -->
+      <!-- data-video-popup: the link goes to YouTube, and js/site.js plays it over
+           the page instead. ?t= in the link is the second it starts from. Credit
+           the video in the footer, like a photo. -->
+      <section class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center" aria-labelledby="video-title">
+        <div data-reveal="left">
+          <p class="eyebrow text-primary font-bold uppercase tracking-widest text-xs mb-3">Behind the pass</p>
+          <h2 id="video-title" class="font-display text-3xl md:text-5xl font-bold mb-6">A minute in the kitchen</h2>
+          <p class="text-lg opacity-80 mb-6">One sentence about what the video shows, and why it is worth a minute.</p>
+          <ul class="space-y-3">
+            <li class="flex gap-3"><svg class="size-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> One thing you will see</li>
+            <li class="flex gap-3"><svg class="size-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> A second thing you will see</li>
+          </ul>
+        </div>
+        <a class="group relative block overflow-hidden rounded-box shadow-2xl" href="https://www.youtube.com/watch?v=WhWc3b3KhnY&amp;t=338" data-video-popup data-reveal="right">
+          <img class="w-full aspect-[4/3] object-cover transition duration-500 group-hover:scale-105" src="img/kitchen-wide.jpg" width="1920" height="1080" loading="lazy" alt="" />
+          <span class="absolute inset-0 bg-black/40 transition duration-300 group-hover:bg-black/30"></span>
+          <span class="play-pulse absolute inset-0 m-auto grid place-items-center size-20 rounded-full bg-primary text-primary-content shadow-xl transition duration-300 group-hover:scale-110"><svg class="size-8 translate-x-0.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg></span>
+          <span class="sr-only">Play the video: a minute in the kitchen</span>
+        </a>
+      </section>
+      <!-- ==================================================== TO HERE: VIDEO IN A LIGHTBOX -->
+      <div id="social" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">16 · Instagram grid</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">Six squares edge to edge, each a link to your account. Hover one to see where it goes.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: INSTAGRAM GRID -->
+      <!-- Your own photos only, credited like the rest. Each square links to
+           your account: put its address in place of instagram.com. -->
+      <section class="my-12" aria-labelledby="social-title">
+        <div class="max-w-6xl mx-auto px-6 mb-8 flex flex-wrap items-end justify-between gap-4" data-reveal>
+          <h2 id="social-title" class="font-display text-3xl md:text-4xl font-bold">Follow along</h2>
+          <a class="link link-primary font-semibold inline-flex items-center gap-2" href="https://www.instagram.com/"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg> @______</a>
+        </div>
+        <div class="grid grid-cols-3 md:grid-cols-6">
+          <a class="group relative block aspect-square overflow-hidden" href="https://www.instagram.com/">
+            <img class="size-full object-cover transition duration-500 group-hover:scale-110" src="img/dish-pasta.jpg" width="900" height="675" loading="lazy" alt="Spaghetti in tomato sauce" />
+            <span class="absolute inset-0 grid place-items-center bg-black/60 text-white opacity-0 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"><svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg><span class="sr-only">, on Instagram</span></span>
+          </a>
+          <a class="group relative block aspect-square overflow-hidden" href="https://www.instagram.com/">
+            <img class="size-full object-cover transition duration-500 group-hover:scale-110" src="img/kitchen.jpg" width="800" height="1000" loading="lazy" alt="A cook plating seafood" />
+            <span class="absolute inset-0 grid place-items-center bg-black/60 text-white opacity-0 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"><svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg><span class="sr-only">, on Instagram</span></span>
+          </a>
+          <a class="group relative block aspect-square overflow-hidden" href="https://www.instagram.com/">
+            <img class="size-full object-cover transition duration-500 group-hover:scale-110" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille" />
+            <span class="absolute inset-0 grid place-items-center bg-black/60 text-white opacity-0 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"><svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg><span class="sr-only">, on Instagram</span></span>
+          </a>
+          <a class="group relative block aspect-square overflow-hidden" href="https://www.instagram.com/">
+            <img class="size-full object-cover transition duration-500 group-hover:scale-110" src="img/bar.jpg" width="1200" height="900" loading="lazy" alt="The back room set for a group" />
+            <span class="absolute inset-0 grid place-items-center bg-black/60 text-white opacity-0 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"><svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg><span class="sr-only">, on Instagram</span></span>
+          </a>
+          <a class="group relative block aspect-square overflow-hidden" href="https://www.instagram.com/">
+            <img class="size-full object-cover transition duration-500 group-hover:scale-110" src="img/dish-risotto.jpg" width="900" height="675" loading="lazy" alt="Saffron risotto" />
+            <span class="absolute inset-0 grid place-items-center bg-black/60 text-white opacity-0 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"><svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg><span class="sr-only">, on Instagram</span></span>
+          </a>
+          <a class="group relative block aspect-square overflow-hidden" href="https://www.instagram.com/">
+            <img class="size-full object-cover transition duration-500 group-hover:scale-110" src="img/dining-room.jpg" width="1920" height="1080" loading="lazy" alt="The dining room under paper lanterns" />
+            <span class="absolute inset-0 grid place-items-center bg-black/60 text-white opacity-0 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"><svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg><span class="sr-only">, on Instagram</span></span>
+          </a>
+        </div>
+      </section>
+      <!-- ==================================================== TO HERE: INSTAGRAM GRID -->
+      <div id="top-bar" class="parts-label max-w-6xl mx-auto px-6 pt-20">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-80">17 · Top bar</p>
+        <p class="text-sm opacity-80 max-w-2xl mt-1">The slim strip above the nav: hours, address, phone and social links. On a phone it hides, since the footer says the same.</p>
+      </div>
+
+      <!-- ==================================================== COPY FROM HERE: TOP BAR -->
+      <!-- It goes first in <body>, right after the skip link, on every page.
+           Drop my-12 when you move it: that only spaces it out on this page. -->
+      <div class="bg-neutral text-neutral-content text-sm hidden md:block my-12">
+        <div class="max-w-6xl mx-auto px-6 py-2 flex items-center justify-between gap-6">
+          <ul class="flex items-center gap-6">
+            <li class="flex items-center gap-2"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Wed–Sun, 5–10pm</li>
+            <li class="flex items-center gap-2"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> 123 Your Street, Your City</li>
+            <li><a class="flex items-center gap-2 link link-hover" href="tel:+12165550100"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg> (216) 555-0100</a></li>
+          </ul>
+          <ul class="flex items-center gap-1">
+            <li><a class="btn btn-ghost btn-square btn-xs" href="https://www.instagram.com/" aria-label="Instagram"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a></li>
+            <li><a class="btn btn-ghost btn-square btn-xs" href="https://www.facebook.com/" aria-label="Facebook"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- ==================================================== TO HERE: TOP BAR -->
 
     </main>
 
@@ -523,6 +794,9 @@
         </div>
       </div>
     </footer>
+
+    <!-- BACK TO TOP: hidden until js/site.js shows it, once you have scrolled. -->
+    <a class="to-top" href="#top" data-to-top hidden aria-label="Back to top"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></a>
 
     <script src="js/site.js"></script>
   </body>
