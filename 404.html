@@ -7,6 +7,26 @@
     <!-- GitHub Pages shows this page for any address on your site that does not
          exist. Search engines are told to leave it out. -->
     <meta name="robots" content="noindex" />
+    <!-- Shown at any missing address, however many folders deep. This script
+         points the page's relative links at your site's top folder, so keep
+         it above the first one. -->
+    <script>
+      {
+        const folders = location.pathname.split('/').filter(Boolean);
+        let top = null;
+        if (location.hostname.endsWith('.github.io') && folders.length > 1) top = `/${folders[0]}/`;
+        if (location.hostname.endsWith('.netlify.app')) top = '/';
+        if (top) {
+          const base = document.createElement('base');
+          base.href = top;
+          document.head.append(base);
+          // A base would send #main to the home page. Keep it on this one.
+          addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href^="#"]').forEach((a) => a.setAttribute('href', location.pathname + location.search + a.getAttribute('href')));
+          });
+        }
+      }
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -47,9 +67,7 @@
       </div>
     </nav>
 
-    <!-- THE 404 PAGE. Its links are relative, like every page's, so it looks
-         right for a mistyped page at the top of the site, which is most of
-         them. Keep its nav and footer matching the other pages. -->
+    <!-- THE 404 PAGE. Keep its nav and footer matching the other pages. -->
     <main id="main" class="relative overflow-hidden bg-neutral text-white">
       <img class="absolute inset-0 size-full object-cover" src="img/kitchen-wide.jpg" width="1920" height="1080" alt="" />
       <div class="slide-scrim"></div>
