@@ -35,7 +35,9 @@ AGENTS.md          what AI help may and may not do on this project
    **Live Share** in the status bar, paste the link it copies into Google Chat,
    and go back to work.
 2. Open `index.html` with **Live Server** — the **Go Live** button in the status
-   bar. Not by double-clicking: see Unit 4 for why `file://` is not a website.
+   bar. Not by double-clicking: that opens a path on your disk (`file://`),
+   not a web address, with no server behind it, and a page loaded that way
+   is not allowed to do several things a real page does.
 3. Change `data-theme="coffee"` on the `<html>` tag — **in every page**. Do
    this first. It takes five seconds and it is the fastest way to find the mood
    you want. Try `sunset`, `night`, `autumn`, `luxury`, `dracula`,
@@ -173,8 +175,8 @@ an `action`, delete `data-demo`, and test it with your own email.
 
 - **The pages must match.** Theme, nav, footer, fonts, credits, on every page,
   `404.html` included. A site that restyles itself between clicks reads as
-  broken. This is the real cost of plain HTML, and Unit 8's build step is the
-  fix.
+  broken. This is the real cost of plain HTML: every page carries its own
+  copy.
 - **The nav is in there twice** on every page — a row of links for wide screens
   and the phone dropdown. Add a page, add it to both, on every page.
 - **Deleting structure to "simplify".** `card-body` inside `card`,
