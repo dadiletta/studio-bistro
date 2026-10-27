@@ -216,6 +216,14 @@ blockquote {
   text-underline-offset: 0.45rem;
 }
 
+/* menu.html's jump links are pills: the course on screen fills in. */
+.menu-pills a[aria-current] {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-content);
+  text-decoration: none;
+}
+
 /* ============================================================ CAROUSELS
  *
  * daisyUI's .carousel is a sideways scroller that snaps to each slide. js/site.js
@@ -258,7 +266,7 @@ blockquote {
 
 /* ============================================================ NAV OVER THE HERO
  *
- * index-2.html's nav: white on the photo, then the page's own colors once the
+ * The homes' nav (index.html and index-2.html): white on the photo, then the page's own colors once the
  * photo has scrolled under it (.is-solid, set by js/site.js). */
 .nav-over {
   position: absolute;
@@ -268,6 +276,13 @@ blockquote {
   color: #fff;
   background: linear-gradient(to bottom, rgb(0 0 0 / 0.55), transparent);
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+/* The thin rule under it, on the photo only. */
+.nav-over {
+  border-bottom: 1px solid rgb(255 255 255 / 0.3);
+}
+.nav-over.is-solid {
+  border-bottom-color: transparent;
 }
 .nav-over.is-fixed {
   position: fixed;

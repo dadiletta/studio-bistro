@@ -25,26 +25,67 @@
     <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
 
     <nav data-sticky-nav class="navbar bg-base-100/90 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
-      <div class="navbar-start">
-        <a class="font-display text-2xl font-bold tracking-tight" href="index.html">
+      <!-- THE NAV, centered: the name in the middle, the links split either side.
+           It is on every page: change one, change all. -->
+      <div class="navbar-start gap-1">
+        <details class="dropdown lg:hidden">
+          <summary class="btn btn-ghost text-inherit btn-square" aria-label="Site pages"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></summary>
+          <ul class="menu dropdown-content bg-base-100 text-base-content border border-base-content/10 rounded-box z-40 mt-3 w-56 p-2 shadow-xl text-base">
+            <li class="menu-title">Homes</li>
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="index-2.html">Home 2</a></li>
+            <li><a href="index-3.html">Home 3</a></li>
+            <li class="menu-title">Pages</li>
+            <li><a href="menu.html" aria-current="page">Menu</a></li>
+            <li><a href="visit.html">Visit</a></li>
+            <li><a href="elements.html">Elements</a></li>
+          </ul>
+        </details>
+        <ul class="menu menu-horizontal hidden lg:flex gap-1 text-base">
+          <li><a href="menu.html" aria-current="page">Menu</a></li>
+          <li><a href="visit.html">Visit</a></li>
+        </ul>
+        <!-- HOMES: each home page has its own hero. Keep the one you like best
+             as index.html, then delete the rest and this dropdown. -->
+        <details class="dropdown hidden lg:block">
+          <summary class="btn btn-ghost text-inherit text-base font-normal gap-1">Homes <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="dropdown-content bg-base-100 text-base-content border border-base-content/10 rounded-box z-40 mt-3 w-[38rem] p-3 shadow-xl">
+            <ul class="grid grid-cols-3 gap-2">
+              <li>
+                <a class="block rounded-box p-2 hover:bg-base-200 focus-visible:bg-base-200" href="index.html">
+                  <img class="aspect-video w-full rounded-field object-cover" src="img/dining-room.jpg" width="1920" height="1080" loading="lazy" alt="" />
+                  <span class="mt-2 block font-semibold">Home 1</span>
+                  <span class="block text-sm text-base-content/70">A film of the dining room behind the headline</span>
+                </a>
+              </li>
+              <li>
+                <a class="block rounded-box p-2 hover:bg-base-200 focus-visible:bg-base-200" href="index-2.html">
+                  <img class="aspect-video w-full rounded-field object-cover" src="img/kitchen-wide.jpg" width="1920" height="1080" loading="lazy" alt="" />
+                  <span class="mt-2 block font-semibold">Home 2</span>
+                  <span class="block text-sm text-base-content/70">Three photos that turn by themselves</span>
+                </a>
+              </li>
+              <li>
+                <a class="block rounded-box p-2 hover:bg-base-200 focus-visible:bg-base-200" href="index-3.html">
+                  <img class="aspect-video w-full rounded-field object-cover" src="img/dish-risotto.jpg" width="900" height="675" loading="lazy" alt="" />
+                  <span class="mt-2 block font-semibold">Home 3</span>
+                  <span class="block text-sm text-base-content/70">Tonight's specials on a chalkboard beside a plate</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="navbar-center">
+        <a class="font-display text-2xl md:text-3xl font-bold tracking-tight" href="index.html">
           Bistro<span class="text-primary">.</span>
         </a>
       </div>
       <div class="navbar-end gap-2">
-        <ul class="menu menu-horizontal hidden md:flex gap-1 text-base">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="menu.html" aria-current="page">Menu</a></li>
-          <li><a href="visit.html">Visit</a></li>
+        <ul class="menu menu-horizontal hidden lg:flex gap-1 text-base">
+          <li><a href="elements.html">Elements</a></li>
         </ul>
         <a class="btn btn-primary btn-sm md:btn-md" href="visit.html#book">Book a table</a>
-        <details class="dropdown dropdown-end md:hidden">
-          <summary class="btn btn-ghost btn-square" aria-label="Site pages"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></summary>
-          <ul class="menu dropdown-content bg-base-200 rounded-box z-40 mt-3 w-56 p-2 shadow-xl text-base">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="menu.html" aria-current="page">Menu</a></li>
-            <li><a href="visit.html">Visit</a></li>
-          </ul>
-        </details>
       </div>
     </nav>
 
@@ -67,20 +108,24 @@
       </div>
     </header>
 
-    <!-- Jump links: they stick under the navbar, scroll sideways on a phone, and
-         underline the course on screen (data-spy). -->
-    <nav data-spy class="menu-jump sticky top-16 z-20 bg-base-100/90 backdrop-blur border-b border-base-content/10" aria-label="Menu sections">
-      <ul class="max-w-4xl mx-auto px-6 flex gap-6 overflow-x-auto whitespace-nowrap py-3 text-sm font-semibold">
-        <li><a class="link link-hover" href="#starters">To start</a></li>
-        <li><a class="link link-hover" href="#mains">Mains</a></li>
-        <li><a class="link link-hover" href="#desserts">Desserts</a></li>
-        <li><a class="link link-hover" href="#drinks">Drinks</a></li>
+    <!-- Jump links as pills: they stick under the navbar, scroll sideways on a
+         phone, and fill in for the course on screen (data-spy). -->
+    <nav data-spy class="menu-jump menu-pills sticky top-16 z-20 bg-base-100/90 backdrop-blur border-b border-base-content/10" aria-label="Menu sections">
+      <ul class="max-w-6xl mx-auto px-6 flex gap-2 overflow-x-auto whitespace-nowrap py-3">
+        <li class="shrink-0"><a class="btn btn-sm rounded-full" href="#starters">To start</a></li>
+        <li class="shrink-0"><a class="btn btn-sm rounded-full" href="#pasta">Pasta and rice</a></li>
+        <li class="shrink-0"><a class="btn btn-sm rounded-full" href="#plates">Plates</a></li>
+        <li class="shrink-0"><a class="btn btn-sm rounded-full" href="#desserts">Sweets</a></li>
+        <li class="shrink-0"><a class="btn btn-sm rounded-full" href="#drinks">Drinks</a></li>
       </ul>
     </nav>
 
-    <main id="main" class="max-w-4xl mx-auto px-6 py-16 md:py-20">
+    <main id="main" class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+      <!-- TWO MENUS: the same dishes, set two ways. Keep one as menu.html,
+           delete the other and this line. -->
+      <p class="text-sm opacity-80 mb-8 print:hidden">Two menus to try: <a class="link font-bold" href="menu.html" aria-current="page">Diner</a> · <a class="link" href="menu-2.html">Classic</a></p>
       <!-- The legend: each badge is a word and an icon, never a color alone. -->
-      <div class="flex flex-wrap items-center gap-3 mb-14 text-sm">
+      <div class="flex flex-wrap items-center gap-3 mb-16 text-sm">
         <span class="opacity-80">Look for</span>
         <span class="badge badge-outline gap-1"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span>
         <span class="badge badge-outline gap-1"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/></svg> Gluten-free</span>
@@ -89,104 +134,242 @@
         <button class="btn btn-sm btn-ghost ml-auto print:hidden" type="button" onclick="window.print()">Print the menu</button>
       </div>
 
-      <!-- A menu is a description list: <dt> the dish, then a <dd> for its
-           price and one for its description. The dotted leader is in styles.css. -->
-      <section id="starters" class="mb-16" data-reveal>
-        <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">To start</h2>
-        <p class="opacity-80 mb-6">One line about this course, or delete this line.</p>
-        <dl class="divide-y divide-current/10">
-          <div class="menu-item">
-            <dt><span class="font-bold text-lg">First plate</span></dt>
-            <dd class="price">$00</dd>
-            <dd class="desc">What is in it. Name the two ingredients that make it different.</dd>
-          </div>
-          <div class="menu-item">
-            <dt><span class="font-bold text-lg">Second plate</span></dt>
-            <dd class="price">$00</dd>
-            <dd class="desc">What is in it. Name the two ingredients that make it different.</dd>
-          </div>
-          <div class="menu-item">
-            <dt><span class="font-bold text-lg">Third plate</span> <span class="badge badge-outline badge-sm gap-1 ml-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></dt>
-            <dd class="price">$00</dd>
-            <dd class="desc">What is in it. Name the two ingredients that make it different.</dd>
-          </div>
-        </dl>
+      <!-- EVERY DISH AND PRICE IS AN EXAMPLE: write your client's own. A course is
+           a photo and a grid of cards, the photo on alternate sides. -->
+      <section id="starters" class="mb-20 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start" data-reveal>
+        <figure class="lg:col-span-2 relative rounded-[2rem] overflow-hidden shadow-xl">
+          <img class="w-full aspect-[4/3] lg:aspect-[4/5] object-cover" src="img/kitchen.jpg" width="800" height="1000" loading="lazy" alt="A cook at the pass, plating" />
+          <figcaption class="absolute top-4 left-4 -rotate-3 badge badge-lg badge-primary font-bold shadow-lg">Snacks while you decide</figcaption>
+        </figure>
+        <div class="lg:col-span-3">
+          <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">To start</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Hot-honey corn fritters</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$9</span>
+                </div>
+                <p class="opacity-80">Sweet corn and scallion, fried golden, with a drizzle of chili honey.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Burrata on the griddle</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$13</span>
+                </div>
+                <p class="opacity-80">Charred sourdough, blistered tomatoes, basil oil.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Crispy green beans</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$8</span>
+                </div>
+                <p class="opacity-80">Fried light as tempura, with a lemon-pepper dip.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Wings, our way</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$12</span>
+                </div>
+                <p class="opacity-80">Glazed in brown sugar and smoked paprika. Napkins included.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/></svg> Gluten-free</span></p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </section>
 
-      <section id="mains" class="mb-16" data-reveal>
-        <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">Mains</h2>
-        <p class="opacity-80 mb-6">One line about this course, or delete this line.</p>
-        <dl class="divide-y divide-current/10">
-          <div class="menu-item">
-            <dt><span class="font-bold text-lg">First main</span> <span class="badge badge-outline badge-sm gap-1 ml-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg> Chef's pick</span></dt>
-            <dd class="price">$00</dd>
-            <dd class="desc">What is in it, and how it is cooked.</dd>
-          </div>
-          <div class="menu-item">
-            <dt><span class="font-bold text-lg">Second main</span> <span class="badge badge-outline badge-sm gap-1 ml-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/></svg> Gluten-free</span></dt>
-            <dd class="price">$00</dd>
-            <dd class="desc">What is in it, and how it is cooked.</dd>
-          </div>
-          <div class="menu-item">
-            <dt><span class="font-bold text-lg">Third main</span></dt>
-            <dd class="price">$00</dd>
-            <dd class="desc">What is in it, and how it is cooked.</dd>
-          </div>
-          <div class="menu-item">
-            <dt><span class="font-bold text-lg">Fourth main</span> <span class="badge badge-outline badge-sm gap-1 ml-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></dt>
-            <dd class="price">$00</dd>
-            <dd class="desc">What is in it, and how it is cooked.</dd>
-          </div>
-        </dl>
+      <section id="pasta" class="mb-20 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start" data-reveal>
+        <figure class="lg:col-span-2 relative rounded-[2rem] overflow-hidden shadow-xl lg:order-last">
+          <img class="w-full aspect-[4/3] lg:aspect-[4/5] object-cover" src="img/dish-pasta.jpg" width="900" height="675" loading="lazy" alt="Spaghetti in tomato sauce under rocket and shaved cheese" />
+          <figcaption class="absolute top-4 left-4 -rotate-3 badge badge-lg badge-primary font-bold shadow-lg">Twirl responsibly</figcaption>
+        </figure>
+        <div class="lg:col-span-3">
+          <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">Pasta and rice</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Spaghetti pomodoro</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$16</span>
+                </div>
+                <p class="opacity-80">Slow tomato sauce, a handful of rocket, a snowdrift of parmesan.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Saffron risotto</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$19</span>
+                </div>
+                <p class="opacity-80">Golden and creamy, crowned with herbs and crisp seaweed.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/></svg> Gluten-free</span> <span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg> Chef's pick</span></p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Skillet mac and four cheeses</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$15</span>
+                </div>
+                <p class="opacity-80">Bubbling in its own pan under a breadcrumb crust.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </section>
 
-      <!-- One featured item gets a photograph. Only one. -->
-      <section id="desserts" class="mb-16" data-reveal>
-        <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Desserts</h2>
-        <article class="card md:card-side bg-base-200 overflow-hidden mb-6">
-          <figure class="md:w-2/5 shrink-0">
-            <img class="size-full object-cover aspect-[4/3]" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille with a scoop of ice cream" />
-          </figure>
-          <div class="card-body">
-            <p class="eyebrow text-primary font-bold uppercase tracking-widest text-xs">Worth saving room for</p>
-            <h3 class="card-title font-display text-2xl">The dessert people come back for</h3>
-            <p class="opacity-80">Two sentences. What it is, and why it is the one.</p>
-            <p class="font-bold text-primary text-lg">$00</p>
-          </div>
-        </article>
-        <dl class="divide-y divide-current/10">
-          <div class="menu-item">
-            <dt><span class="font-bold text-lg">Second dessert</span></dt>
-            <dd class="price">$00</dd>
-            <dd class="desc">What is in it.</dd>
-          </div>
-          <div class="menu-item">
-            <dt><span class="font-bold text-lg">Third dessert</span> <span class="badge badge-outline badge-sm gap-1 ml-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/></svg> Gluten-free</span></dt>
-            <dd class="price">$00</dd>
-            <dd class="desc">What is in it.</dd>
-          </div>
-        </dl>
+      <section id="plates" class="mb-20 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start" data-reveal>
+        <figure class="lg:col-span-2 relative rounded-[2rem] overflow-hidden shadow-xl">
+          <img class="w-full aspect-[4/3] lg:aspect-[4/5] object-cover" src="img/dish-salmon.jpg" width="900" height="675" loading="lazy" alt="Seared salmon on greens" />
+          <figcaption class="absolute top-4 left-4 -rotate-3 badge badge-lg badge-primary font-bold shadow-lg">The big ones</figcaption>
+        </figure>
+        <div class="lg:col-span-3">
+          <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">Plates</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Seared salmon</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$24</span>
+                </div>
+                <p class="opacity-80">Crisp skin, lemon butter, whatever greens came in this morning.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/></svg> Gluten-free</span></p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Half roast chicken</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$22</span>
+                </div>
+                <p class="opacity-80">Brined overnight, roasted with garlic and thyme, pan gravy on the side.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/></svg> Gluten-free</span> <span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg> Chef's pick</span></p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">The smash burger</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$17</span>
+                </div>
+                <p class="opacity-80">Two thin patties, griddled onions, American cheese, pickles, fries.</p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Mushroom pot pie</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$18</span>
+                </div>
+                <p class="opacity-80">Wild mushrooms and leeks under a flaky, buttery lid.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </section>
 
-      <section id="drinks" class="mb-16" data-reveal>
-        <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Drinks</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12">
-          <div>
-            <h3 class="flex items-center gap-2 font-bold uppercase tracking-widest text-xs opacity-80 mb-2"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/></svg> By the glass</h3>
-            <dl class="divide-y divide-current/10">
-              <div class="menu-item"><dt>A red</dt><dd class="price">$00</dd></div>
-              <div class="menu-item"><dt>A white</dt><dd class="price">$00</dd></div>
-              <div class="menu-item"><dt>Something sparkling</dt><dd class="price">$00</dd></div>
-            </dl>
-          </div>
-          <div>
-            <h3 class="flex items-center gap-2 font-bold uppercase tracking-widest text-xs opacity-80 mb-2 mt-8 sm:mt-0"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg> Without alcohol</h3>
-            <dl class="divide-y divide-current/10">
-              <div class="menu-item"><dt>House lemonade</dt><dd class="price">$00</dd></div>
-              <div class="menu-item"><dt>Coffee</dt><dd class="price">$00</dd></div>
-              <div class="menu-item"><dt>Tea</dt><dd class="price">$00</dd></div>
-            </dl>
-          </div>
+      <section id="desserts" class="mb-20 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start" data-reveal>
+        <figure class="lg:col-span-2 relative rounded-[2rem] overflow-hidden shadow-xl lg:order-last">
+          <img class="w-full aspect-[4/3] lg:aspect-[4/5] object-cover" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille with a scoop of ice cream" />
+          <figcaption class="absolute top-4 left-4 -rotate-3 badge badge-lg badge-primary font-bold shadow-lg">Save room. Seriously.</figcaption>
+        </figure>
+        <div class="lg:col-span-3">
+          <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">Sweets</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">The millefeuille</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$11</span>
+                </div>
+                <p class="opacity-80">Crackly layers, vanilla cream and a scoop of ice cream. The one people come back for.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg> Chef's pick</span></p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Skillet cookie</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$9</span>
+                </div>
+                <p class="opacity-80">Chocolate chip, warm and still gooey, with two spoons.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Lemon icebox pie</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$8</span>
+                </div>
+                <p class="opacity-80">Graham-cracker crust, tart lemon, a cloud of whipped cream.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="drinks" class="mb-20 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start" data-reveal>
+        <figure class="lg:col-span-2 relative rounded-[2rem] overflow-hidden shadow-xl">
+          <img class="w-full aspect-[4/3] lg:aspect-[4/5] object-cover" src="img/bar.jpg" width="1200" height="900" loading="lazy" alt="The back room: one long table lined with wine racks" />
+          <figcaption class="absolute top-4 left-4 -rotate-3 badge badge-lg badge-primary font-bold shadow-lg">Bottomless coffee, thick shakes</figcaption>
+        </figure>
+        <div class="lg:col-span-3">
+          <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">Drinks</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Thick milkshake</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$7</span>
+                </div>
+                <p class="opacity-80">Vanilla, chocolate or strawberry, with a spoon and a straw.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Fresh lemonade</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$5</span>
+                </div>
+                <p class="opacity-80">Squeezed this morning. Ask for it pink.</p>
+                <p class="flex flex-wrap gap-1"><span class="badge badge-outline badge-sm gap-1"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg> Vegetarian</span></p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">Coffee, bottomless</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$3</span>
+                </div>
+                <p class="opacity-80">Drip coffee, poured until you say when.</p>
+              </div>
+            </li>
+            <li class="card bg-base-200 border border-base-content/10 motion-safe:transition motion-safe:hover:-translate-y-1 hover:shadow-lg">
+              <div class="card-body p-5 gap-2">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-bold text-lg leading-snug">A glass of wine</h3>
+                  <span class="badge badge-primary badge-lg font-bold shrink-0">$11</span>
+                </div>
+                <p class="opacity-80">One red, one white, one sparkling. Ask what&#x27;s open.</p>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
 

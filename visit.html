@@ -25,26 +25,67 @@
     <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
 
     <nav data-sticky-nav class="navbar bg-base-100/90 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
-      <div class="navbar-start">
-        <a class="font-display text-2xl font-bold tracking-tight" href="index.html">
+      <!-- THE NAV, centered: the name in the middle, the links split either side.
+           It is on every page: change one, change all. -->
+      <div class="navbar-start gap-1">
+        <details class="dropdown lg:hidden">
+          <summary class="btn btn-ghost text-inherit btn-square" aria-label="Site pages"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></summary>
+          <ul class="menu dropdown-content bg-base-100 text-base-content border border-base-content/10 rounded-box z-40 mt-3 w-56 p-2 shadow-xl text-base">
+            <li class="menu-title">Homes</li>
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="index-2.html">Home 2</a></li>
+            <li><a href="index-3.html">Home 3</a></li>
+            <li class="menu-title">Pages</li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="visit.html" aria-current="page">Visit</a></li>
+            <li><a href="elements.html">Elements</a></li>
+          </ul>
+        </details>
+        <ul class="menu menu-horizontal hidden lg:flex gap-1 text-base">
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="visit.html" aria-current="page">Visit</a></li>
+        </ul>
+        <!-- HOMES: each home page has its own hero. Keep the one you like best
+             as index.html, then delete the rest and this dropdown. -->
+        <details class="dropdown hidden lg:block">
+          <summary class="btn btn-ghost text-inherit text-base font-normal gap-1">Homes <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="dropdown-content bg-base-100 text-base-content border border-base-content/10 rounded-box z-40 mt-3 w-[38rem] p-3 shadow-xl">
+            <ul class="grid grid-cols-3 gap-2">
+              <li>
+                <a class="block rounded-box p-2 hover:bg-base-200 focus-visible:bg-base-200" href="index.html">
+                  <img class="aspect-video w-full rounded-field object-cover" src="img/dining-room.jpg" width="1920" height="1080" loading="lazy" alt="" />
+                  <span class="mt-2 block font-semibold">Home 1</span>
+                  <span class="block text-sm text-base-content/70">A film of the dining room behind the headline</span>
+                </a>
+              </li>
+              <li>
+                <a class="block rounded-box p-2 hover:bg-base-200 focus-visible:bg-base-200" href="index-2.html">
+                  <img class="aspect-video w-full rounded-field object-cover" src="img/kitchen-wide.jpg" width="1920" height="1080" loading="lazy" alt="" />
+                  <span class="mt-2 block font-semibold">Home 2</span>
+                  <span class="block text-sm text-base-content/70">Three photos that turn by themselves</span>
+                </a>
+              </li>
+              <li>
+                <a class="block rounded-box p-2 hover:bg-base-200 focus-visible:bg-base-200" href="index-3.html">
+                  <img class="aspect-video w-full rounded-field object-cover" src="img/dish-risotto.jpg" width="900" height="675" loading="lazy" alt="" />
+                  <span class="mt-2 block font-semibold">Home 3</span>
+                  <span class="block text-sm text-base-content/70">Tonight's specials on a chalkboard beside a plate</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="navbar-center">
+        <a class="font-display text-2xl md:text-3xl font-bold tracking-tight" href="index.html">
           Bistro<span class="text-primary">.</span>
         </a>
       </div>
       <div class="navbar-end gap-2">
-        <ul class="menu menu-horizontal hidden md:flex gap-1 text-base">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="menu.html">Menu</a></li>
-          <li><a href="visit.html" aria-current="page">Visit</a></li>
+        <ul class="menu menu-horizontal hidden lg:flex gap-1 text-base">
+          <li><a href="elements.html">Elements</a></li>
         </ul>
         <a class="btn btn-primary btn-sm md:btn-md" href="visit.html#book">Book a table</a>
-        <details class="dropdown dropdown-end md:hidden">
-          <summary class="btn btn-ghost btn-square" aria-label="Site pages"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></summary>
-          <ul class="menu dropdown-content bg-base-200 rounded-box z-40 mt-3 w-56 p-2 shadow-xl text-base">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="visit.html" aria-current="page">Visit</a></li>
-          </ul>
-        </details>
       </div>
     </nav>
 

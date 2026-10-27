@@ -15,9 +15,11 @@ team handed a real structure builds one.
 
 ```
 index.html         hero (video) · hours · dishes · story · photo carousel · private dining · quote · call to action
-index-2.html       another home: the nav over a photo slider. Keep one home
+index-2.html       another home: the nav over a photo slider
+index-3.html       a third: tonight's specials on a chalkboard beside a plate. Keep one home
 elements.html      the parts page, seventeen parts: copy what you want, then delete it
-menu.html          a photo header · jump links that follow you · dietary badges · a real menu with dotted leaders · print button
+menu.html          the diner menu: a photo per course, dish cards with prices, pill jump links that follow you · dietary badges · print button
+menu-2.html        the same dishes as a classic menu with dotted leaders. Keep one menu
 visit.html         a photo header · hours · map · getting here · a booking form built properly · FAQ
 404.html           the page GitHub Pages shows for an address that does not exist
 styles.css         your palette, your type, the hero video, the menu's leaders, the carousels, the nav over the hero, the motion, the lightbox, print rules
@@ -87,17 +89,22 @@ This one does too.
 
 - **`index-2.html`** is the same site with a different top: the nav sits over a
   full-screen photo slider and turns solid as you scroll. See it at
-  <https://dadiletta.github.io/studio-bistro/index-2.html>. **Keep one home, not both**: delete the other and name
-  the keeper `index.html`.
+  <https://dadiletta.github.io/studio-bistro/index-2.html>. **`index-3.html`** is a third: the
+  headline beside a plate, and three of tonight's specials on a chalkboard.
+  **Keep one home**: delete the others and name the keeper `index.html`. The
+  nav's **Homes** dropdown shows each home's top; delete it once you've chosen.
+  The nav itself is centered, the name in the middle and the links either side,
+  and on the homes it sits see-through on the photo.
 - **`elements.html`** is the parts page: a photo slider, a quote carousel,
   tabs, pricing, a team, a timeline, steps, a photo wall that opens in a
   lightbox, a call to action on a photo, questions, numbers that count, events,
   a menu with photos, a press strip, a video that plays in a lightbox, an
   Instagram grid, and a top bar for above the nav. Its nav is a part too, the
-  centered one. See it at
+  other way round: the name on the left, every link on the right. See it at
   <https://dadiletta.github.io/studio-bistro/elements.html>. Each part sits between a `COPY FROM HERE` and a
   `TO HERE` comment: copy what you want into your pages, then **delete
-  `elements.html`** before you hand in. Nothing links to it.
+  `elements.html`** before you hand in, and the **Elements** link in every nav
+  with it.
 
 ### How the carousels work
 
@@ -131,7 +138,7 @@ nothing moves at all. Keep that true for anything you add.
 | `data-video-popup` | on a link to a YouTube video, plays it over the page. `&t=90` in the link starts it 90 seconds in. Credit the video like a photo. |
 | `class="hero-rise"` | on the block that holds the hero's words, raises each child in, one after another, as the page opens. |
 | `class="eyebrow"` | on the small label over a heading, adds the short rule before it (and after it, in a centered block). |
-| `data-spy` | on the menu's jump links, underlines the course on screen. |
+| `data-spy` | on the menu's jump links, marks the course on screen: underlined on `menu-2.html`, a filled pill on `menu.html`. |
 | `data-sticky-nav` | on the sticky nav, adds a shadow once the page scrolls under it. |
 | `data-to-top` | is the back-to-top button at the bottom of every page. |
 
@@ -209,6 +216,8 @@ have them found.
 
 - [ ] Every placeholder is gone. Search every HTML file for `Your`, `00`, `20XX`,
       `Their name` and `______`.
+- [ ] Every dish and price on your menu is your client's. The starter's corn
+      fritters and smash burger are examples, real enough to read like a menu.
 - [ ] Every section is the element it should be — `nav`, `header`, `main`,
       `footer`, `article` — not a `div` wearing a class.
 - [ ] The headings outline each page. Read `h1`, `h2`, `h3` alone, in order: one
