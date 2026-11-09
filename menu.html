@@ -24,10 +24,12 @@
   <body class="bg-base-100 text-base-content">
     <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
 
+    <!-- ===== NAV ===== -->
+    <!-- Centered: the name in the middle, the links split either side.
+         It is on every page: change one, change all. -->
     <nav data-sticky-nav class="navbar bg-base-100/90 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
-      <!-- THE NAV, centered: the name in the middle, the links split either side.
-           It is on every page: change one, change all. -->
       <div class="navbar-start flex-1 w-auto gap-1">
+        <!-- ===== PHONE MENU ===== -->
         <details class="dropdown lg:hidden">
           <summary class="btn btn-ghost text-inherit btn-square" aria-label="Site pages"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></summary>
           <ul class="menu dropdown-content bg-base-100 text-base-content border border-base-content/10 rounded-box z-40 mt-3 w-56 p-2 shadow-xl text-base">
@@ -41,11 +43,15 @@
             <li><a href="elements.html">Elements</a></li>
           </ul>
         </details>
+        <!-- ===== END PHONE MENU ===== -->
+        <!-- ===== LINKS, LEFT (wide screens) ===== -->
         <ul class="menu menu-horizontal hidden lg:flex gap-1 text-base">
           <li><a href="menu.html" aria-current="page">Menu</a></li>
           <li><a href="visit.html">Visit</a></li>
         </ul>
-        <!-- HOMES: each home page has its own hero. Keep the one you like best
+        <!-- ===== END LINKS, LEFT (wide screens) ===== -->
+        <!-- ===== HOMES MENU (wide screens) ===== -->
+        <!-- Each home page has its own hero. Keep the one you like best
              as index.html, then delete the rest and this dropdown. -->
         <details class="dropdown hidden lg:block">
           <summary class="btn btn-ghost text-inherit text-base font-normal gap-1">Homes <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
@@ -75,6 +81,7 @@
             </ul>
           </div>
         </details>
+        <!-- ===== END HOMES MENU (wide screens) ===== -->
       </div>
       <div class="navbar-center">
         <a class="font-display text-2xl md:text-3xl font-bold tracking-tight" href="index.html">
@@ -82,13 +89,17 @@
         </a>
       </div>
       <div class="navbar-end flex-1 w-auto gap-2">
+        <!-- ===== LINKS, RIGHT (wide screens) ===== -->
         <ul class="menu menu-horizontal hidden lg:flex gap-1 text-base">
           <li><a href="elements.html">Elements</a></li>
         </ul>
+        <!-- ===== END LINKS, RIGHT (wide screens) ===== -->
         <a class="btn btn-primary btn-sm md:btn-md" href="visit.html#book">Book a table</a>
       </div>
     </nav>
+    <!-- ===== END NAV ===== -->
 
+    <!-- ===== PAGE HEADER ===== -->
     <!-- A page header on a photo, shorter than the home page's hero: only the
          home page gets the big treatment. The photo is decoration, so alt="";
          the words stay white on the scrim. Swap the photo, keep the scrim. -->
@@ -107,7 +118,9 @@
         <p class="text-lg max-w-xl">One sentence: how often it changes, and what decides it.</p>
       </div>
     </header>
+    <!-- ===== END PAGE HEADER ===== -->
 
+    <!-- ===== JUMP LINKS ===== -->
     <!-- Jump links as pills: they stick under the navbar, scroll sideways on a
          phone, and fill in for the course on screen (data-spy). -->
     <nav data-spy class="menu-jump menu-pills sticky top-16 z-20 bg-base-100/90 backdrop-blur border-b border-base-content/10" aria-label="Menu sections">
@@ -119,6 +132,7 @@
         <li class="shrink-0"><a class="btn btn-sm rounded-full" href="#drinks">Drinks</a></li>
       </ul>
     </nav>
+    <!-- ===== END JUMP LINKS ===== -->
 
     <main id="main" class="max-w-6xl mx-auto px-6 py-16 md:py-20">
       <!-- TWO MENUS: the same dishes, set two ways. Keep one as menu.html,
@@ -136,6 +150,7 @@
 
       <!-- EVERY DISH AND PRICE IS AN EXAMPLE: write your client's own. A course is
            a photo and a grid of cards, the photo on alternate sides. -->
+      <!-- ===== STARTERS ===== -->
       <section id="starters" class="mb-20 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start" data-reveal>
         <figure class="lg:col-span-2 relative rounded-[2rem] overflow-hidden shadow-xl">
           <img class="w-full aspect-[4/3] lg:aspect-[4/5] object-cover" src="img/kitchen.jpg" width="800" height="1000" loading="lazy" alt="A cook at the pass, plating" />
@@ -187,7 +202,9 @@
           </ul>
         </div>
       </section>
+      <!-- ===== END STARTERS ===== -->
 
+      <!-- ===== PASTA ===== -->
       <section id="pasta" class="mb-20 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start" data-reveal>
         <figure class="lg:col-span-2 relative rounded-[2rem] overflow-hidden shadow-xl lg:order-last">
           <img class="w-full aspect-[4/3] lg:aspect-[4/5] object-cover" src="img/dish-pasta.jpg" width="900" height="675" loading="lazy" alt="Spaghetti in tomato sauce under rocket and shaved cheese" />
@@ -229,7 +246,9 @@
           </ul>
         </div>
       </section>
+      <!-- ===== END PASTA ===== -->
 
+      <!-- ===== PLATES ===== -->
       <section id="plates" class="mb-20 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start" data-reveal>
         <figure class="lg:col-span-2 relative rounded-[2rem] overflow-hidden shadow-xl">
           <img class="w-full aspect-[4/3] lg:aspect-[4/5] object-cover" src="img/dish-salmon.jpg" width="900" height="675" loading="lazy" alt="Seared salmon on greens" />
@@ -280,7 +299,9 @@
           </ul>
         </div>
       </section>
+      <!-- ===== END PLATES ===== -->
 
+      <!-- ===== DESSERTS ===== -->
       <section id="desserts" class="mb-20 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start" data-reveal>
         <figure class="lg:col-span-2 relative rounded-[2rem] overflow-hidden shadow-xl lg:order-last">
           <img class="w-full aspect-[4/3] lg:aspect-[4/5] object-cover" src="img/dessert.jpg" width="1200" height="900" loading="lazy" alt="A plated millefeuille with a scoop of ice cream" />
@@ -322,7 +343,9 @@
           </ul>
         </div>
       </section>
+      <!-- ===== END DESSERTS ===== -->
 
+      <!-- ===== DRINKS ===== -->
       <section id="drinks" class="mb-20 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start" data-reveal>
         <figure class="lg:col-span-2 relative rounded-[2rem] overflow-hidden shadow-xl">
           <img class="w-full aspect-[4/3] lg:aspect-[4/5] object-cover" src="img/bar.jpg" width="1200" height="900" loading="lazy" alt="The back room: one long table lined with wine racks" />
@@ -372,6 +395,7 @@
           </ul>
         </div>
       </section>
+      <!-- ===== END DRINKS ===== -->
 
       <!-- The allergen line stays. Make it true for your restaurant. -->
       <div role="note" class="alert bg-base-200 border border-base-content/10" data-reveal>
@@ -380,6 +404,7 @@
       </div>
     </main>
 
+    <!-- ===== THE ASK ===== -->
     <section class="bg-primary text-primary-content px-6 py-20 md:py-24">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="font-display text-3xl md:text-5xl font-bold mb-6" data-reveal>Hungry now?</h2>
@@ -387,7 +412,9 @@
         <a class="btn btn-lg btn-neutral" href="visit.html#book">Book a table</a>
       </div>
     </section>
+    <!-- ===== END THE ASK ===== -->
 
+    <!-- ===== FOOTER ===== -->
     <footer class="bg-base-300 text-base-content">
       <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
@@ -418,7 +445,8 @@
             <p class="opacity-80">Wed–Sun, 5–10pm</p>
           </address>
         </div>
-        <!-- THE NEWSLETTER says thank you without sending (data-demo). Point action
+        <!-- ===== NEWSLETTER ===== -->
+        <!-- Says thank you without sending (data-demo). Point action
              at a real service and delete data-demo, or delete this block. -->
         <form data-demo>
           <h2 class="footer-title">The weekly menu, by email</h2>
@@ -430,9 +458,11 @@
           <p class="text-sm opacity-80 mt-2">One email a week. Nothing else.</p>
           <p data-sent hidden role="status" tabindex="-1" class="text-sm mt-2 font-semibold">Thanks — you are on the list.</p>
         </form>
+        <!-- ===== END NEWSLETTER ===== -->
       </div>
 
-      <!-- CREDITS: creator, source, license and changes for every borrowed thing.
+      <!-- ===== CREDITS ===== -->
+      <!-- Creator, source, license and changes for every borrowed thing.
            Swap a picture, swap its line. Can't write the line? Don't use it. -->
       <div class="border-t border-base-content/10">
         <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row md:items-start md:justify-between gap-4 text-sm">
@@ -453,9 +483,12 @@
           </details>
         </div>
       </div>
+      <!-- ===== END CREDITS ===== -->
     </footer>
+    <!-- ===== END FOOTER ===== -->
 
-    <!-- BACK TO TOP: hidden until js/site.js shows it, once you have scrolled. -->
+    <!-- ===== BACK TO TOP ===== -->
+    <!-- Hidden until js/site.js shows it, once you have scrolled. -->
     <a class="to-top" href="#top" data-to-top hidden aria-label="Back to top"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></a>
 
     <script src="js/site.js"></script>

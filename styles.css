@@ -1,9 +1,8 @@
 /* Your own rules. This file loads after Tailwind and daisyUI, so it wins a tie.
  * Reach for a utility class first; write CSS here when no utility can do it. */
 
-/* ============================================================ PALETTE
- *
- * "…"
+/* ===== PALETTE ===== */
+/* "…"
  *
  * Name the mood in a sentence that describes a place or a moment — "the last
  * warm hour in a room with the lights low" — then list your colors and the
@@ -12,8 +11,7 @@
  *   primary   #______   the action color: the booking button, links
  *   base-100  #______   the page ground
  *   base-200  #______   sections that step forward from the ground
- *   accent    #______   the one thing allowed to shout
- */
+ *   accent    #______   the one thing allowed to shout */
 
 /* Redeclare the theme's colors here to make them yours. Change `coffee` to the
  * theme on <html>, in every page. Measure both: white on your primary, and your
@@ -23,10 +21,10 @@
   /* --color-primary-content: #______; */
   /* --color-accent: #______; */
 }
+/* ===== END PALETTE ===== */
 
-/* ============================================================ TYPE
- *
- * Two faces at most: Fraunces for headings, Inter for body. To change them,
+/* ===== TYPE ===== */
+/* Two faces at most: Fraunces for headings, Inter for body. To change them,
  * replace the Google Fonts <link> in the <head> of every page, then the names
  * below. Keep the fallbacks after the comma. */
 body {
@@ -76,10 +74,10 @@ blockquote {
 .text-center .eyebrow {
   justify-content: center;
 }
+/* ===== END TYPE ===== */
 
-/* ============================================================ HERO VIDEO
- *
- * Load-bearing. js/hero-video.js decides when the video shows; these rules place it. */
+/* ===== HERO VIDEO ===== */
+/* Load-bearing. js/hero-video.js decides when the video shows; these rules place it. */
 
 .hero-stage {
   position: relative;
@@ -173,10 +171,10 @@ blockquote {
     transform: translateY(0.45rem);
   }
 }
+/* ===== END HERO VIDEO ===== */
 
-/* ============================================================ THE MENU
- *
- * Name, dotted leader, price, like a printed menu. The leader is the dt's ::after. */
+/* ===== THE MENU ===== */
+/* Name, dotted leader, price, like a printed menu. The leader is the dt's ::after. */
 .menu-item {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -223,10 +221,10 @@ blockquote {
   color: var(--color-primary-content);
   text-decoration: none;
 }
+/* ===== END THE MENU ===== */
 
-/* ============================================================ CAROUSELS
- *
- * daisyUI's .carousel is a sideways scroller that snaps to each slide. js/site.js
+/* ===== CAROUSELS ===== */
+/* daisyUI's .carousel is a sideways scroller that snaps to each slide. js/site.js
  * adds the arrows and dots; these rules dress them. */
 [data-carousel] .carousel {
   position: relative; /* site.js measures each slide from here */
@@ -263,10 +261,10 @@ blockquote {
 [data-pause][aria-pressed='true'] .i-play {
   display: block;
 }
+/* ===== END CAROUSELS ===== */
 
-/* ============================================================ NAV OVER THE HERO
- *
- * The homes' nav (index.html and index-2.html): white on the photo, then the page's own colors once the
+/* ===== NAV OVER THE HERO ===== */
+/* The homes' nav (index.html and index-2.html): white on the photo, then the page's own colors once the
  * photo has scrolled under it (.is-solid, set by js/site.js). */
 .nav-over {
   position: absolute;
@@ -296,10 +294,10 @@ blockquote {
 .nav-over .dropdown-content {
   color: var(--color-base-content);
 }
+/* ===== END NAV OVER THE HERO ===== */
 
-/* ============================================================ PAGE HEADERS
- *
- * The menu and visit pages open on a photo too, shorter than the home page's
+/* ===== PAGE HEADERS ===== */
+/* The menu and visit pages open on a photo too, shorter than the home page's
  * hero. Its words sit on the same scrim as the slides (.slide-scrim), so keep
  * them white. The photo is decoration: alt="". */
 .page-hero .breadcrumbs a {
@@ -307,10 +305,10 @@ blockquote {
   text-decoration-color: rgb(255 255 255 / 0.5);
   text-underline-offset: 0.2em;
 }
+/* ===== END PAGE HEADERS ===== */
 
-/* ============================================================ MOTION
- *
- * Anything marked data-reveal fades up as it scrolls into view; "left",
+/* ===== MOTION ===== */
+/* Anything marked data-reveal fades up as it scrolls into view; "left",
  * "right" or "zoom" change how it arrives. js/site.js puts .reveal-on on <html>
  * first, so with no script, or for a reader who asks for less motion, nothing
  * is ever hidden. Several arriving together come in one after another. */
@@ -349,10 +347,10 @@ blockquote {
 [data-sticky-nav].is-scrolled {
   box-shadow: 0 12px 30px -14px rgb(0 0 0 / 0.55);
 }
+/* ===== END MOTION ===== */
 
-/* ============================================================ BACK TO TOP
- *
- * The round button in the corner. Its ring fills as you read down the page
+/* ===== BACK TO TOP ===== */
+/* The round button in the corner. Its ring fills as you read down the page
  * (--progress, 0 to 1, from js/site.js). Hidden until you have scrolled. */
 .to-top {
   position: fixed;
@@ -384,10 +382,10 @@ blockquote {
     bottom: 1.5rem;
   }
 }
+/* ===== END BACK TO TOP ===== */
 
-/* ============================================================ LIGHTBOX
- *
- * Photos inside data-lightbox open large on the page instead of on their own.
+/* ===== LIGHTBOX ===== */
+/* Photos inside data-lightbox open large on the page instead of on their own.
  * Each is a link to the full image, so with no script the link still works.
  * js/site.js builds the viewer, a <dialog>, the first time it is needed. */
 [data-lightbox] a {
@@ -486,8 +484,9 @@ html:has(.lightbox[open]) {
     transform: scale(0.97);
   }
 }
+/* ===== END LIGHTBOX ===== */
 
-/* ============================================================ EVERYTHING ELSE */
+/* ===== EVERYTHING ELSE ===== */
 
 /* Labels at full strength. daisyUI's dimmed 12px labels measured 3.40:1 on the
  * booking form, under 4.5:1. Keep this rule. */
@@ -589,3 +588,4 @@ html {
     color: #000;
   }
 }
+/* ===== END EVERYTHING ELSE ===== */

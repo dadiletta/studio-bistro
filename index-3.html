@@ -29,14 +29,16 @@
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <!-- THEME: data-theme on <html>, in every page. Try sunset, night, autumn.
-         THE NAV is on each page twice, wide and phone: change one, change all. -->
+    <!-- THEME: data-theme on <html>, in every page. Try sunset, night, autumn. -->
     <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
 
+    <!-- ===== NAV ===== -->
+    <!-- Centered: the name in the middle, the links split either side.
+         It is on every page: change one, change all. -->
+    <!-- The nav is on each page twice, wide and phone: change one, change all. -->
     <nav data-sticky-nav class="navbar bg-base-100/90 backdrop-blur sticky top-0 z-30 px-4 md:px-8 border-b border-base-content/10" aria-label="Main">
-      <!-- THE NAV, centered: the name in the middle, the links split either side.
-           It is on every page: change one, change all. -->
       <div class="navbar-start flex-1 w-auto gap-1">
+        <!-- ===== PHONE MENU ===== -->
         <details class="dropdown lg:hidden">
           <summary class="btn btn-ghost text-inherit btn-square" aria-label="Site pages"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></summary>
           <ul class="menu dropdown-content bg-base-100 text-base-content border border-base-content/10 rounded-box z-40 mt-3 w-56 p-2 shadow-xl text-base">
@@ -50,11 +52,15 @@
             <li><a href="elements.html">Elements</a></li>
           </ul>
         </details>
+        <!-- ===== END PHONE MENU ===== -->
+        <!-- ===== LINKS, LEFT (wide screens) ===== -->
         <ul class="menu menu-horizontal hidden lg:flex gap-1 text-base">
           <li><a href="menu.html">Menu</a></li>
           <li><a href="visit.html">Visit</a></li>
         </ul>
-        <!-- HOMES: each home page has its own hero. Keep the one you like best
+        <!-- ===== END LINKS, LEFT (wide screens) ===== -->
+        <!-- ===== HOMES MENU (wide screens) ===== -->
+        <!-- Each home page has its own hero. Keep the one you like best
              as index.html, then delete the rest and this dropdown. -->
         <details class="dropdown hidden lg:block">
           <summary class="btn btn-ghost text-inherit text-base font-normal gap-1">Homes <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
@@ -84,6 +90,7 @@
             </ul>
           </div>
         </details>
+        <!-- ===== END HOMES MENU (wide screens) ===== -->
       </div>
       <div class="navbar-center">
         <a class="font-display text-2xl md:text-3xl font-bold tracking-tight" href="index.html">
@@ -91,15 +98,18 @@
         </a>
       </div>
       <div class="navbar-end flex-1 w-auto gap-2">
+        <!-- ===== LINKS, RIGHT (wide screens) ===== -->
         <ul class="menu menu-horizontal hidden lg:flex gap-1 text-base">
           <li><a href="elements.html">Elements</a></li>
         </ul>
+        <!-- ===== END LINKS, RIGHT (wide screens) ===== -->
         <a class="btn btn-primary btn-sm md:btn-md" href="visit.html#book">Book a table</a>
       </div>
     </nav>
+    <!-- ===== END NAV ===== -->
 
-    <!-- ============================================================ HERO
-         Tonight's chalkboard: the headline beside a plate, and three specials
+    <!-- ===== HERO ===== -->
+    <!-- Tonight's chalkboard: the headline beside a plate, and three specials
          on a card over its corner. Change the specials every week you like. -->
     <header class="bg-base-200 overflow-hidden">
       <div class="max-w-6xl mx-auto px-6 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
@@ -132,10 +142,11 @@
         </div>
       </div>
     </header>
+    <!-- ===== END HERO ===== -->
 
     <main id="main">
-      <!-- ============================================================ FACTS
-           The three things a hungry person came to find. Keep them above everything
+      <!-- ===== FACTS ===== -->
+      <!-- The three things a hungry person came to find. Keep them above everything
            else. -->
       <section class="bg-base-200 border-b border-base-content/10" aria-label="Hours and location">
         <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-current/10">
@@ -163,9 +174,10 @@
           </div>
         </div>
       </section>
+      <!-- ===== END FACTS ===== -->
 
-      <!-- ============================================================ DISHES
-           Three, and parallel: if one has a photo, they all do. Every <img> keeps
+      <!-- ===== DISHES ===== -->
+      <!-- Three, and parallel: if one has a photo, they all do. Every <img> keeps
            its width and height, so the page doesn't jump while pictures load. -->
       <section id="dishes" class="px-6 py-20 md:py-28 max-w-6xl mx-auto">
         <div class="flex flex-wrap items-end justify-between gap-6 mb-12" data-reveal>
@@ -229,9 +241,10 @@
           </article>
         </div>
       </section>
+      <!-- ===== END DISHES ===== -->
 
-      <!-- ============================================================ STORY
-           Text one side, picture the other. On a phone the text comes first. -->
+      <!-- ===== STORY ===== -->
+      <!-- Text one side, picture the other. On a phone the text comes first. -->
       <section class="bg-base-200">
         <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div data-reveal="left">
@@ -273,9 +286,10 @@
           </figure>
         </div>
       </section>
+      <!-- ===== END STORY ===== -->
 
-      <!-- ============================================================ CAROUSEL
-           Swipe it, scroll it, or use the arrows. One <figure> per slide: add,
+      <!-- ===== CAROUSEL ===== -->
+      <!-- Swipe it, scroll it, or use the arrows. One <figure> per slide: add,
            remove or reorder them. js/site.js adds the arrows and the dots. -->
       <section class="py-20 md:py-28" aria-labelledby="room-title">
         <div class="max-w-6xl mx-auto px-6" data-carousel>
@@ -319,9 +333,10 @@
           <div class="flex justify-center gap-2 mt-8" data-dots></div>
         </div>
       </section>
+      <!-- ===== END CAROUSEL ===== -->
 
-      <!-- ============================================================ PRIVATE
-           The second reason to visit. No events? Make it yours, or delete it. -->
+      <!-- ===== PRIVATE ===== -->
+      <!-- The second reason to visit. No events? Make it yours, or delete it. -->
       <section class="max-w-6xl mx-auto px-6 pt-28 pb-20 md:py-28 grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
         <div class="md:col-span-3 grid grid-cols-2 gap-4" data-reveal="left">
           <img class="rounded-box col-span-2 aspect-[16/9] w-full object-cover shadow-lg" src="img/bar.jpg" width="1200" height="900" loading="lazy" alt="The back room: one long table set for a group, lined with wine racks" />
@@ -343,9 +358,10 @@
           <a class="link link-primary font-semibold inline-flex items-center gap-2" href="visit.html#book">Ask about the back room <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
         </div>
       </section>
+      <!-- ===== END PRIVATE ===== -->
 
-      <!-- ============================================================ QUOTE
-           One real review with a name on it. -->
+      <!-- ===== QUOTE ===== -->
+      <!-- One real review with a name on it. -->
       <section class="bg-base-200 px-6 py-20 md:py-28">
         <figure class="max-w-3xl mx-auto text-center" data-reveal="zoom">
           <span class="inline-block text-primary mb-6"><svg class="size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span>
@@ -357,9 +373,10 @@
           <figcaption class="opacity-80">— Their name, <cite>where it was published</cite></figcaption>
         </figure>
       </section>
+      <!-- ===== END QUOTE ===== -->
 
-      <!-- ============================================================ THE ASK
-           The same ask as the hero, not a new one. -->
+      <!-- ===== THE ASK ===== -->
+      <!-- The same ask as the hero, not a new one. -->
     <section class="bg-primary text-primary-content px-6 py-20 md:py-24">
       <div class="max-w-3xl mx-auto text-center" data-reveal>
         <h2 class="font-display text-3xl md:text-5xl font-bold mb-6">Come and eat</h2>
@@ -367,8 +384,10 @@
         <a class="btn btn-lg btn-neutral" href="visit.html#book">Book a table</a>
       </div>
     </section>
+      <!-- ===== END THE ASK ===== -->
     </main>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="bg-base-300 text-base-content">
       <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
@@ -399,7 +418,8 @@
             <p class="opacity-80">Wed–Sun, 5–10pm</p>
           </address>
         </div>
-        <!-- THE NEWSLETTER says thank you without sending (data-demo). Point action
+        <!-- ===== NEWSLETTER ===== -->
+        <!-- Says thank you without sending (data-demo). Point action
              at a real service and delete data-demo, or delete this block. -->
         <form data-demo>
           <h2 class="footer-title">The weekly menu, by email</h2>
@@ -411,9 +431,11 @@
           <p class="text-sm opacity-80 mt-2">One email a week. Nothing else.</p>
           <p data-sent hidden role="status" tabindex="-1" class="text-sm mt-2 font-semibold">Thanks — you are on the list.</p>
         </form>
+        <!-- ===== END NEWSLETTER ===== -->
       </div>
 
-      <!-- CREDITS: creator, source, license and changes for every borrowed thing.
+      <!-- ===== CREDITS ===== -->
+      <!-- Creator, source, license and changes for every borrowed thing.
            Swap a picture, swap its line. Can't write the line? Don't use it. -->
       <div class="border-t border-base-content/10">
         <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row md:items-start md:justify-between gap-4 text-sm">
@@ -433,9 +455,12 @@
           </details>
         </div>
       </div>
+      <!-- ===== END CREDITS ===== -->
     </footer>
+    <!-- ===== END FOOTER ===== -->
 
-    <!-- BACK TO TOP: hidden until js/site.js shows it, once you have scrolled. -->
+    <!-- ===== BACK TO TOP ===== -->
+    <!-- Hidden until js/site.js shows it, once you have scrolled. -->
     <a class="to-top" href="#top" data-to-top hidden aria-label="Back to top"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></a>
 
     <script src="js/site.js"></script>
